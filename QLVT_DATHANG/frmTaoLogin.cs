@@ -37,7 +37,7 @@ namespace QLVT_DATHANG
             LoadData();
 
             txtUsername.Enabled = false;
-            cmbHoTen.Enabled = false;
+            //cmbHoTen.Enabled = false;
 
             if (Program.mGroup == "CONGTY")
             {
@@ -151,8 +151,8 @@ namespace QLVT_DATHANG
 
         private void cmbHoTen_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadData();
-            txtUsername.Text = cmbHoTen.SelectedValue.ToString();
+            //LoadData();
+            //txtUsername.Text = cmbHoTen.SelectedValue.ToString();
         }
     }
 }

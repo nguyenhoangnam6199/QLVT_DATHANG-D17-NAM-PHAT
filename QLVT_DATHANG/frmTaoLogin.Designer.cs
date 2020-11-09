@@ -30,17 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label maNVLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTaoLogin));
             System.Windows.Forms.Label hotenLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTaoLogin));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dSNhanVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet = new QLVT_DATHANG.DataSet();
+            this.cmbHoTen = new System.Windows.Forms.ComboBox();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnTaoLogin = new System.Windows.Forms.Button();
             this.rdUser = new System.Windows.Forms.RadioButton();
             this.rdCN = new System.Windows.Forms.RadioButton();
             this.rdCT = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.dSNhanVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet = new QLVT_DATHANG.DataSet();
             this.txtUsername = new DevExpress.XtraEditors.SpinEdit();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtLoginName = new System.Windows.Forms.TextBox();
@@ -48,19 +49,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dSNhanVienTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.DSNhanVienTableAdapter();
             this.tableAdapterManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
-            this.cmbHoTen = new System.Windows.Forms.ComboBox();
-            this.dSNhanVienGridControl = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colMaNV = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colHoten = new DevExpress.XtraGrid.Columns.GridColumn();
             maNVLabel = new System.Windows.Forms.Label();
             hotenLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dSNhanVienBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSNhanVienGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // maNVLabel
@@ -72,10 +66,18 @@
             maNVLabel.TabIndex = 4;
             maNVLabel.Text = "Username: ";
             // 
+            // hotenLabel
+            // 
+            hotenLabel.AutoSize = true;
+            hotenLabel.Location = new System.Drawing.Point(426, 215);
+            hotenLabel.Name = "hotenLabel";
+            hotenLabel.Size = new System.Drawing.Size(53, 17);
+            hotenLabel.TabIndex = 13;
+            hotenLabel.Text = "Name: ";
+            // 
             // groupBox1
             // 
             this.groupBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox1.BackgroundImage")));
-            this.groupBox1.Controls.Add(this.dSNhanVienGridControl);
             this.groupBox1.Controls.Add(hotenLabel);
             this.groupBox1.Controls.Add(this.cmbHoTen);
             this.groupBox1.Controls.Add(this.btnThoat);
@@ -93,9 +95,32 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1076, 519);
+            this.groupBox1.Size = new System.Drawing.Size(776, 475);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // dSNhanVienBindingSource
+            // 
+            this.dSNhanVienBindingSource.DataMember = "DSNhanVien";
+            this.dSNhanVienBindingSource.DataSource = this.dataSet;
+            // 
+            // dataSet
+            // 
+            this.dataSet.DataSetName = "DataSet";
+            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cmbHoTen
+            // 
+            this.cmbHoTen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dSNhanVienBindingSource, "Hoten", true));
+            this.cmbHoTen.DataSource = this.dSNhanVienBindingSource;
+            this.cmbHoTen.DisplayMember = "Hoten";
+            this.cmbHoTen.FormattingEnabled = true;
+            this.cmbHoTen.Location = new System.Drawing.Point(482, 212);
+            this.cmbHoTen.Name = "cmbHoTen";
+            this.cmbHoTen.Size = new System.Drawing.Size(189, 24);
+            this.cmbHoTen.TabIndex = 14;
+            this.cmbHoTen.ValueMember = "MaNV";
+            this.cmbHoTen.SelectedIndexChanged += new System.EventHandler(this.cmbHoTen_SelectedIndexChanged);
             // 
             // btnThoat
             // 
@@ -158,16 +183,6 @@
             this.label3.Size = new System.Drawing.Size(45, 17);
             this.label3.TabIndex = 8;
             this.label3.Text = "Role: ";
-            // 
-            // dSNhanVienBindingSource
-            // 
-            this.dSNhanVienBindingSource.DataMember = "DSNhanVien";
-            this.dSNhanVienBindingSource.DataSource = this.dataSet;
-            // 
-            // dataSet
-            // 
-            this.dataSet.DataSetName = "DataSet";
-            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtUsername
             // 
@@ -236,68 +251,11 @@
             this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
             // 
-            // hotenLabel
-            // 
-            hotenLabel.AutoSize = true;
-            hotenLabel.Location = new System.Drawing.Point(426, 215);
-            hotenLabel.Name = "hotenLabel";
-            hotenLabel.Size = new System.Drawing.Size(53, 17);
-            hotenLabel.TabIndex = 13;
-            hotenLabel.Text = "Name: ";
-            // 
-            // cmbHoTen
-            // 
-            this.cmbHoTen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dSNhanVienBindingSource, "Hoten", true));
-            this.cmbHoTen.FormattingEnabled = true;
-            this.cmbHoTen.Location = new System.Drawing.Point(482, 212);
-            this.cmbHoTen.Name = "cmbHoTen";
-            this.cmbHoTen.Size = new System.Drawing.Size(189, 24);
-            this.cmbHoTen.TabIndex = 14;
-            this.cmbHoTen.SelectedIndexChanged += new System.EventHandler(this.cmbHoTen_SelectedIndexChanged);
-            // 
-            // dSNhanVienGridControl
-            // 
-            this.dSNhanVienGridControl.DataSource = this.dSNhanVienBindingSource;
-            this.dSNhanVienGridControl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dSNhanVienGridControl.Location = new System.Drawing.Point(694, 18);
-            this.dSNhanVienGridControl.MainView = this.gridView1;
-            this.dSNhanVienGridControl.Name = "dSNhanVienGridControl";
-            this.dSNhanVienGridControl.Size = new System.Drawing.Size(379, 498);
-            this.dSNhanVienGridControl.TabIndex = 14;
-            this.dSNhanVienGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colMaNV,
-            this.colHoten});
-            this.gridView1.GridControl = this.dSNhanVienGridControl;
-            this.gridView1.Name = "gridView1";
-            // 
-            // colMaNV
-            // 
-            this.colMaNV.FieldName = "MaNV";
-            this.colMaNV.MinWidth = 25;
-            this.colMaNV.Name = "colMaNV";
-            this.colMaNV.Visible = true;
-            this.colMaNV.VisibleIndex = 0;
-            this.colMaNV.Width = 94;
-            // 
-            // colHoten
-            // 
-            this.colHoten.FieldName = "Hoten";
-            this.colHoten.MinWidth = 25;
-            this.colHoten.Name = "colHoten";
-            this.colHoten.Visible = true;
-            this.colHoten.VisibleIndex = 1;
-            this.colHoten.Width = 94;
-            // 
             // frmTaoLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1076, 519);
+            this.ClientSize = new System.Drawing.Size(776, 475);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmTaoLogin";
             this.Text = "frmTaoLogin";
@@ -308,8 +266,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dSNhanVienBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSNhanVienGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -333,9 +289,5 @@
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Button btnTaoLogin;
         private System.Windows.Forms.ComboBox cmbHoTen;
-        private DevExpress.XtraGrid.GridControl dSNhanVienGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn colMaNV;
-        private DevExpress.XtraGrid.Columns.GridColumn colHoten;
     }
 }

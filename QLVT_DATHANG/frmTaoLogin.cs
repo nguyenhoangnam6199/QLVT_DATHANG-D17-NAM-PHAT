@@ -18,6 +18,12 @@ namespace QLVT_DATHANG
             InitializeComponent();
         }
 
+        private void LoadData()
+        {
+            this.dataSet.EnforceConstraints = false;
+            this.dSNhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.dSNhanVienTableAdapter.Fill(this.dataSet.DSNhanVien);
+        }
         private void dSNhanVienBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -28,12 +34,10 @@ namespace QLVT_DATHANG
 
         private void frmTaoLogin_Load(object sender, EventArgs e)
         {
-            this.dataSet.EnforceConstraints = false;
-
-            this.dSNhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.dSNhanVienTableAdapter.Fill(this.dataSet.DSNhanVien);
+            LoadData();
 
             txtUsername.Enabled = false;
+            cmbHoTen.Enabled = false;
 
             if (Program.mGroup == "CONGTY")
             {
@@ -136,24 +140,19 @@ namespace QLVT_DATHANG
                 MessageBox.Show("Lỗi ghi.\n" + ex.Message);
                 return;
             }
+            LoadData();
         }
 
-        private void txtName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                txtUsername.Text = cmbTen.SelectedValue.ToString();
-
-            }
-            catch (Exception)
-            {
-
-            }
-        }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cmbHoTen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadData();
+            txtUsername.Text = cmbHoTen.SelectedValue.ToString();
         }
     }
 }

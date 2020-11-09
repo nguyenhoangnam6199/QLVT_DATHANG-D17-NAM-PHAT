@@ -15,6 +15,7 @@ namespace QLVT_DATHANG
     {
         private int vitri;
         private string macn;
+        private string nut;
         public frmNhanVien()
         {
             InitializeComponent();
@@ -162,6 +163,7 @@ namespace QLVT_DATHANG
         }
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            nut = "THEM";
             groupBox1.Enabled = true;
             vitri = nhanVienBindingSource.Position;
             nhanVienBindingSource.AddNew();
@@ -230,6 +232,7 @@ namespace QLVT_DATHANG
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            nut = "SUA";
             groupBox1.Enabled = true;
             vitri = nhanVienBindingSource.Position;
             txtMaNV.Enabled = false;
@@ -342,6 +345,20 @@ namespace QLVT_DATHANG
         private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             LoadTable();
+        }
+
+        private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (nut.Equals("THEM"))
+            {
+                txtHo.Text = txtTen.Text = txtDiaChi.Text = txtNgaySinh.Text = txtLuong.Text = "";
+            }
+            else if(nut.Equals("SUA"))
+            {
+                //vitri = nhanVienBindingSource.Find("MANV",txtMaNV.Text);
+                //this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
+                //this.nhanVienTableAdapter.Fill(this.dataSet.NhanVien);
+            }
         }
     }
 }

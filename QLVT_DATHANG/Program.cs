@@ -29,7 +29,7 @@ namespace QLVT_DATHANG
         public static int mChinhanh = 0;
 
         public static BindingSource bds_dspm = new BindingSource();  // giữ bdsPM khi đăng nhập
-        internal static bool flagCloseFormNV;
+       // internal static bool flagCloseFormNV;
 
         public static int KetNoi()
         {

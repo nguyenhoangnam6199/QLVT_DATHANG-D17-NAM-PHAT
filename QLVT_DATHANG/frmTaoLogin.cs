@@ -83,16 +83,20 @@ namespace QLVT_DATHANG
                 try
                 {
                     SqlDataReader reader = sqlCommand.ExecuteReader();
-                    string kq = (string)reader["name"];
+                    string kq="";
+                    while (reader.Read()) {
+                        kq = (string)reader["name"];
+                    }
+
                     if (kq.Length == 0)
                     {
                         result = false;
                     }
-                    
+                    //sqlCommand.ExecuteNonQuery();
                 }
                 catch (Exception)
                 {
-                    result = false;
+                   //result = false;
                 }
                 return result;
             }

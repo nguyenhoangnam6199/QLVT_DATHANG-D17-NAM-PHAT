@@ -165,6 +165,9 @@
     <Content Include="StoreProcedure\spTimNVChuaCoTK.sql" />
     <Content Include="StoreProcedure\sp_kttrungloginname.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helper\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -33,9 +33,9 @@
             System.Windows.Forms.Label hotenLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTaoLogin));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbHoTen = new System.Windows.Forms.ComboBox();
             this.dSNhanVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new QLVT_DATHANG.DataSet();
-            this.cmbHoTen = new System.Windows.Forms.ComboBox();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnTaoLogin = new System.Windows.Forms.Button();
             this.rdUser = new System.Windows.Forms.RadioButton();
@@ -49,6 +49,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dSNhanVienTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.DSNhanVienTableAdapter();
             this.tableAdapterManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             maNVLabel = new System.Windows.Forms.Label();
             hotenLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -78,6 +79,7 @@
             // groupBox1
             // 
             this.groupBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox1.BackgroundImage")));
+            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(hotenLabel);
             this.groupBox1.Controls.Add(this.cmbHoTen);
             this.groupBox1.Controls.Add(this.btnThoat);
@@ -99,6 +101,20 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // cmbHoTen
+            // 
+            this.cmbHoTen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dSNhanVienBindingSource, "Hoten", true));
+            this.cmbHoTen.DataSource = this.dSNhanVienBindingSource;
+            this.cmbHoTen.DisplayMember = "Hoten";
+            this.cmbHoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbHoTen.FormattingEnabled = true;
+            this.cmbHoTen.Location = new System.Drawing.Point(485, 205);
+            this.cmbHoTen.Name = "cmbHoTen";
+            this.cmbHoTen.Size = new System.Drawing.Size(189, 33);
+            this.cmbHoTen.TabIndex = 14;
+            this.cmbHoTen.ValueMember = "MaNV";
+            this.cmbHoTen.SelectedIndexChanged += new System.EventHandler(this.cmbHoTen_SelectedIndexChanged);
+            // 
             // dSNhanVienBindingSource
             // 
             this.dSNhanVienBindingSource.DataMember = "DSNhanVien";
@@ -108,19 +124,6 @@
             // 
             this.dataSet.DataSetName = "DataSet";
             this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // cmbHoTen
-            // 
-            this.cmbHoTen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dSNhanVienBindingSource, "Hoten", true));
-            this.cmbHoTen.DataSource = this.dSNhanVienBindingSource;
-            this.cmbHoTen.DisplayMember = "Hoten";
-            this.cmbHoTen.FormattingEnabled = true;
-            this.cmbHoTen.Location = new System.Drawing.Point(482, 212);
-            this.cmbHoTen.Name = "cmbHoTen";
-            this.cmbHoTen.Size = new System.Drawing.Size(189, 24);
-            this.cmbHoTen.TabIndex = 14;
-            this.cmbHoTen.ValueMember = "MaNV";
-            this.cmbHoTen.SelectedIndexChanged += new System.EventHandler(this.cmbHoTen_SelectedIndexChanged);
             // 
             // btnThoat
             // 
@@ -194,23 +197,27 @@
             0});
             this.txtUsername.Location = new System.Drawing.Point(245, 211);
             this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.Properties.Appearance.Options.UseFont = true;
             this.txtUsername.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtUsername.Size = new System.Drawing.Size(125, 24);
+            this.txtUsername.Size = new System.Drawing.Size(125, 30);
             this.txtUsername.TabIndex = 5;
             // 
             // txtPassword
             // 
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(245, 155);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(222, 22);
+            this.txtPassword.Size = new System.Drawing.Size(222, 30);
             this.txtPassword.TabIndex = 3;
             // 
             // txtLoginName
             // 
+            this.txtLoginName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLoginName.Location = new System.Drawing.Point(245, 96);
             this.txtLoginName.Name = "txtLoginName";
-            this.txtLoginName.Size = new System.Drawing.Size(222, 22);
+            this.txtLoginName.Size = new System.Drawing.Size(222, 30);
             this.txtLoginName.TabIndex = 2;
             // 
             // label2
@@ -251,6 +258,17 @@
             this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(521, 157);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(140, 21);
+            this.checkBox1.TabIndex = 15;
+            this.checkBox1.Text = "Hiển thị mật khẩu";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // frmTaoLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -289,5 +307,6 @@
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Button btnTaoLogin;
         private System.Windows.Forms.ComboBox cmbHoTen;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

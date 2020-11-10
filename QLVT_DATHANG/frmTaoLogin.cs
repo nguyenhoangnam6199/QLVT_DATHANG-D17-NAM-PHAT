@@ -36,6 +36,7 @@ namespace QLVT_DATHANG
         {
             LoadData();
 
+            txtPassword.UseSystemPasswordChar = true;
             txtUsername.Enabled = false;
             //cmbHoTen.Enabled = false;
 
@@ -153,6 +154,11 @@ namespace QLVT_DATHANG
         {
             //LoadData();
             //txtUsername.Text = cmbHoTen.SelectedValue.ToString();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = (checkBox1.Checked) ? false : true;
         }
     }
 }

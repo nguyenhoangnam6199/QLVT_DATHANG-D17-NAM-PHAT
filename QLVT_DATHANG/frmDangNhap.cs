@@ -35,6 +35,7 @@ namespace QLVT_DATHANG
             cmbCN.ValueMember = "TENSERVER";
             cmbCN.SelectedIndex = -1;
             cmbCN.SelectedIndex = 0;
+            txtMatKhau.UseSystemPasswordChar = true;
         }
 
         private void cmbCN_SelectedIndexChanged(object sender, EventArgs e)
@@ -59,7 +60,7 @@ namespace QLVT_DATHANG
                 MessageBox.Show("Login name và mật mã không được trống", "", MessageBoxButtons.OK);
                 return;
             }
-
+            
             Program.mlogin = txtTaiKhoan.Text;
             Program.password = txtMatKhau.Text;
 
@@ -98,6 +99,11 @@ namespace QLVT_DATHANG
             f.NHOM.Text = "Nhóm : " + Program.mGroup;
 
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            txtMatKhau.UseSystemPasswordChar = (cbMK.Checked) ? false : true;
         }
     }
 }

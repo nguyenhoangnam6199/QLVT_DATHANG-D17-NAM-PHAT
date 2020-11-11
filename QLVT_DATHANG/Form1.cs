@@ -94,5 +94,17 @@ namespace QLVT_DATHANG
                 f.Show();
             }
         }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExist(typeof(frmDatHang));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmDatHang f = new frmDatHang();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

@@ -38,7 +38,6 @@ namespace QLVT_DATHANG
 
             txtPassword.UseSystemPasswordChar = true;
             txtUsername.Enabled = false;
-            //cmbHoTen.Enabled = false;
 
             if (Program.mGroup == "CONGTY")
             {
@@ -56,6 +55,7 @@ namespace QLVT_DATHANG
             string strLenh = string.Format("EXEC SP_TAOTAIKHOAN {0},{1},{2},{3}", loginName, password, username, role);
             using (SqlConnection connection = new SqlConnection(Program.connstr))
             {
+
                 connection.Open();
                 SqlCommand sqlcmd = new SqlCommand(strLenh, connection);
                 sqlcmd.CommandType = CommandType.Text;
@@ -63,9 +63,10 @@ namespace QLVT_DATHANG
                 {
                     sqlcmd.ExecuteNonQuery();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     result = false;
+                    MessageBox.Show(ex.Message + " ");
                 }
             }
             return result;
@@ -92,11 +93,13 @@ namespace QLVT_DATHANG
                     {
                         result = false;
                     }
-                    //sqlCommand.ExecuteNonQuery();
+
+                    sqlCommand.ExecuteNonQuery();
+                 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                   //result = false;
+                    MessageBox.Show(ex.Message + " ");
                 }
                 return result;
             }
@@ -133,10 +136,9 @@ namespace QLVT_DATHANG
                 MessageBox.Show("Role không được thiếu !", "", MessageBoxButtons.OK);
                 return;
             }
-
             try
             {
-                String role = rdCT.Checked ? "CONGTY" : (rdCN.Checked ? "CHINHANH" : "USER");
+                String role = rdCT.Checked ? "CONGTY" : (rdCN.Checked ? "CHINHANH" : "USSER");
                 CreateLogin(txtLoginName.Text, txtPassword.Text, txtUsername.Text, role);
                 MessageBox.Show("Tạo Login thành công!", "", MessageBoxButtons.OK);
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLVT_DATHANG.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -237,6 +238,7 @@ namespace QLVT_DATHANG
             vitri = nhanVienBindingSource.Position;
             txtMaNV.Enabled = false;
             DisableForm();
+          
         }
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -347,18 +349,24 @@ namespace QLVT_DATHANG
             LoadTable();
         }
 
+      
+
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (nut.Equals("THEM"))
-            {
-                txtHo.Text = txtTen.Text = txtDiaChi.Text = txtNgaySinh.Text = txtLuong.Text = "";
-            }
-            else if(nut.Equals("SUA"))
-            {
-                //vitri = nhanVienBindingSource.Find("MANV",txtMaNV.Text);
-                //this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
-                //this.nhanVienTableAdapter.Fill(this.dataSet.NhanVien);
-            }
+            //if (nut.Equals("THEM"))
+            //{
+            //    txtHo.Text = txtTen.Text = txtDiaChi.Text = txtNgaySinh.Text = txtLuong.Text = "";
+            //    if (await UtilDB.DeleteInDB("NhanVien","MANV",actio))
+            //    {
+
+            //    }
+            //}
+            //else if(nut.Equals("SUA"))
+            //{
+            //    //vitri = nhanVienBindingSource.Find("MANV",txtMaNV.Text);
+            //    //this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
+            //    //this.nhanVienTableAdapter.Fill(this.dataSet.NhanVien);
+            //}
         }
     }
 }

@@ -187,6 +187,7 @@
   <ItemGroup>
     <Content Include="StoreProcedure\spTimNVChuaCoTK.sql" />
     <Content Include="StoreProcedure\sp_kttrungloginname.sql" />
+    <Content Include="StoreProcedure\sp_timCTDDH.sql" />
     <Content Include="StoreProcedure\sp_timkho.sql" />
   </ItemGroup>
   <ItemGroup />

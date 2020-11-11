@@ -178,6 +178,7 @@
   <ItemGroup>
     <Content Include="StoreProcedure\spTimNVChuaCoTK.sql" />
     <Content Include="StoreProcedure\sp_kttrungloginname.sql" />
+    <Content Include="StoreProcedure\sp_timkho.sql" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

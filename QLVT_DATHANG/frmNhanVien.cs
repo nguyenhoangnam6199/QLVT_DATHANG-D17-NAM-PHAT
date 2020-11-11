@@ -74,7 +74,7 @@ namespace QLVT_DATHANG
                     cmbCN.Enabled = true;
                     groupBox1.Enabled = false;
                 }
-                else if (Program.mGroup == "USER")
+                else if (Program.mGroup == "USSER")
                 {
                     btnXoa.Enabled = btnSua.Enabled = btnReload.Enabled = true;
                     btnThem.Enabled = true;

@@ -210,11 +210,10 @@ namespace QLVT_DATHANG
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            nut = "THEM";
+            nut = "SUA";
             vitri = vattuBindingSource.Position;
             groupBox1.Enabled = true;
             txtMa.Enabled = false;
-            vattuBindingSource.AddNew();
             DisableForm();
         }
 

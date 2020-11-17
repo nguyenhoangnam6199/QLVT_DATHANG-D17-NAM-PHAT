@@ -14,7 +14,6 @@ namespace QLVT_DATHANG
     public partial class frmDatHang : Form
     {
         private int vitri;
-        private Stack<String> undoStack = new Stack<string>();
        // private string macn;
         public frmDatHang()
         {
@@ -151,8 +150,6 @@ namespace QLVT_DATHANG
 
                 vitri = datHangBindingSource.Position;
                 datHangBindingSource.AddNew();
-                String maDDH = txtMaDDH.EditValue.ToString() ;
-                String query = "";
                 DisableForm();
             }
             else

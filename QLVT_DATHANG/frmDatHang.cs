@@ -333,7 +333,52 @@ namespace QLVT_DATHANG
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (MessageBox.Show("Chọn Yes nếu muốn Xóa Đơn đặt hàng \nChọn No nếu muốn xóa chi tiết đơn đặt hàng ", "BẠN MUỐN XÓA GÌ?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                try
+                {
+                    //vitri = int.Parse(((DataRowView)datHangBindingSource[datHangBindingSource.Position])["MasoDDH"].ToString());
+                    datHangBindingSource.RemoveCurrent();
+                    //datHangBindingSource.EndEdit();
+                    //datHangBindingSource.ResetCurrentItem();
+                    this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.datHangTableAdapter.Update(this.dataSet.DatHang);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi xóa dơn đặt hàng. Bạn hãy xóa lại \n", ex.Message, MessageBoxButtons.OK);
+                    this.datHangTableAdapter.Fill(this.dataSet.DatHang);
+                    datHangBindingSource.Position = datHangBindingSource.Find("MasoDDH", vitri);
+                    return;
+                }
+                groupBox1.Enabled = true;
 
+                vitri = datHangBindingSource.Position;
+                //DisableForm();
+            }
+            else
+            {
+                try
+                {
+                    //vitri = int.Parse(((DataRowView)cTDDHBindingSource[cTDDHBindingSource.Position])["MasoDDH"].ToString());
+                    cTDDHBindingSource.RemoveCurrent();
+                    //datHangBindingSource.EndEdit();
+                    //datHangBindingSource.ResetCurrentItem();
+                    this.cTDDHTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.cTDDHTableAdapter.Update(this.dataSet.CTDDH);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi xóa dơn đặt hàng. Bạn hãy xóa lại \n", ex.Message, MessageBoxButtons.OK);
+                    this.cTDDHTableAdapter.Fill(this.dataSet.CTDDH);
+                    cTDDHBindingSource.Position = cTDDHBindingSource.Find("MasoDDH", vitri);
+                    return;
+                }
+                groupBox1.Enabled = true;
+
+                vitri = cTDDHBindingSource.Position;
+                //DisableForm();
+            }
         }
 
         private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

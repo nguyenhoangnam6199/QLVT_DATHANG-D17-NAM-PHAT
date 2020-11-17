@@ -24,7 +24,7 @@ namespace QLVT_DATHANG
 
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
-            string chuoiketnoi = "Data Source=DESKTOP-V1L6PR0;Initial Catalog=QLVT_DATHANG;Integrated Security=True";
+            string chuoiketnoi = "Data Source=LAPTOP-EPOO727I;Initial Catalog=QLVT_DATHANG;Integrated Security=True";
             Program.conn.ConnectionString = chuoiketnoi;
             Program.conn.Open();
             DataTable dt = new DataTable();

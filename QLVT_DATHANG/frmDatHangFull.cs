@@ -90,18 +90,18 @@ namespace QLVT_DATHANG
             btnGhiCTDDH.Enabled = false;
         }
 
-        private bool KiemTraVatTuTrenView(string maVT)
-        {
-            bool kt = false;
-            for (int index = 0; index < cTDDHBindingSource.Count - 1; index++)
-            {
-                if (((DataRowView)cTDDHBindingSource[index])["MAVT"].ToString().Equals(maVT))
-                {
-                    kt = true;
-                }
-            }
-            return kt;
-        }
+        //private bool KiemTraVatTuTrenView(string maVT)
+        //{
+        //    bool kt = false;
+        //    for (int index = 0; index < cTDDHBindingSource.Count - 1; index++)
+        //    {
+        //        if (((DataRowView)cTDDHBindingSource[index])["MAVT"].ToString().Equals(maVT))
+        //        {
+        //            kt = true;
+        //        }
+        //    }
+        //    return kt;
+        //}
         private void thêmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             vitri = cTDDHBindingSource.Position;
@@ -379,7 +379,24 @@ namespace QLVT_DATHANG
 
         private void btnXoaCTDDH_Click(object sender, EventArgs e)
         {
-            cTDDHBindingSource.RemoveCurrent();
+            if (MessageBox.Show("Bạn thực sự muốn xóa ??", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                try
+                {
+
+                    cTDDHBindingSource.RemoveCurrent();
+
+                    this.cTDDHTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.cTDDHTableAdapter.Update(this.dataSet.CTDDH);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi xóa chi tiết đơn đặt hàng. Bạn hãy xóa lại \n", ex.Message, MessageBoxButtons.OK);
+                    this.cTDDHTableAdapter.Fill(this.dataSet.CTDDH);
+                    return;
+                }
+            }
+            
         }
 
         //private void btnSuaCTDDH_Click(object sender, EventArgs e)

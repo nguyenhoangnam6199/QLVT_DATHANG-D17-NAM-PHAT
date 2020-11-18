@@ -71,6 +71,10 @@ namespace QLVT_DATHANG
         }
         private void frmPhieuNhap_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataSet.DSVT' table. You can move, or remove it, as needed.
+            this.dSVTTableAdapter.Fill(this.dataSet.DSVT);
+            // TODO: This line of code loads data into the 'dataSet.CTDDH' table. You can move, or remove it, as needed.
+            //this.cTDDHTableAdapter.Fill(this.dataSet.CTDDH);
             if (Program.mGroup != "CONGTY")
             {
                 this.phieuNhapBindingSource.Filter = "MANV='" + Program.username + "'";
@@ -217,7 +221,9 @@ namespace QLVT_DATHANG
                 MessageBox.Show("Lỗi ghi Phiếu nhập .\n" + ex.Message);
                 return;
             }
-            EnableForm();
+            btnThemCTPN.Enabled = true;
+            btnXoaCTPN.Enabled = true;
+            btnGhiPN.Enabled = false;
             LoadTable();
         }
 
@@ -297,10 +303,10 @@ namespace QLVT_DATHANG
             }
         }
 
-        private int ktSoLuongdathang(string maVT, string maDDH, int sluong)
+        private int ktSoLuongdathang(string maDDH, string maVT, int sluong)
         {
             int result = 1; // thoa
-            string lenh = string.Format("EXEC sp_kiemtraSoLuongNhap {0}, {1}, {2}", maVT, maDDH, sluong);
+            string lenh = string.Format("EXEC sp_ktrasoluongvattu {0}, {1}, {2}", maDDH, maVT, sluong);
             using (SqlConnection connection = new SqlConnection(Program.connstr))
             {
                 connection.Open();
@@ -308,12 +314,24 @@ namespace QLVT_DATHANG
                 sqlCommand.CommandType = CommandType.Text;
                 try
                 {
+                    //SqlDataReader reader = sqlCommand.ExecuteReader();
+                    //string kq = "";
+                    //while (reader.Read())
+                    //{
+                    //    kq = (string)reader["SOLUONG"];
+                    //}
+
+                    //if (kq.Length == 0)
+                    //{
+                    //    result = 0;
+                    //}
                     sqlCommand.ExecuteNonQuery();
                 }
-                catch
+                catch (Exception ex)
                 {
-                    result = 0; // ko thoa
-                }
+                    result = 0;
+                    MessageBox.Show(ex.Message + " ");
+                }     
             }
             return result;
         }
@@ -330,10 +348,31 @@ namespace QLVT_DATHANG
             return true;
         }
 
+        private int ktctddh(string maddh, string mavt)
+        {
+            int result = 1;
+            string lenh = string.Format("EXEC sp_timctddh {0},{1}", maddh, mavt);
+            using (SqlConnection connection = new SqlConnection(Program.connstr))
+            {
+                connection.Open();
+                SqlCommand sqlcmt = new SqlCommand(lenh, connection);
+                sqlcmt.CommandType = CommandType.Text;
+                try
+                {
+                    sqlcmt.ExecuteNonQuery();
+                }
+                catch
+                {
+                    result = 0;
+                }
+                return result;
+            }
+        }
+
         private void btnGhiPN_Click(object sender, EventArgs e)
         {
             mavt = ((DataRowView)cTPNBindingSource[cTPNBindingSource.Count - 1])["MAVT"].ToString();
-            maDDH = ((DataRowView)datHangBindingSource[datHangBindingSource.Position])["MasoDDH"].ToString();
+            maDDH = ((DataRowView)phieuNhapBindingSource[phieuNhapBindingSource.Position])["MasoDDH"].ToString();
             if (mavt == string.Empty)
             {
                 MessageBox.Show("Vật tư không thể thiếu ! ", "", MessageBoxButtons.OK);
@@ -344,6 +383,12 @@ namespace QLVT_DATHANG
             {
                 MessageBox.Show("Vật tư đã được nhập ! ", "", MessageBoxButtons.OK);
                 cTPNBindingSource.RemoveCurrent();
+                return;
+            }
+
+            if (ktctddh(maDDH, mavt) == 0)
+            {
+                MessageBox.Show("Vật tư không có trong đơn đặt hàng ! ", "", MessageBoxButtons.OK);
                 return;
             }
 
@@ -360,9 +405,9 @@ namespace QLVT_DATHANG
                 MessageBox.Show("Số lượng không thể âm ! ", "", MessageBoxButtons.OK);
                 return;
             }
-            if (ktSoLuongdathang(mavt, maDDH, soluong) == 0)
+            if (ktSoLuongdathang(maDDH,mavt, soluong) == 0)
             {
-                MessageBox.Show("Số lượng nhập không được hơn số lượng đặt !", "", MessageBoxButtons.OK);
+                MessageBox.Show("Số lượng nhập không được hơn số lượng đã đặt !", "", MessageBoxButtons.OK);
                 return;
             }
 
@@ -385,6 +430,7 @@ namespace QLVT_DATHANG
             }
             catch (Exception) { }
             EnableForm();
+            LoadTable();
         }
 
         private void btnThemCTPN_Click(object sender, EventArgs e)

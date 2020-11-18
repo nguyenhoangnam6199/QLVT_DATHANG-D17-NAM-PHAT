@@ -98,6 +98,12 @@
     <Compile Include="frmPhieuNhap.Designer.cs">
       <DependentUpon>frmPhieuNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPhieuXuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhieuXuat.Designer.cs">
+      <DependentUpon>frmPhieuXuat.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTaoLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPhieuNhap.resx">
       <DependentUpon>frmPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhieuXuat.resx">
+      <DependentUpon>frmPhieuXuat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTaoLogin.resx">
       <DependentUpon>frmTaoLogin.cs</DependentUpon>
@@ -201,6 +210,7 @@
     <Content Include="StoreProcedure\sp_timctpn.sql" />
     <Content Include="StoreProcedure\sp_timkho.sql" />
     <Content Include="StoreProcedure\sp_timphieunhap.sql" />
+    <Content Include="StoreProcedure\sp_timphieuxuat.sql" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

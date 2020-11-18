@@ -97,11 +97,23 @@ namespace QLVT_DATHANG
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Form frm = this.checkExist(typeof(frmDatHang));
+            Form frm = this.checkExist(typeof(frmDatHangFull));
             if (frm != null) frm.Activate();
             else
             {
-                frmDatHang f = new frmDatHang();
+                frmDatHangFull f = new frmDatHangFull();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExist(typeof(frmPhieuNhap));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmPhieuNhap f = new frmPhieuNhap();
                 f.MdiParent = this;
                 f.Show();
             }

@@ -128,27 +128,30 @@ namespace QLVT_DATHANG
         {
             int maxMaNV = 0;
             int a = 0, b = 0;
-            string lenh = string.Format("SELECT MAX(MANV) AS MAXNV FROM LINK1.QLVT_DATHANG.dbo.NhanVien");
-            string lenh1 = string.Format("SELECT MAX(MANV) AS MAXNV FROM NhanVien");
+            //string lenh = string.Format("SELECT MAX(MANV) AS MAXNV FROM LINK1.QLVT_DATHANG.dbo.NhanVien");
+            //string lenh1 = string.Format("SELECT MAX(MANV) AS MAXNV FROM NhanVien");
+            string lenh2= string.Format("SELECT MAX(MANV) AS MAXNV FROM LINK2.QLVT_DATHANG.dbo.NhanVien");
             using (SqlConnection connection = new SqlConnection(Program.connstr))
             {
                 connection.Open();
-                SqlCommand sqlcmt = new SqlCommand(lenh, connection);
-                SqlCommand sqlcmt1 = new SqlCommand(lenh1, connection);
+                //SqlCommand sqlcmt = new SqlCommand(lenh, connection);
+                //SqlCommand sqlcmt1 = new SqlCommand(lenh1, connection);
+                SqlCommand sqlcmt = new SqlCommand(lenh2, connection);
                 sqlcmt.CommandType = CommandType.Text;
                 try
                 {
                     a = (Int32)sqlcmt.ExecuteScalar();
-                    b = (Int32)sqlcmt1.ExecuteScalar();
-                    if (a > b)
-                    {
-                        maxMaNV = a;
-                    }
-                    else
-                    {
-                        maxMaNV = b;
-                    }
+                    // b = (Int32)sqlcmt1.ExecuteScalar();
+                    //if (a > b)
+                    //{
+                    //    maxMaNV = a;
+                    //}
+                    //else
+                    //{
+                    //    maxMaNV = b;
+                    //}
 
+                    maxMaNV = a;
                 }
                 catch { }
             }

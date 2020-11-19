@@ -280,6 +280,7 @@
     <Content Include="StoreProcedure\sp_kttrungloginname.sql" />
     <Content Include="StoreProcedure\sp_timCTDDH.sql" />
     <Content Include="StoreProcedure\sp_timctpn.sql" />
+    <Content Include="StoreProcedure\sp_timdsddhchuacophieunhap.sql" />
     <Content Include="StoreProcedure\sp_timkho.sql" />
     <Content Include="StoreProcedure\sp_timphieunhap.sql" />
     <Content Include="StoreProcedure\sp_timphieuxuat.sql" />

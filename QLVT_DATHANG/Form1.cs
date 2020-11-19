@@ -130,5 +130,41 @@ namespace QLVT_DATHANG
                 f.Show();
             }
         }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExist(typeof(frmInDanhSachNhanVien));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmInDanhSachNhanVien f = new frmInDanhSachNhanVien();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExist(typeof(frmInDanhSachVatTu));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmInDanhSachVatTu f = new frmInDanhSachVatTu();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExist(typeof(frmInDSDDHChuaCoPhieuNhap));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmInDSDDHChuaCoPhieuNhap f = new frmInDSDDHChuaCoPhieuNhap();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

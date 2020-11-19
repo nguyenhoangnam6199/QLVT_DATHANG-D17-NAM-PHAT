@@ -81,6 +81,8 @@ namespace QLVT_DATHANG
             cmbCN.DisplayMember = "TENCN";
             cmbCN.ValueMember = "TENSERVER";
             cmbCN.SelectedIndex = Program.mChinhanh;
+            btnGhiCTPX.Enabled = false;
+            groupBox1.Enabled = false;
         }
         private void EnableForm()
         {
@@ -144,6 +146,7 @@ namespace QLVT_DATHANG
             vitri = phieuXuatBindingSource.Position;
             phieuXuatBindingSource.AddNew();
             DisEnableForm();
+            groupBox1.Enabled = true;
             txtMaNV.Text = Program.username;
             txtMaNV.Enabled = false;
         }
@@ -206,6 +209,7 @@ namespace QLVT_DATHANG
         {
             vitri = phieuXuatBindingSource.Position;
             DisEnableForm();
+            groupBox1.Enabled = true;
             txtMaPX.Enabled = txtMaNV.Enabled = false;
         }
 
@@ -325,24 +329,32 @@ namespace QLVT_DATHANG
             if (mavt == String.Empty)
             {
                 MessageBox.Show("Vật tư không được thiếu!", "", MessageBoxButtons.OK);
+                btnThemCTPX.Enabled = false;
+                btnXoaCTPX.Enabled = false;
                 return;
             }
             if (KiemTraVatTuTrenView(mavt) == false)
             {
                 MessageBox.Show("Vật tư không được trùng!", "", MessageBoxButtons.OK);
-                cTPXBindingSource.RemoveCurrent();
+                //cTPXBindingSource.RemoveCurrent();
+                btnThemCTPX.Enabled = false;
+                btnXoaCTPX.Enabled = false;
                 return;
             }
 
             if (soluong == string.Empty)
             {
                 MessageBox.Show("Số lượng không được thiếu!", "", MessageBoxButtons.OK);
+                btnThemCTPX.Enabled = false;
+                btnXoaCTPX.Enabled = false;
                 return;
             }
 
             if (dongia == string.Empty)
             {
                 MessageBox.Show("Đơn giá không được thiếu!", "", MessageBoxButtons.OK);
+                btnThemCTPX.Enabled = false;
+                btnXoaCTPX.Enabled = false;
                 return;
             }
             

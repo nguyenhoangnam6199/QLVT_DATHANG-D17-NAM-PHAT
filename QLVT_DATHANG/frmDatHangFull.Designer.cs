@@ -79,6 +79,7 @@
             this.colMasoDDH1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.dSVTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -87,7 +88,6 @@
             this.btnGhiCTDDH = new System.Windows.Forms.ToolStripMenuItem();
             this.phieuNhapBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fKPhieuNhapDatHangBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dSVTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dSVTTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
             masoDDHLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
@@ -110,10 +110,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.cTDDHGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSVTBindingSource)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.phieuNhapBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKPhieuNhapDatHangBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSVTBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // masoDDHLabel
@@ -362,6 +362,7 @@
             this.tableAdapterManager.NhanVienTableAdapter = null;
             this.tableAdapterManager.PhieuNhapTableAdapter = this.phieuNhapTableAdapter;
             this.tableAdapterManager.PhieuXuatTableAdapter = null;
+            this.tableAdapterManager.sp_DSNhanVienTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
             // 
@@ -381,13 +382,13 @@
             // 
             this.datHangGridControl.DataSource = this.datHangBindingSource;
             this.datHangGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.datHangGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(19, 19, 19, 19);
+            this.datHangGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
             this.datHangGridControl.Location = new System.Drawing.Point(0, 97);
             this.datHangGridControl.MainView = this.gridView1;
-            this.datHangGridControl.Margin = new System.Windows.Forms.Padding(19, 19, 19, 19);
+            this.datHangGridControl.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
             this.datHangGridControl.MenuManager = this.barManager1;
             this.datHangGridControl.Name = "datHangGridControl";
-            this.datHangGridControl.Size = new System.Drawing.Size(1291, 358);
+            this.datHangGridControl.Size = new System.Drawing.Size(1291, 326);
             this.datHangGridControl.TabIndex = 6;
             this.datHangGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -400,7 +401,7 @@
             this.colNhaCC,
             this.colMANV,
             this.colMAKHO});
-            this.gridView1.DetailHeight = 2080;
+            this.gridView1.DetailHeight = 3250;
             this.gridView1.GridControl = this.datHangGridControl;
             this.gridView1.Name = "gridView1";
             // 
@@ -408,51 +409,51 @@
             // 
             this.colMasoDDH.Caption = "Mã số DDH";
             this.colMasoDDH.FieldName = "MasoDDH";
-            this.colMasoDDH.MinWidth = 119;
+            this.colMasoDDH.MinWidth = 186;
             this.colMasoDDH.Name = "colMasoDDH";
             this.colMasoDDH.Visible = true;
             this.colMasoDDH.VisibleIndex = 0;
-            this.colMasoDDH.Width = 444;
+            this.colMasoDDH.Width = 694;
             // 
             // colNGAY
             // 
             this.colNGAY.Caption = "Ngày";
             this.colNGAY.FieldName = "NGAY";
-            this.colNGAY.MinWidth = 119;
+            this.colNGAY.MinWidth = 186;
             this.colNGAY.Name = "colNGAY";
             this.colNGAY.Visible = true;
             this.colNGAY.VisibleIndex = 1;
-            this.colNGAY.Width = 444;
+            this.colNGAY.Width = 694;
             // 
             // colNhaCC
             // 
             this.colNhaCC.Caption = "Nhà cung cấp";
             this.colNhaCC.FieldName = "NhaCC";
-            this.colNhaCC.MinWidth = 119;
+            this.colNhaCC.MinWidth = 186;
             this.colNhaCC.Name = "colNhaCC";
             this.colNhaCC.Visible = true;
             this.colNhaCC.VisibleIndex = 2;
-            this.colNhaCC.Width = 444;
+            this.colNhaCC.Width = 694;
             // 
             // colMANV
             // 
             this.colMANV.Caption = "Mã nhân viên";
             this.colMANV.FieldName = "MANV";
-            this.colMANV.MinWidth = 119;
+            this.colMANV.MinWidth = 186;
             this.colMANV.Name = "colMANV";
             this.colMANV.Visible = true;
             this.colMANV.VisibleIndex = 3;
-            this.colMANV.Width = 444;
+            this.colMANV.Width = 694;
             // 
             // colMAKHO
             // 
             this.colMAKHO.Caption = "Mã kho";
             this.colMAKHO.FieldName = "MAKHO";
-            this.colMAKHO.MinWidth = 119;
+            this.colMAKHO.MinWidth = 186;
             this.colMAKHO.Name = "colMAKHO";
             this.colMAKHO.Visible = true;
             this.colMAKHO.VisibleIndex = 4;
-            this.colMAKHO.Width = 444;
+            this.colMAKHO.Width = 694;
             // 
             // groupBox1
             // 
@@ -467,9 +468,9 @@
             this.groupBox1.Controls.Add(masoDDHLabel);
             this.groupBox1.Controls.Add(this.txtMaDDH);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox1.Location = new System.Drawing.Point(0, 455);
+            this.groupBox1.Location = new System.Drawing.Point(0, 423);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(384, 256);
+            this.groupBox1.Size = new System.Drawing.Size(384, 288);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Đơn Đặt Hàng";
@@ -543,15 +544,15 @@
             // 
             this.cTDDHGridControl.DataSource = this.cTDDHBindingSource;
             this.cTDDHGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cTDDHGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(19, 19, 19, 19);
-            this.cTDDHGridControl.Location = new System.Drawing.Point(384, 455);
+            this.cTDDHGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
+            this.cTDDHGridControl.Location = new System.Drawing.Point(384, 423);
             this.cTDDHGridControl.MainView = this.gridView2;
-            this.cTDDHGridControl.Margin = new System.Windows.Forms.Padding(19, 19, 19, 19);
+            this.cTDDHGridControl.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
             this.cTDDHGridControl.MenuManager = this.barManager1;
             this.cTDDHGridControl.Name = "cTDDHGridControl";
             this.cTDDHGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1});
-            this.cTDDHGridControl.Size = new System.Drawing.Size(907, 256);
+            this.cTDDHGridControl.Size = new System.Drawing.Size(907, 288);
             this.cTDDHGridControl.TabIndex = 7;
             this.cTDDHGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -563,7 +564,7 @@
             this.colMAVT,
             this.colSOLUONG,
             this.colDONGIA});
-            this.gridView2.DetailHeight = 2080;
+            this.gridView2.DetailHeight = 3250;
             this.gridView2.GridControl = this.cTDDHGridControl;
             this.gridView2.Name = "gridView2";
             // 
@@ -571,22 +572,22 @@
             // 
             this.colMasoDDH1.Caption = "Mã số DDH";
             this.colMasoDDH1.FieldName = "MasoDDH";
-            this.colMasoDDH1.MinWidth = 119;
+            this.colMasoDDH1.MinWidth = 186;
             this.colMasoDDH1.Name = "colMasoDDH1";
             this.colMasoDDH1.Visible = true;
             this.colMasoDDH1.VisibleIndex = 0;
-            this.colMasoDDH1.Width = 444;
+            this.colMasoDDH1.Width = 694;
             // 
             // colMAVT
             // 
             this.colMAVT.Caption = "Mã vật tư";
             this.colMAVT.ColumnEdit = this.repositoryItemLookUpEdit1;
             this.colMAVT.FieldName = "MAVT";
-            this.colMAVT.MinWidth = 119;
+            this.colMAVT.MinWidth = 186;
             this.colMAVT.Name = "colMAVT";
             this.colMAVT.Visible = true;
             this.colMAVT.VisibleIndex = 1;
-            this.colMAVT.Width = 444;
+            this.colMAVT.Width = 694;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -595,28 +596,33 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemLookUpEdit1.DataSource = this.dSVTBindingSource;
             this.repositoryItemLookUpEdit1.DisplayMember = "MAVT";
-            this.repositoryItemLookUpEdit1.ValueMember = "MAVT";
             this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            this.repositoryItemLookUpEdit1.ValueMember = "MAVT";
+            // 
+            // dSVTBindingSource
+            // 
+            this.dSVTBindingSource.DataMember = "DSVT";
+            this.dSVTBindingSource.DataSource = this.dataSet;
             // 
             // colSOLUONG
             // 
             this.colSOLUONG.Caption = "Số lượng";
             this.colSOLUONG.FieldName = "SOLUONG";
-            this.colSOLUONG.MinWidth = 119;
+            this.colSOLUONG.MinWidth = 186;
             this.colSOLUONG.Name = "colSOLUONG";
             this.colSOLUONG.Visible = true;
             this.colSOLUONG.VisibleIndex = 2;
-            this.colSOLUONG.Width = 444;
+            this.colSOLUONG.Width = 694;
             // 
             // colDONGIA
             // 
             this.colDONGIA.Caption = "Đơn giá";
             this.colDONGIA.FieldName = "DONGIA";
-            this.colDONGIA.MinWidth = 119;
+            this.colDONGIA.MinWidth = 186;
             this.colDONGIA.Name = "colDONGIA";
             this.colDONGIA.Visible = true;
             this.colDONGIA.VisibleIndex = 3;
-            this.colDONGIA.Width = 444;
+            this.colDONGIA.Width = 694;
             // 
             // contextMenuStrip1
             // 
@@ -659,11 +665,6 @@
             this.fKPhieuNhapDatHangBindingSource.DataMember = "FK_PhieuNhap_DatHang";
             this.fKPhieuNhapDatHangBindingSource.DataSource = this.datHangBindingSource;
             // 
-            // dSVTBindingSource
-            // 
-            this.dSVTBindingSource.DataMember = "DSVT";
-            this.dSVTBindingSource.DataSource = this.dataSet;
-            // 
             // dSVTTableAdapter
             // 
             this.dSVTTableAdapter.ClearBeforeFill = true;
@@ -704,10 +705,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.cTDDHGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSVTBindingSource)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.phieuNhapBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKPhieuNhapDatHangBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSVTBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

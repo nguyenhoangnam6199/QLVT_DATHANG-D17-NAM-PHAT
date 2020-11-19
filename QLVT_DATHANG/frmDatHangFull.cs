@@ -67,7 +67,6 @@ namespace QLVT_DATHANG
                     panel1.Enabled = false;
                     groupBox1.Enabled = true;
                 }
-
             }
             catch (Exception ex)
             {
@@ -88,20 +87,21 @@ namespace QLVT_DATHANG
             cmbCN.ValueMember = "TENSERVER";
             cmbCN.SelectedIndex = Program.mChinhanh;
             btnGhiCTDDH.Enabled = false;
+            groupBox1.Enabled = false;
         }
 
-        //private bool KiemTraVatTuTrenView(string maVT)
-        //{
-        //    bool kt = false;
-        //    for (int index = 0; index < cTDDHBindingSource.Count - 1; index++)
-        //    {
-        //        if (((DataRowView)cTDDHBindingSource[index])["MAVT"].ToString().Equals(maVT))
-        //        {
-        //            kt = true;
-        //        }
-        //    }
-        //    return kt;
-        //}
+        private bool KiemTraVatTuTrenView(string maVT)
+        {
+            bool kt = false;
+            for (int index = 0; index < cTDDHBindingSource.Count - 1; index++)
+            {
+                if (((DataRowView)cTDDHBindingSource[index])["MAVT"].ToString().Equals(maVT))
+                {
+                    kt = true;
+                }
+            }
+            return kt;
+        }
         private void thêmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             vitri = cTDDHBindingSource.Position;
@@ -151,8 +151,9 @@ namespace QLVT_DATHANG
             DisEnableForm();
             //btnGhi.Enabled = btnUndo.Enabled = true;
             txtMaNV.Text = Program.username;
+            groupBox1.Enabled = true;
             txtMaNV.Enabled = false;
-
+            //query = String.Format("Delete from DatHang where MasoDDH={0}", txtMaNV.Text);
         }
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -276,6 +277,7 @@ namespace QLVT_DATHANG
             }
 
             EnableForm();
+            groupBox1.Enabled = false;
             LoadTable();
         }
 
@@ -288,7 +290,8 @@ namespace QLVT_DATHANG
         {
             groupBox1.Enabled = true;
             vitri = datHangBindingSource.Position;
-            txtMaNV.Enabled = false;
+            txtMaDDH.Enabled=txtMaNV.Enabled = false;
+            groupBox1.Enabled = true;
             DisEnableForm();
         }
 
@@ -324,6 +327,7 @@ namespace QLVT_DATHANG
 
         private void btnGhiCTDDH_Click(object sender, EventArgs e)
         {
+            btnThemCTDDH.Enabled = btnXoaCTDDH.Enabled = true;
             maddh = ((DataRowView)cTDDHBindingSource[cTDDHBindingSource.Count - 1])["MasoDDH"].ToString();
             mavt = ((DataRowView)cTDDHBindingSource[cTDDHBindingSource.Count - 1])["MAVT"].ToString();
             soluong = ((DataRowView)cTDDHBindingSource[cTDDHBindingSource.Count - 1])["SOLUONG"].ToString();
@@ -331,25 +335,38 @@ namespace QLVT_DATHANG
             if (mavt == String.Empty)
             {
                 MessageBox.Show("Vật tư không được thiếu!", "", MessageBoxButtons.OK);
+                //cTDDHBindingSource.RemoveCurrent();
+                //btnGhiCTDDH.Enabled = false;
+                btnThemCTDDH.Enabled = false;
+                btnXoaCTDDH.Enabled = false;
                 return;
             }
 
             if (ktctddh(maddh,mavt)==1)
             {
                 MessageBox.Show("Vật tư không được trùng!", "", MessageBoxButtons.OK);
-                cTDDHBindingSource.RemoveCurrent();
+                //cTDDHBindingSource.RemoveCurrent();
+                //btnGhiCTDDH.Enabled = false;
+                btnThemCTDDH.Enabled = false;
+                btnXoaCTDDH.Enabled = false;
                 return;
             }
 
             if (soluong == string.Empty)
             {
                 MessageBox.Show("Số lượng không được thiếu!", "", MessageBoxButtons.OK);
+                //btnGhiCTDDH.Enabled = false;
+                btnThemCTDDH.Enabled = false;
+                btnXoaCTDDH.Enabled = false;
                 return;
             }
 
             if (dongia == string.Empty)
             {
                 MessageBox.Show("Đơn giá không được thiếu!", "", MessageBoxButtons.OK);
+                //btnGhiCTDDH.Enabled = false;
+                btnThemCTDDH.Enabled = false;
+                btnXoaCTDDH.Enabled = false;
                 return;
             }
 
@@ -368,6 +385,7 @@ namespace QLVT_DATHANG
                 MessageBox.Show("Lỗi ghi chi tiết đơn đặt hàng "+ex.Message);
             }
             btnThemCTDDH.Enabled = btnXoaCTDDH.Enabled = true;
+            btnGhiCTDDH.Enabled = false;
         }
 
         private void themCTDDH_CLICK(object sender, EventArgs e)

@@ -364,6 +364,7 @@
             this.tableAdapterManager.NhanVienTableAdapter = null;
             this.tableAdapterManager.PhieuNhapTableAdapter = this.phieuNhapTableAdapter;
             this.tableAdapterManager.PhieuXuatTableAdapter = null;
+            this.tableAdapterManager.sp_DSNhanVienTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
             // 
@@ -383,11 +384,13 @@
             // 
             this.phieuNhapGridControl.DataSource = this.phieuNhapBindingSource;
             this.phieuNhapGridControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.phieuNhapGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.phieuNhapGridControl.Location = new System.Drawing.Point(0, 110);
             this.phieuNhapGridControl.MainView = this.gridView1;
+            this.phieuNhapGridControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.phieuNhapGridControl.MenuManager = this.barManager1;
             this.phieuNhapGridControl.Name = "phieuNhapGridControl";
-            this.phieuNhapGridControl.Size = new System.Drawing.Size(1289, 201);
+            this.phieuNhapGridControl.Size = new System.Drawing.Size(1289, 251);
             this.phieuNhapGridControl.TabIndex = 6;
             this.phieuNhapGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -400,6 +403,7 @@
             this.colMasoDDH,
             this.colMANV,
             this.colMAKHO});
+            this.gridView1.DetailHeight = 437;
             this.gridView1.GridControl = this.phieuNhapGridControl;
             this.gridView1.Name = "gridView1";
             // 
@@ -407,51 +411,51 @@
             // 
             this.colMAPN.Caption = "Mã phiếu nhập";
             this.colMAPN.FieldName = "MAPN";
-            this.colMAPN.MinWidth = 25;
+            this.colMAPN.MinWidth = 31;
             this.colMAPN.Name = "colMAPN";
             this.colMAPN.Visible = true;
             this.colMAPN.VisibleIndex = 0;
-            this.colMAPN.Width = 94;
+            this.colMAPN.Width = 117;
             // 
             // colNGAY
             // 
             this.colNGAY.Caption = "Ngày";
             this.colNGAY.FieldName = "NGAY";
-            this.colNGAY.MinWidth = 25;
+            this.colNGAY.MinWidth = 31;
             this.colNGAY.Name = "colNGAY";
             this.colNGAY.Visible = true;
             this.colNGAY.VisibleIndex = 1;
-            this.colNGAY.Width = 94;
+            this.colNGAY.Width = 117;
             // 
             // colMasoDDH
             // 
             this.colMasoDDH.Caption = "Mã số DDH";
             this.colMasoDDH.FieldName = "MasoDDH";
-            this.colMasoDDH.MinWidth = 25;
+            this.colMasoDDH.MinWidth = 31;
             this.colMasoDDH.Name = "colMasoDDH";
             this.colMasoDDH.Visible = true;
             this.colMasoDDH.VisibleIndex = 2;
-            this.colMasoDDH.Width = 94;
+            this.colMasoDDH.Width = 117;
             // 
             // colMANV
             // 
             this.colMANV.Caption = "Mã nhân viên";
             this.colMANV.FieldName = "MANV";
-            this.colMANV.MinWidth = 25;
+            this.colMANV.MinWidth = 31;
             this.colMANV.Name = "colMANV";
             this.colMANV.Visible = true;
             this.colMANV.VisibleIndex = 3;
-            this.colMANV.Width = 94;
+            this.colMANV.Width = 117;
             // 
             // colMAKHO
             // 
             this.colMAKHO.Caption = "Mã kho";
             this.colMAKHO.FieldName = "MAKHO";
-            this.colMAKHO.MinWidth = 25;
+            this.colMAKHO.MinWidth = 31;
             this.colMAKHO.Name = "colMAKHO";
             this.colMAKHO.Visible = true;
             this.colMAKHO.VisibleIndex = 4;
-            this.colMAKHO.Width = 94;
+            this.colMAKHO.Width = 117;
             // 
             // groupBox1
             // 
@@ -466,9 +470,9 @@
             this.groupBox1.Controls.Add(mAPNLabel);
             this.groupBox1.Controls.Add(this.txtMaPN);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox1.Location = new System.Drawing.Point(0, 311);
+            this.groupBox1.Location = new System.Drawing.Point(0, 361);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(400, 263);
+            this.groupBox1.Size = new System.Drawing.Size(400, 213);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phiếu Nhập";
@@ -548,13 +552,15 @@
             // 
             this.cTPNGridControl.DataSource = this.cTPNBindingSource;
             this.cTPNGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cTPNGridControl.Location = new System.Drawing.Point(400, 311);
+            this.cTPNGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cTPNGridControl.Location = new System.Drawing.Point(400, 361);
             this.cTPNGridControl.MainView = this.gridView2;
+            this.cTPNGridControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cTPNGridControl.MenuManager = this.barManager1;
             this.cTPNGridControl.Name = "cTPNGridControl";
             this.cTPNGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1});
-            this.cTPNGridControl.Size = new System.Drawing.Size(889, 263);
+            this.cTPNGridControl.Size = new System.Drawing.Size(889, 213);
             this.cTPNGridControl.TabIndex = 7;
             this.cTPNGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -566,6 +572,7 @@
             this.colMAVT,
             this.colSOLUONG,
             this.colDONGIA});
+            this.gridView2.DetailHeight = 437;
             this.gridView2.GridControl = this.cTPNGridControl;
             this.gridView2.Name = "gridView2";
             // 
@@ -573,22 +580,22 @@
             // 
             this.colMAPN1.Caption = "Mã phiếu nhập";
             this.colMAPN1.FieldName = "MAPN";
-            this.colMAPN1.MinWidth = 25;
+            this.colMAPN1.MinWidth = 31;
             this.colMAPN1.Name = "colMAPN1";
             this.colMAPN1.Visible = true;
             this.colMAPN1.VisibleIndex = 0;
-            this.colMAPN1.Width = 94;
+            this.colMAPN1.Width = 117;
             // 
             // colMAVT
             // 
             this.colMAVT.Caption = "Mã Vật Tư";
             this.colMAVT.ColumnEdit = this.repositoryItemLookUpEdit1;
             this.colMAVT.FieldName = "MAVT";
-            this.colMAVT.MinWidth = 25;
+            this.colMAVT.MinWidth = 31;
             this.colMAVT.Name = "colMAVT";
             this.colMAVT.Visible = true;
             this.colMAVT.VisibleIndex = 1;
-            this.colMAVT.Width = 94;
+            this.colMAVT.Width = 117;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -609,21 +616,21 @@
             // 
             this.colSOLUONG.Caption = "Số Lượng";
             this.colSOLUONG.FieldName = "SOLUONG";
-            this.colSOLUONG.MinWidth = 25;
+            this.colSOLUONG.MinWidth = 31;
             this.colSOLUONG.Name = "colSOLUONG";
             this.colSOLUONG.Visible = true;
             this.colSOLUONG.VisibleIndex = 2;
-            this.colSOLUONG.Width = 94;
+            this.colSOLUONG.Width = 117;
             // 
             // colDONGIA
             // 
             this.colDONGIA.Caption = "Đơn Giá";
             this.colDONGIA.FieldName = "DONGIA";
-            this.colDONGIA.MinWidth = 25;
+            this.colDONGIA.MinWidth = 31;
             this.colDONGIA.Name = "colDONGIA";
             this.colDONGIA.Visible = true;
             this.colDONGIA.VisibleIndex = 3;
-            this.colDONGIA.Width = 94;
+            this.colDONGIA.Width = 117;
             // 
             // contextMenuStrip1
             // 
@@ -633,26 +640,26 @@
             this.btnXoaCTPN,
             this.btnGhiPN});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 104);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(116, 76);
             // 
             // btnThemCTPN
             // 
             this.btnThemCTPN.Name = "btnThemCTPN";
-            this.btnThemCTPN.Size = new System.Drawing.Size(210, 24);
+            this.btnThemCTPN.Size = new System.Drawing.Size(115, 24);
             this.btnThemCTPN.Text = "Thêm";
             this.btnThemCTPN.Click += new System.EventHandler(this.btnThemCTPN_Click);
             // 
             // btnXoaCTPN
             // 
             this.btnXoaCTPN.Name = "btnXoaCTPN";
-            this.btnXoaCTPN.Size = new System.Drawing.Size(210, 24);
+            this.btnXoaCTPN.Size = new System.Drawing.Size(115, 24);
             this.btnXoaCTPN.Text = "Xóa";
             this.btnXoaCTPN.Click += new System.EventHandler(this.btnXoaCTPN_Click);
             // 
             // btnGhiPN
             // 
             this.btnGhiPN.Name = "btnGhiPN";
-            this.btnGhiPN.Size = new System.Drawing.Size(210, 24);
+            this.btnGhiPN.Size = new System.Drawing.Size(115, 24);
             this.btnGhiPN.Text = "Ghi";
             this.btnGhiPN.Click += new System.EventHandler(this.btnGhiPN_Click);
             // 

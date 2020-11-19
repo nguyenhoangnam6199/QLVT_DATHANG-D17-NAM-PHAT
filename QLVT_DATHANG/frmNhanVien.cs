@@ -17,6 +17,8 @@ namespace QLVT_DATHANG
         private int vitri;
         private string macn;
         //private string nut;
+        private Stack<String> stackundo = new Stack<string>(16);
+        String query = "";
         public frmNhanVien()
         {
             InitializeComponent();
@@ -92,6 +94,11 @@ namespace QLVT_DATHANG
                     cmbCN.Enabled = false; txtCN.Enabled = false;
                     groupBox1.Enabled = false;
                 }
+                if (stackundo.Count != 0)
+                {
+                    btnUndo.Enabled = true;
+                }
+                else btnUndo.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -175,6 +182,10 @@ namespace QLVT_DATHANG
             txtMaNV.Text = TaoMaNV() + "";
             txtCN.Text = macn;
             txtTTX.Text = "0";
+            txtTTX.Enabled = false;
+
+            query = String.Format("Delete from NhanVien where MANV={0}", txtMaNV.Text);
+            
             DisableForm();
         }
 
@@ -225,7 +236,7 @@ namespace QLVT_DATHANG
                 //Lưu vô CSDl
                 this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.nhanVienTableAdapter.Update(this.dataSet.NhanVien);
-
+                stackundo.Push(query);
             }
             catch (Exception ex)
             {
@@ -241,7 +252,9 @@ namespace QLVT_DATHANG
             groupBox1.Enabled = true;
             vitri = nhanVienBindingSource.Position;
             txtMaNV.Enabled = false;
+            txtTTX.Enabled = false;
             DisableForm();
+            query = String.Format("Update NhanVien Set HO=N'{1}',TEN=N'{2}',DIACHI=N'{3}',NGAYSINH=N'{4}',LUONG={5},MACN=N'{6}',TrangThaiXoa={7} where MANV={0}", txtMaNV.Text, txtHo.Text, txtTen.Text, txtDiaChi.Text, txtNgaySinh.Text, txtLuong.Text, txtCN.Text, txtTTX.Text);
           
         }
 
@@ -278,10 +291,20 @@ namespace QLVT_DATHANG
             {
                 try
                 {
-                    //manv = int.Parse(((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["MANV"].ToString());
+                    manv = int.Parse(((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["MANV"].ToString());
+                    String ho = ((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["HO"].ToString();
+                    String ten = ((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["TEN"].ToString();
+                    String diachi = ((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["DIACHI"].ToString();
+                    String ngaysinh = ((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["NGAYSINH"].ToString();
+                    float luong = float.Parse(((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["LUONG"].ToString());
+                    String macn = ((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["MACN"].ToString();
+                    String ttx = ((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["TrangThaiXoa"].ToString();
+                    query = String.Format("Insert into NhanVien(MANV,HO,TEN,DIACHI,NGAYSINH,LUONG,MACN,TrangThaiXoa) values ({0},N'{1}',N'{2}',N'{3}',N'{4}',{5},N'{6}',{7})", manv, ho, ten, diachi, ngaysinh, luong, macn, ttx);
                     nhanVienBindingSource.RemoveCurrent();
                     this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.nhanVienTableAdapter.Update(this.dataSet.NhanVien);
+                   
+                    stackundo.Push(query);
                 }
                 catch (Exception ex)
                 {
@@ -296,6 +319,7 @@ namespace QLVT_DATHANG
         private int ChuyenChiNhanh(int MaHT, int MaMoi)
         {
             int result = 1;
+           
             string lenh = string.Format("EXEC sp_chuyenchinhanh {0}, {1} ", MaHT, MaMoi);
             using (SqlConnection connection = new SqlConnection(Program.connstr))
             {
@@ -333,6 +357,7 @@ namespace QLVT_DATHANG
                     int maNV = int.Parse(((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["MANV"].ToString());
                     ChuyenChiNhanh(maNV, TaoMaNV());
                     MessageBox.Show("Chuyển chi nhánh thành công ! \n Mã nhân viên mới là: " + TaoMaNV(), "", MessageBoxButtons.OK);
+
                 }
                 catch (Exception ex)
                 {
@@ -357,20 +382,23 @@ namespace QLVT_DATHANG
 
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //if (nut.Equals("THEM"))
-            //{
-            //    txtHo.Text = txtTen.Text = txtDiaChi.Text = txtNgaySinh.Text = txtLuong.Text = "";
-            //    if (await UtilDB.DeleteInDB("NhanVien","MANV",actio))
-            //    {
-
-            //    }
-            //}
-            //else if(nut.Equals("SUA"))
-            //{
-            //    //vitri = nhanVienBindingSource.Find("MANV",txtMaNV.Text);
-            //    //this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
-            //    //this.nhanVienTableAdapter.Fill(this.dataSet.NhanVien);
-            //}
+            String lenh = stackundo.Pop();
+            using (SqlConnection connection = new SqlConnection(Program.connstr))
+            {
+                connection.Open();
+                SqlCommand sqlcmt = new SqlCommand(lenh, connection);
+                sqlcmt.CommandType = CommandType.Text;
+                try
+                {
+                    sqlcmt.ExecuteNonQuery();
+                    LoadTable();
+                    //dataReader = sqlcmt.ExecuteReader();
+                }
+                catch
+                {
+                    MessageBox.Show(lenh);
+                }
+            }
         }
     }
 }

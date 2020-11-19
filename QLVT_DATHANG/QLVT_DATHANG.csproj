@@ -72,6 +72,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCao\Report_SP_BANGKEVATTU.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\Report_SP_BANGKEVATTU.Designer.cs">
+      <DependentUpon>Report_SP_BANGKEVATTU.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaoCao\Report_SP_DSDDHCHUACOPN.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -103,6 +109,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formBangKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formBangKe.Designer.cs">
+      <DependentUpon>formBangKe.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDangNhap.cs">
       <SubType>Form</SubType>
@@ -182,6 +194,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLVT_DATHANGDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaoCao\Report_SP_BANGKEVATTU.resx">
+      <DependentUpon>Report_SP_BANGKEVATTU.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\Report_SP_DSDDHCHUACOPN.resx">
       <DependentUpon>Report_SP_DSDDHCHUACOPN.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formBangKe.resx">
+      <DependentUpon>formBangKe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
@@ -276,6 +294,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="StoreProcedure\spTimNVChuaCoTK.sql" />
+    <Content Include="StoreProcedure\sp_bangkevattu.sql" />
     <Content Include="StoreProcedure\sp_ktrasoluongvt.sql" />
     <Content Include="StoreProcedure\sp_kttrungloginname.sql" />
     <Content Include="StoreProcedure\sp_timCTDDH.sql" />

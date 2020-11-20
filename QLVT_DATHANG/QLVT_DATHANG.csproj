@@ -96,6 +96,12 @@
     <Compile Include="BaoCao\Report_SP_DSVatTu.Designer.cs">
       <DependentUpon>Report_SP_DSVatTu.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaoCao\Report_SP_ToHopNhapXuat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\Report_SP_ToHopNhapXuat.Designer.cs">
+      <DependentUpon>Report_SP_ToHopNhapXuat.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataSet.cs">
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
@@ -115,6 +121,12 @@
     </Compile>
     <Compile Include="formBangKe.Designer.cs">
       <DependentUpon>formBangKe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formToHopNhapXuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formToHopNhapXuat.Designer.cs">
+      <DependentUpon>formToHopNhapXuat.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDangNhap.cs">
       <SubType>Form</SubType>
@@ -206,11 +218,17 @@
     <EmbeddedResource Include="BaoCao\Report_SP_DSVatTu.resx">
       <DependentUpon>Report_SP_DSVatTu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\Report_SP_ToHopNhapXuat.resx">
+      <DependentUpon>Report_SP_ToHopNhapXuat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formBangKe.resx">
       <DependentUpon>formBangKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formToHopNhapXuat.resx">
+      <DependentUpon>formToHopNhapXuat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
@@ -303,6 +321,7 @@
     <Content Include="StoreProcedure\sp_timkho.sql" />
     <Content Include="StoreProcedure\sp_timphieunhap.sql" />
     <Content Include="StoreProcedure\sp_timphieuxuat.sql" />
+    <Content Include="StoreProcedure\sp_tohopnhapxuat.sql" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

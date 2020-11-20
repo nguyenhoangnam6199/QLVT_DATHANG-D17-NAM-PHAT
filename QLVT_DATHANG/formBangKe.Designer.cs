@@ -129,10 +129,10 @@
             // 
             // lb_TIEUDE
             // 
-            this.lb_TIEUDE.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lb_TIEUDE.AutoSize = true;
+            this.lb_TIEUDE.Dock = System.Windows.Forms.DockStyle.Top;
             this.lb_TIEUDE.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_TIEUDE.Location = new System.Drawing.Point(140, 29);
+            this.lb_TIEUDE.Location = new System.Drawing.Point(0, 0);
             this.lb_TIEUDE.Name = "lb_TIEUDE";
             this.lb_TIEUDE.Size = new System.Drawing.Size(519, 32);
             this.lb_TIEUDE.TabIndex = 13;
@@ -142,7 +142,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(932, 503);
             this.Controls.Add(this.lb_TIEUDE);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

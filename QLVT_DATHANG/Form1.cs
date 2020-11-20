@@ -178,5 +178,17 @@ namespace QLVT_DATHANG
                 f.Show();
             }
         }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExist(typeof(formToHopNhapXuat));
+            if (frm != null) frm.Activate();
+            else
+            {
+                formToHopNhapXuat f = new formToHopNhapXuat();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

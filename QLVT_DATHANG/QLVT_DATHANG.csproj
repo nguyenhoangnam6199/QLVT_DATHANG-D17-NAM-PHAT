@@ -96,6 +96,12 @@
     <Compile Include="BaoCao\Report_SP_DSVatTu.Designer.cs">
       <DependentUpon>Report_SP_DSVatTu.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaoCao\Report_SP_HDNV.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\Report_SP_HDNV.Designer.cs">
+      <DependentUpon>Report_SP_HDNV.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaoCao\Report_SP_ToHopNhapXuat.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -158,6 +164,12 @@
     <Compile Include="frmInDSDDHChuaCoPhieuNhap.Designer.cs">
       <DependentUpon>frmInDSDDHChuaCoPhieuNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmInHoatDongNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInHoatDongNhanVien.Designer.cs">
+      <DependentUpon>frmInHoatDongNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmKho.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +230,9 @@
     <EmbeddedResource Include="BaoCao\Report_SP_DSVatTu.resx">
       <DependentUpon>Report_SP_DSVatTu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\Report_SP_HDNV.resx">
+      <DependentUpon>Report_SP_HDNV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\Report_SP_ToHopNhapXuat.resx">
       <DependentUpon>Report_SP_ToHopNhapXuat.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInDSDDHChuaCoPhieuNhap.resx">
       <DependentUpon>frmInDSDDHChuaCoPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInHoatDongNhanVien.resx">
+      <DependentUpon>frmInHoatDongNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmKho.resx">
       <DependentUpon>frmKho.cs</DependentUpon>
@@ -313,6 +331,7 @@
   <ItemGroup>
     <Content Include="StoreProcedure\spTimNVChuaCoTK.sql" />
     <Content Include="StoreProcedure\sp_bangkevattu.sql" />
+    <Content Include="StoreProcedure\sp_hoatdongnv.sql" />
     <Content Include="StoreProcedure\sp_ktrasoluongvt.sql" />
     <Content Include="StoreProcedure\sp_kttrungloginname.sql" />
     <Content Include="StoreProcedure\sp_timCTDDH.sql" />

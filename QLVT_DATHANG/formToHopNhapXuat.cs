@@ -37,6 +37,13 @@ namespace QLVT_DATHANG
             }
             String bd = dateTimePicker1.Text;
             String kt = dateTimePicker2.Text;
+
+            if (bd.CompareTo(kt) > 0)
+            {
+                MessageBox.Show("Ngày kết thúc không được nhỏ hơn ngày bắt đầu", string.Empty, MessageBoxButtons.OK);
+                return;
+            }
+
             Report_SP_ToHopNhapXuat rp = new Report_SP_ToHopNhapXuat(quyen,bd,kt);
 
             dateTimePicker2.CustomFormat = dateTimePicker1.CustomFormat = "dd/MM/yyyy";

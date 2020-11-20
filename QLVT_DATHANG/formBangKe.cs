@@ -40,6 +40,12 @@ namespace QLVT_DATHANG
             String bd = dateTimePicker1.Text;
             String kt = dateTimePicker2.Text;
 
+            if (bd.CompareTo(kt) > 0)
+            {
+                MessageBox.Show("Ngày kết thúc không được nhỏ hơn ngày bắt đầu", string.Empty, MessageBoxButtons.OK);
+                return;
+            }
+
             Report_SP_BANGKEVATTU rp = new Report_SP_BANGKEVATTU(quyen,loai,bd,kt);
             rp.lblTieuDe.Text = "BẢNG KÊ CHI TIẾT SỐ LƯỢNG - TRỊ GIÁ PHIẾU " + loai1.ToUpper()+" "+"TỪ NGÀY "+bd+" ĐẾN NGÀY: "+kt;
             ReportPrintTool print = new ReportPrintTool(rp);

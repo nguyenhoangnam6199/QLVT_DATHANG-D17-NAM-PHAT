@@ -28,7 +28,7 @@ namespace QLVT_DATHANG
         public static String mHoten = "";
         public static int mChinhanh = 0;
 
-        public static BindingSource bds_dspm = new BindingSource();  // giữ bdsPM khi đăng nhập
+        public static BindingSource bds_dspm = new BindingSource();  // giữ danh sách phân mảnh khi đăng nhập
        // internal static bool flagCloseFormNV;
 
         public static int KetNoi()

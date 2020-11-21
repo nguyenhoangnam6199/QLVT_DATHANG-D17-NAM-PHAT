@@ -299,12 +299,30 @@ namespace QLVT_DATHANG
                     float luong = float.Parse(((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["LUONG"].ToString());
                     String macn = ((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["MACN"].ToString();
                     String ttx = ((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["TrangThaiXoa"].ToString();
-                    query = String.Format("Insert into NhanVien(MANV,HO,TEN,DIACHI,NGAYSINH,LUONG,MACN,TrangThaiXoa) values ({0},N'{1}',N'{2}',N'{3}',N'{4}',{5},N'{6}',{7})", manv, ho, ten, diachi, ngaysinh, luong, macn, ttx);
-                    nhanVienBindingSource.RemoveCurrent();
+                    query = String.Format("Update NhanVien Set TrangThaiXoa=0 where MANV={0}", manv);
+                    String lenh = String.Format("Update NhanVien Set TrangThaiXoa=1 where MANV={0}", manv);
+                    using (SqlConnection connection = new SqlConnection(Program.connstr))
+                    {
+                        connection.Open();
+                        SqlCommand sqlcmt = new SqlCommand(lenh, connection);
+                        sqlcmt.CommandType = CommandType.Text;
+                        try
+                        {
+                            sqlcmt.ExecuteNonQuery();
+                            //LoadTable();
+                            //dataReader = sqlcmt.ExecuteReader();
+                        }
+                        catch
+                        {
+                            MessageBox.Show(lenh);
+                        }
+                    }
+                    //nhanVienBindingSource.RemoveCurrent();
                     this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.nhanVienTableAdapter.Update(this.dataSet.NhanVien);
-                   
+                   // LoadTable();
                     stackundo.Push(query);
+                    LoadTable();
                 }
                 catch (Exception ex)
                 {

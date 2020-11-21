@@ -60,7 +60,7 @@ namespace QLVT_DATHANG
                 MessageBox.Show("Login name và mật mã không được trống", "", MessageBoxButtons.OK);
                 return;
             }
-            
+
             Program.mlogin = txtTaiKhoan.Text;
             Program.password = txtMatKhau.Text;
 
@@ -71,13 +71,24 @@ namespace QLVT_DATHANG
             Program.mloginDN = Program.mlogin;
             Program.passwordDN = Program.password;
 
-            string strLenh = "EXEC SP_THONGTINDANGNHAP '" + Program.mlogin + "'";
+            string strLenh = "EXEC SP_THONGTINDANGNHAP1 '" + Program.mlogin + "'";
 
             Program.myReader = Program.ExecSqlDataReader(strLenh);
-            if (Program.myReader == null) return;
+            if (Program.myReader == null)
+            {
+
+                return;
+            }
             Program.myReader.Read(); // đọc 1 dòng
 
             // sp_login trả về 3 cột
+            //
+                
+            if (Program.myReader.GetString(0) == "0")
+            {
+                MessageBox.Show("Đăng nhập thất bại !", "", MessageBoxButtons.OK);
+                   return;
+            }
             Program.username = Program.myReader.GetString(0);     // Lay user name, đọc cột đầu tiên
             if (Convert.IsDBNull(Program.username))
             {
@@ -85,6 +96,7 @@ namespace QLVT_DATHANG
                 return;
             }
             Program.mHoten = Program.myReader.GetString(1);
+           
             Program.mGroup = Program.myReader.GetString(2);
             Program.myReader.Close();
             Program.conn.Close();

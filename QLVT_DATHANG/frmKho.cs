@@ -172,6 +172,8 @@ namespace QLVT_DATHANG
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            string makho = "";
+            makho = ((DataRowView)khoBindingSource[khoBindingSource.Position])["MAKHO"].ToString();
             if (phieuNhapBindingSource.Count + phieuXuatBindingSource.Count + datHangBindingSource.Count > 0)
             {
                 MessageBox.Show("Không thể xóa kho này vì đã lập phiếu", "", MessageBoxButtons.OK);
@@ -188,8 +190,9 @@ namespace QLVT_DATHANG
                 catch (Exception ex)
                 {
                     MessageBox.Show("Lỗi xóa vật tư. Bạn hãy xóa lại \n", ex.Message, MessageBoxButtons.OK);
+                    //Đặt con trỏ về vị trí hiện thời
                     this.khoTableAdapter.Fill(this.dataSet.Kho);
-                    // bdsVT.Position = bdsVT.Find("MAVT", mavt);
+                    khoBindingSource.Position = khoBindingSource.Find("MAKHO", makho);
                     return;
                 }
             }

@@ -16,7 +16,6 @@ namespace QLVT_DATHANG
     {
         private int vitri;
         private string macn;
-        //private string nut;
         private Stack<String> stackundo = new Stack<string>(16);
         String query = "";
         public frmNhanVien()
@@ -134,31 +133,16 @@ namespace QLVT_DATHANG
         private int TaoMaNV()
         {
             int maxMaNV = 0;
-            int a = 0, b = 0;
-            //string lenh = string.Format("SELECT MAX(MANV) AS MAXNV FROM LINK1.QLVT_DATHANG.dbo.NhanVien");
-            //string lenh1 = string.Format("SELECT MAX(MANV) AS MAXNV FROM NhanVien");
+            //LINK2  kết nối từ site 1 đến site 3 hoặc từ 2 đến 3
             string lenh2= string.Format("SELECT MAX(MANV) AS MAXNV FROM LINK2.QLVT_DATHANG.dbo.NhanVien");
             using (SqlConnection connection = new SqlConnection(Program.connstr))
             {
                 connection.Open();
-                //SqlCommand sqlcmt = new SqlCommand(lenh, connection);
-                //SqlCommand sqlcmt1 = new SqlCommand(lenh1, connection);
                 SqlCommand sqlcmt = new SqlCommand(lenh2, connection);
                 sqlcmt.CommandType = CommandType.Text;
                 try
                 {
-                    a = (Int32)sqlcmt.ExecuteScalar();
-                    // b = (Int32)sqlcmt1.ExecuteScalar();
-                    //if (a > b)
-                    //{
-                    //    maxMaNV = a;
-                    //}
-                    //else
-                    //{
-                    //    maxMaNV = b;
-                    //}
-
-                    maxMaNV = a;
+                    maxMaNV = (Int32)sqlcmt.ExecuteScalar();
                 }
                 catch { }
             }
@@ -175,7 +159,6 @@ namespace QLVT_DATHANG
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             txtMaNV.Enabled = false;
-           // nut = "THEM";
             groupBox1.Enabled = true;
             vitri = nhanVienBindingSource.Position;
             nhanVienBindingSource.AddNew();
@@ -236,6 +219,7 @@ namespace QLVT_DATHANG
                 //Lưu vô CSDl
                 this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.nhanVienTableAdapter.Update(this.dataSet.NhanVien);
+                MessageBox.Show("Ghi thành công !", "", MessageBoxButtons.OK);
                 stackundo.Push(query);
             }
             catch (Exception ex)
@@ -276,8 +260,14 @@ namespace QLVT_DATHANG
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            int trangthaixoa = int.Parse(((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["TrangThaiXoa"].ToString());
             int manv = 0;
-            if (phieuNhapBindingSource.Count + phieuXuatBindingSource.Count + datHangBindingSource.Count > 0)
+            if (trangthaixoa == 1)
+            {
+                MessageBox.Show("Nhân viên này đã nghỉ làm hoặc chuyển chi nhánh. Vui lòng chọn nhân viên khác !", "", MessageBoxButtons.OK);
+                return;
+            }
+            else if (phieuNhapBindingSource.Count + phieuXuatBindingSource.Count + datHangBindingSource.Count > 0)
             {
                 MessageBox.Show("Không thể xóa nhân viên này vì đã lập phiếu", "", MessageBoxButtons.OK);
                 return;
@@ -309,8 +299,7 @@ namespace QLVT_DATHANG
                         try
                         {
                             sqlcmt.ExecuteNonQuery();
-                            //LoadTable();
-                            //dataReader = sqlcmt.ExecuteReader();
+
                         }
                         catch
                         {
@@ -320,7 +309,7 @@ namespace QLVT_DATHANG
                     //nhanVienBindingSource.RemoveCurrent();
                     this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.nhanVienTableAdapter.Update(this.dataSet.NhanVien);
-                   // LoadTable();
+             
                     stackundo.Push(query);
                     LoadTable();
                 }
@@ -344,11 +333,9 @@ namespace QLVT_DATHANG
                 connection.Open();
                 SqlCommand sqlcmt = new SqlCommand(lenh, connection);
                 sqlcmt.CommandType = CommandType.Text;
-                SqlDataReader dataReader = null;
                 try
                 {
-                    //sqlcmt.ExecuteNonQuery();
-                    dataReader = sqlcmt.ExecuteReader();
+                    sqlcmt.ExecuteNonQuery();
                 }
                 catch
                 {
@@ -410,7 +397,6 @@ namespace QLVT_DATHANG
                 {
                     sqlcmt.ExecuteNonQuery();
                     LoadTable();
-                    //dataReader = sqlcmt.ExecuteReader();
                 }
                 catch
                 {

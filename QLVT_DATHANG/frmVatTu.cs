@@ -14,7 +14,6 @@ namespace QLVT_DATHANG
     public partial class frmVatTu : Form
     {
         private int vitri;
-        private string nut;
         public frmVatTu()
         {
             InitializeComponent();
@@ -94,7 +93,6 @@ namespace QLVT_DATHANG
         }
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            nut = "THEM";
             vitri = vattuBindingSource.Position;
             groupBox1.Enabled = true;
             txtMa.Enabled = true;
@@ -156,7 +154,6 @@ namespace QLVT_DATHANG
                 }
                 catch (Exception ex)
                 {
-                    //txtMAVT.SelectAll();
                     MessageBox.Show(ex.Message);
                     return;
                 }
@@ -210,7 +207,6 @@ namespace QLVT_DATHANG
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            nut = "SUA";
             vitri = vattuBindingSource.Position;
             groupBox1.Enabled = true;
             txtMa.Enabled = false;
@@ -219,6 +215,8 @@ namespace QLVT_DATHANG
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            string mavt = "";
+            mavt = ((DataRowView)vattuBindingSource[vattuBindingSource.Position])["MAVT"].ToString();
             if (cTDDHBindingSource.Count + cTPNBindingSource.Count + cTPXBindingSource.Count > 0)
             {
                 MessageBox.Show("Không thể xóa vật tư này vì đã lập phiếu", "", MessageBoxButtons.OK);
@@ -228,6 +226,7 @@ namespace QLVT_DATHANG
             {
                 try
                 {
+                    
                     vattuBindingSource.RemoveCurrent();
                     this.vattuTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.vattuTableAdapter.Update(this.dataSet.Vattu);
@@ -236,7 +235,7 @@ namespace QLVT_DATHANG
                 {
                     MessageBox.Show("Lỗi xóa vật tư. Bạn hãy xóa lại \n", ex.Message, MessageBoxButtons.OK);
                     this.vattuTableAdapter.Fill(this.dataSet.Vattu);
-                    // bdsVT.Position = bdsVT.Find("MAVT", mavt);
+                    vattuBindingSource.Position = vattuBindingSource.Find("MAVT", mavt);
                     return;
                 }
             }
@@ -244,16 +243,6 @@ namespace QLVT_DATHANG
 
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (nut.Equals("THEM"))
-            {
-                txtMa.Text = txtTen.Text = txtDVT.Text= "";
-            }
-            else if (nut.Equals("SUA"))
-            {
-                //vitri = nhanVienBindingSource.Find("MANV",txtMaNV.Text);
-                //this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
-                //this.nhanVienTableAdapter.Fill(this.dataSet.NhanVien);
-            }
         }
 
         private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

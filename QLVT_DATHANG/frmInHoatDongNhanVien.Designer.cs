@@ -53,6 +53,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNV.Properties)).BeginInit();
             this.SuspendLayout();
             // 
+            // mã_NVLabel
+            // 
+            mã_NVLabel.AutoSize = true;
+            mã_NVLabel.Location = new System.Drawing.Point(149, 170);
+            mã_NVLabel.Name = "mã_NVLabel";
+            mã_NVLabel.Size = new System.Drawing.Size(54, 17);
+            mã_NVLabel.TabIndex = 3;
+            mã_NVLabel.Text = "Mã NV:";
+            // 
+            // họ_tênLabel
+            // 
+            họ_tênLabel.AutoSize = true;
+            họ_tênLabel.Location = new System.Drawing.Point(406, 170);
+            họ_tênLabel.Name = "họ_tênLabel";
+            họ_tênLabel.Size = new System.Drawing.Size(54, 17);
+            họ_tênLabel.TabIndex = 5;
+            họ_tênLabel.Text = "Họ tên:";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -96,15 +114,6 @@
             this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
             // 
-            // mã_NVLabel
-            // 
-            mã_NVLabel.AutoSize = true;
-            mã_NVLabel.Location = new System.Drawing.Point(149, 170);
-            mã_NVLabel.Name = "mã_NVLabel";
-            mã_NVLabel.Size = new System.Drawing.Size(54, 17);
-            mã_NVLabel.TabIndex = 3;
-            mã_NVLabel.Text = "Mã NV:";
-            // 
             // txtMaNV
             // 
             this.txtMaNV.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sp_DSNhanVienBindingSource, "Mã NV", true));
@@ -113,21 +122,13 @@
             0,
             0,
             0});
-            this.txtMaNV.Location = new System.Drawing.Point(209, 167);
+            this.txtMaNV.Location = new System.Drawing.Point(214, 166);
+            this.txtMaNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMaNV.Name = "txtMaNV";
             this.txtMaNV.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtMaNV.Size = new System.Drawing.Size(125, 24);
+            this.txtMaNV.Size = new System.Drawing.Size(156, 24);
             this.txtMaNV.TabIndex = 4;
-            // 
-            // họ_tênLabel
-            // 
-            họ_tênLabel.AutoSize = true;
-            họ_tênLabel.Location = new System.Drawing.Point(406, 170);
-            họ_tênLabel.Name = "họ_tênLabel";
-            họ_tênLabel.Size = new System.Drawing.Size(54, 17);
-            họ_tênLabel.TabIndex = 5;
-            họ_tênLabel.Text = "Họ tên:";
             // 
             // họ_tênComboBox
             // 

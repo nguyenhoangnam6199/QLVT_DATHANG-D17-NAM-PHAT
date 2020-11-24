@@ -125,6 +125,7 @@
             mANVLabel.Size = new System.Drawing.Size(58, 17);
             mANVLabel.TabIndex = 0;
             mANVLabel.Text = "Mã NV: ";
+            mANVLabel.UseWaitCursor = true;
             // 
             // hOLabel
             // 
@@ -134,6 +135,7 @@
             hOLabel.Size = new System.Drawing.Size(34, 17);
             hOLabel.TabIndex = 2;
             hOLabel.Text = "Họ: ";
+            hOLabel.UseWaitCursor = true;
             // 
             // tENLabel
             // 
@@ -143,6 +145,7 @@
             tENLabel.Size = new System.Drawing.Size(41, 17);
             tENLabel.TabIndex = 4;
             tENLabel.Text = "Tên: ";
+            tENLabel.UseWaitCursor = true;
             tENLabel.Click += new System.EventHandler(this.tENLabel_Click);
             // 
             // dIACHILabel
@@ -153,6 +156,7 @@
             dIACHILabel.Size = new System.Drawing.Size(59, 17);
             dIACHILabel.TabIndex = 6;
             dIACHILabel.Text = "Địa chỉ: ";
+            dIACHILabel.UseWaitCursor = true;
             // 
             // nGAYSINHLabel
             // 
@@ -162,6 +166,7 @@
             nGAYSINHLabel.Size = new System.Drawing.Size(79, 17);
             nGAYSINHLabel.TabIndex = 8;
             nGAYSINHLabel.Text = "Ngày sinh: ";
+            nGAYSINHLabel.UseWaitCursor = true;
             // 
             // lUONGLabel
             // 
@@ -171,6 +176,7 @@
             lUONGLabel.Size = new System.Drawing.Size(56, 17);
             lUONGLabel.TabIndex = 10;
             lUONGLabel.Text = "Lương: ";
+            lUONGLabel.UseWaitCursor = true;
             // 
             // mACNLabel
             // 
@@ -180,6 +186,7 @@
             mACNLabel.Size = new System.Drawing.Size(58, 17);
             mACNLabel.TabIndex = 12;
             mACNLabel.Text = "Mã CN: ";
+            mACNLabel.UseWaitCursor = true;
             // 
             // trangThaiXoaLabel
             // 
@@ -189,6 +196,7 @@
             trangThaiXoaLabel.Size = new System.Drawing.Size(115, 17);
             trangThaiXoaLabel.TabIndex = 14;
             trangThaiXoaLabel.Text = "Trạng Thái Xóa: ";
+            trangThaiXoaLabel.UseWaitCursor = true;
             // 
             // barManager1
             // 
@@ -323,6 +331,7 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Size = new System.Drawing.Size(1126, 30);
+            this.barDockControlTop.UseWaitCursor = true;
             // 
             // barDockControlBottom
             // 
@@ -331,6 +340,7 @@
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 707);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1126, 20);
+            this.barDockControlBottom.UseWaitCursor = true;
             // 
             // barDockControlLeft
             // 
@@ -339,6 +349,7 @@
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 677);
+            this.barDockControlLeft.UseWaitCursor = true;
             // 
             // barDockControlRight
             // 
@@ -347,6 +358,7 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1126, 30);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 677);
+            this.barDockControlRight.UseWaitCursor = true;
             // 
             // panel1
             // 
@@ -357,6 +369,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1126, 84);
             this.panel1.TabIndex = 4;
+            this.panel1.UseWaitCursor = true;
             // 
             // cmbCN
             // 
@@ -365,6 +378,7 @@
             this.cmbCN.Name = "cmbCN";
             this.cmbCN.Size = new System.Drawing.Size(300, 24);
             this.cmbCN.TabIndex = 1;
+            this.cmbCN.UseWaitCursor = true;
             this.cmbCN.SelectedIndexChanged += new System.EventHandler(this.cmbCN_SelectedIndexChanged);
             // 
             // label1
@@ -375,6 +389,7 @@
             this.label1.Size = new System.Drawing.Size(82, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Chi Nhánh: ";
+            this.label1.UseWaitCursor = true;
             // 
             // dataSet
             // 
@@ -399,10 +414,12 @@
             this.tableAdapterManager.CTPXTableAdapter = null;
             this.tableAdapterManager.DatHangTableAdapter = this.datHangTableAdapter;
             this.tableAdapterManager.DSNhanVienTableAdapter = null;
+            this.tableAdapterManager.DSVTTableAdapter = null;
             this.tableAdapterManager.KhoTableAdapter = null;
             this.tableAdapterManager.NhanVienTableAdapter = this.nhanVienTableAdapter;
             this.tableAdapterManager.PhieuNhapTableAdapter = this.phieuNhapTableAdapter;
             this.tableAdapterManager.PhieuXuatTableAdapter = this.phieuXuatTableAdapter;
+            this.tableAdapterManager.sp_DSNhanVienTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
             // 
@@ -426,14 +443,16 @@
             // 
             this.nhanVienGridControl.DataSource = this.nhanVienBindingSource;
             this.nhanVienGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.nhanVienGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.nhanVienGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.nhanVienGridControl.EmbeddedNavigator.UseWaitCursor = true;
             this.nhanVienGridControl.Location = new System.Drawing.Point(0, 114);
             this.nhanVienGridControl.MainView = this.gridView1;
-            this.nhanVienGridControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.nhanVienGridControl.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.nhanVienGridControl.MenuManager = this.barManager1;
             this.nhanVienGridControl.Name = "nhanVienGridControl";
-            this.nhanVienGridControl.Size = new System.Drawing.Size(1126, 344);
+            this.nhanVienGridControl.Size = new System.Drawing.Size(1126, 430);
             this.nhanVienGridControl.TabIndex = 6;
+            this.nhanVienGridControl.UseWaitCursor = true;
             this.nhanVienGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
@@ -448,7 +467,7 @@
             this.colLUONG,
             this.colMACN,
             this.colTrangThaiXoa});
-            this.gridView1.DetailHeight = 546;
+            this.gridView1.DetailHeight = 682;
             this.gridView1.GridControl = this.nhanVienGridControl;
             this.gridView1.Name = "gridView1";
             // 
@@ -456,81 +475,81 @@
             // 
             this.colMANV.Caption = "Mã NV";
             this.colMANV.FieldName = "MANV";
-            this.colMANV.MinWidth = 39;
+            this.colMANV.MinWidth = 49;
             this.colMANV.Name = "colMANV";
             this.colMANV.Visible = true;
             this.colMANV.VisibleIndex = 0;
-            this.colMANV.Width = 146;
+            this.colMANV.Width = 182;
             // 
             // colHO
             // 
             this.colHO.Caption = "Họ";
             this.colHO.FieldName = "HO";
-            this.colHO.MinWidth = 39;
+            this.colHO.MinWidth = 49;
             this.colHO.Name = "colHO";
             this.colHO.Visible = true;
             this.colHO.VisibleIndex = 1;
-            this.colHO.Width = 146;
+            this.colHO.Width = 182;
             // 
             // colTEN
             // 
             this.colTEN.Caption = "Tên";
             this.colTEN.FieldName = "TEN";
-            this.colTEN.MinWidth = 39;
+            this.colTEN.MinWidth = 49;
             this.colTEN.Name = "colTEN";
             this.colTEN.Visible = true;
             this.colTEN.VisibleIndex = 2;
-            this.colTEN.Width = 146;
+            this.colTEN.Width = 182;
             // 
             // colDIACHI
             // 
             this.colDIACHI.Caption = "Địa Chỉ";
             this.colDIACHI.FieldName = "DIACHI";
-            this.colDIACHI.MinWidth = 39;
+            this.colDIACHI.MinWidth = 49;
             this.colDIACHI.Name = "colDIACHI";
             this.colDIACHI.Visible = true;
             this.colDIACHI.VisibleIndex = 3;
-            this.colDIACHI.Width = 146;
+            this.colDIACHI.Width = 182;
             // 
             // colNGAYSINH
             // 
             this.colNGAYSINH.Caption = "Ngày Sinh";
             this.colNGAYSINH.FieldName = "NGAYSINH";
-            this.colNGAYSINH.MinWidth = 39;
+            this.colNGAYSINH.MinWidth = 49;
             this.colNGAYSINH.Name = "colNGAYSINH";
             this.colNGAYSINH.Visible = true;
             this.colNGAYSINH.VisibleIndex = 4;
-            this.colNGAYSINH.Width = 146;
+            this.colNGAYSINH.Width = 182;
             // 
             // colLUONG
             // 
             this.colLUONG.Caption = "Lương";
             this.colLUONG.FieldName = "LUONG";
-            this.colLUONG.MinWidth = 39;
+            this.colLUONG.MinWidth = 49;
             this.colLUONG.Name = "colLUONG";
             this.colLUONG.Visible = true;
             this.colLUONG.VisibleIndex = 5;
-            this.colLUONG.Width = 146;
+            this.colLUONG.Width = 182;
             // 
             // colMACN
             // 
             this.colMACN.Caption = "Mã CN";
             this.colMACN.FieldName = "MACN";
-            this.colMACN.MinWidth = 39;
+            this.colMACN.MinWidth = 49;
             this.colMACN.Name = "colMACN";
             this.colMACN.Visible = true;
             this.colMACN.VisibleIndex = 6;
-            this.colMACN.Width = 146;
+            this.colMACN.Width = 182;
             // 
             // colTrangThaiXoa
             // 
             this.colTrangThaiXoa.Caption = "Trạng Thái Xóa";
             this.colTrangThaiXoa.FieldName = "TrangThaiXoa";
-            this.colTrangThaiXoa.MinWidth = 39;
+            this.colTrangThaiXoa.MinWidth = 49;
             this.colTrangThaiXoa.Name = "colTrangThaiXoa";
             this.colTrangThaiXoa.Visible = true;
             this.colTrangThaiXoa.VisibleIndex = 7;
-            this.colTrangThaiXoa.Width = 146;
+            this.colTrangThaiXoa.Width = 182;
             // 
             // groupBox1
             // 
@@ -551,11 +570,12 @@
             this.groupBox1.Controls.Add(mANVLabel);
             this.groupBox1.Controls.Add(this.txtMaNV);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 458);
+            this.groupBox1.Location = new System.Drawing.Point(0, 544);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1126, 249);
+            this.groupBox1.Size = new System.Drawing.Size(1126, 163);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
+            this.groupBox1.UseWaitCursor = true;
             // 
             // txtTTX
             // 
@@ -572,6 +592,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtTTX.Size = new System.Drawing.Size(205, 24);
             this.txtTTX.TabIndex = 15;
+            this.txtTTX.UseWaitCursor = true;
             // 
             // txtCN
             // 
@@ -581,6 +602,7 @@
             this.txtCN.Name = "txtCN";
             this.txtCN.Size = new System.Drawing.Size(205, 22);
             this.txtCN.TabIndex = 13;
+            this.txtCN.UseWaitCursor = true;
             // 
             // txtLuong
             // 
@@ -597,6 +619,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtLuong.Size = new System.Drawing.Size(205, 24);
             this.txtLuong.TabIndex = 11;
+            this.txtLuong.UseWaitCursor = true;
             // 
             // txtNgaySinh
             // 
@@ -611,6 +634,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtNgaySinh.Size = new System.Drawing.Size(205, 22);
             this.txtNgaySinh.TabIndex = 9;
+            this.txtNgaySinh.UseWaitCursor = true;
             // 
             // txtDiaChi
             // 
@@ -620,6 +644,7 @@
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(177, 22);
             this.txtDiaChi.TabIndex = 7;
+            this.txtDiaChi.UseWaitCursor = true;
             // 
             // txtTen
             // 
@@ -629,6 +654,7 @@
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(177, 22);
             this.txtTen.TabIndex = 5;
+            this.txtTen.UseWaitCursor = true;
             // 
             // txtHo
             // 
@@ -638,6 +664,7 @@
             this.txtHo.Name = "txtHo";
             this.txtHo.Size = new System.Drawing.Size(177, 22);
             this.txtHo.TabIndex = 3;
+            this.txtHo.UseWaitCursor = true;
             // 
             // txtMaNV
             // 
@@ -654,6 +681,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtMaNV.Size = new System.Drawing.Size(177, 24);
             this.txtMaNV.TabIndex = 1;
+            this.txtMaNV.UseWaitCursor = true;
             // 
             // datHangBindingSource
             // 
@@ -689,6 +717,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmNhanVien";
             this.Text = "frmNhanVien";
+            this.UseWaitCursor = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmNhanVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

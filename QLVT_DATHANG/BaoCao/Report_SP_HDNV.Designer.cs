@@ -240,7 +240,7 @@
             this.table1.Name = "table1";
             this.table1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.tableRow1});
-            this.table1.SizeF = new System.Drawing.SizeF(650F, 24.99999F);
+            this.table1.SizeF = new System.Drawing.SizeF(704.0001F, 24.99999F);
             // 
             // tableRow1
             // 
@@ -254,8 +254,8 @@
             // 
             this.tableCell1.Name = "tableCell1";
             this.tableCell1.StyleName = "GroupCaption1";
-            this.tableCell1.Text = "HỌ TÊN NHÂN VIÊN";
-            this.tableCell1.Weight = 0.18076547475961538D;
+            this.tableCell1.Text = "HỌ TÊN NHÂN VIÊN: ";
+            this.tableCell1.Weight = 0.23973980243389423D;
             // 
             // tableCell2
             // 
@@ -263,7 +263,7 @@
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Họ Tên Nhân Viên]")});
             this.tableCell2.Name = "tableCell2";
             this.tableCell2.StyleName = "GroupData1";
-            this.tableCell2.Weight = 0.81923452524038465D;
+            this.tableCell2.Weight = 0.84333721454326915D;
             // 
             // table2
             // 
@@ -271,7 +271,7 @@
             this.table2.Name = "table2";
             this.table2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.tableRow2});
-            this.table2.SizeF = new System.Drawing.SizeF(650F, 25F);
+            this.table2.SizeF = new System.Drawing.SizeF(704.0001F, 25F);
             // 
             // tableRow2
             // 
@@ -285,8 +285,8 @@
             // 
             this.tableCell3.Name = "tableCell3";
             this.tableCell3.StyleName = "GroupCaption1";
-            this.tableCell3.Text = "MÃ NHÂN VIÊN";
-            this.tableCell3.Weight = 0.1807654611825133D;
+            this.tableCell3.Text = "        MÃ NHÂN VIÊN: ";
+            this.tableCell3.Weight = 0.23973976261288138D;
             // 
             // tableCell4
             // 
@@ -294,7 +294,7 @@
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Mã nhân viên]")});
             this.tableCell4.Name = "tableCell4";
             this.tableCell4.StyleName = "GroupData1";
-            this.tableCell4.Weight = 0.81923449186736641D;
+            this.tableCell4.Weight = 0.84333720351368591D;
             // 
             // label1
             // 
@@ -434,6 +434,7 @@
             this.tableCell13.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Ngày]")});
             this.tableCell13.Name = "tableCell13";
+            this.tableCell13.ProcessDuplicatesMode = DevExpress.XtraReports.UI.ProcessDuplicatesMode.Merge;
             this.tableCell13.StyleName = "DetailData1";
             this.tableCell13.StylePriority.UseBorders = false;
             this.tableCell13.TextFormatString = "{0:dd/MM/yyyy}";

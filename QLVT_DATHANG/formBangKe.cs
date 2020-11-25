@@ -47,7 +47,11 @@ namespace QLVT_DATHANG
             }
 
             Report_SP_BANGKEVATTU rp = new Report_SP_BANGKEVATTU(quyen,loai,bd,kt);
-            rp.lblTieuDe.Text = "BẢNG KÊ CHI TIẾT SỐ LƯỢNG - TRỊ GIÁ PHIẾU " + loai1.ToUpper()+" "+"TỪ NGÀY "+bd+" ĐẾN NGÀY: "+kt;
+
+            dateTimePicker2.CustomFormat = dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            String bd1 = dateTimePicker1.Text;
+            String kt1 = dateTimePicker2.Text;
+            rp.lblTieuDe.Text = "BẢNG KÊ CHI TIẾT SỐ LƯỢNG - TRỊ GIÁ PHIẾU " + loai1.ToUpper()+" "+"TỪ NGÀY "+bd1+" ĐẾN NGÀY: "+kt1;
             ReportPrintTool print = new ReportPrintTool(rp);
             print.ShowPreviewDialog();
 

@@ -324,6 +324,10 @@
     <None Include="Resources\imageLogin1.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Database\site_1.sql" />
+    <Content Include="Database\site_2.sql" />
+    <Content Include="Database\site_3.sql" />
+    <Content Include="Database\site_goc.sql" />
     <Content Include="StoreProcedure\spTimNVChuaCoTK.sql" />
     <Content Include="StoreProcedure\sp_bangkevattu.sql" />
     <Content Include="StoreProcedure\sp_hoatdongnv.sql" />
@@ -337,9 +341,7 @@
     <Content Include="StoreProcedure\sp_timphieuxuat.sql" />
     <Content Include="StoreProcedure\sp_tohopnhapxuat.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Database\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

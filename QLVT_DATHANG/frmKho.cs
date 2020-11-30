@@ -15,6 +15,9 @@ namespace QLVT_DATHANG
     {
         private int vitri;
         private string macn;
+        private Stack<String> stackundo = new Stack<string>(16);
+        String query = "";
+        Boolean isDel = true;
         public frmKho()
         {
             InitializeComponent();
@@ -91,6 +94,12 @@ namespace QLVT_DATHANG
                     cmbCN.Enabled = false; txtCN.Enabled = false;
                     groupBox1.Enabled = false;
                 }
+                if (stackundo.Count != 0)
+                {
+                    btnUndo.Enabled = true;
+                }
+                else btnUndo.Enabled = false;
+
             }
             catch (Exception ex)
             {
@@ -148,7 +157,7 @@ namespace QLVT_DATHANG
         private void DisableForm()
         {
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = false;
-            btnGhi.Enabled = btnThoat.Enabled = btnUndo.Enabled = true;
+            btnGhi.Enabled = btnThoat.Enabled =  true;
             txtCN.Enabled = cmbCN.Enabled = false;
             
         }
@@ -159,6 +168,7 @@ namespace QLVT_DATHANG
             khoBindingSource.AddNew();
             txtCN.Text = macn;
             txtMa.Enabled = true;
+            isDel = true;
             DisableForm();
         }
 
@@ -167,6 +177,8 @@ namespace QLVT_DATHANG
             vitri = khoBindingSource.Position;
             groupBox1.Enabled = true;
             txtMa.Enabled = false;
+            isDel = false;
+            query = String.Format("Update Kho Set TENKHO=N'{1}', DIACHI=N'{2}', MACN=N'{3}' Where MAKHO=N'{0}' ", txtMa.Text, txtTen.Text, txtDiaChi.Text,txtCN.Text);
             DisableForm();
         }
 
@@ -183,9 +195,16 @@ namespace QLVT_DATHANG
             {
                 try
                 {
+                    String tenkho = ((DataRowView)khoBindingSource[khoBindingSource.Position])["TENKHO"].ToString();
+                    String diachi = ((DataRowView)khoBindingSource[khoBindingSource.Position])["DIACHI"].ToString();
                     khoBindingSource.RemoveCurrent();
+                    
+                   // macn = ((DataRowView)khoBindingSource[khoBindingSource.Position])["MACN"].ToString();
                     this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.khoTableAdapter.Update(this.dataSet.Kho);
+                    query = String.Format("Insert into Kho (MAKHO, TENKHO, DIACHI, MACN) values(N'{0}', N'{1}', N'{2}',N'{3}' )", makho, tenkho, diachi, macn);
+                    stackundo.Push(query);
+                    LoadTable();
                 }
                 catch (Exception ex)
                 {
@@ -257,6 +276,11 @@ namespace QLVT_DATHANG
                 //Lưu vô CSDL
                 this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.khoTableAdapter.Update(this.dataSet.Kho);
+                if (isDel)
+                {
+                    query = String.Format("Delete from Kho where MAKHO=N'{0}'", txtMa.Text);
+                }
+                stackundo.Push(query);
             }
             catch (Exception ex)
             {
@@ -269,7 +293,23 @@ namespace QLVT_DATHANG
 
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            String lenh = stackundo.Pop();
+            using (SqlConnection connection = new SqlConnection(Program.connstr))
+            {
+                connection.Open();
+                SqlCommand sqlcmt = new SqlCommand(lenh, connection);
+                sqlcmt.CommandType = CommandType.Text;
+                try
+                {
+                    //MessageBox.Show(lenh);
+                    sqlcmt.ExecuteNonQuery();
+                    LoadTable();
+                }
+                catch
+                {
+                    MessageBox.Show(lenh);
+                }
+            }
         }
 
         private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

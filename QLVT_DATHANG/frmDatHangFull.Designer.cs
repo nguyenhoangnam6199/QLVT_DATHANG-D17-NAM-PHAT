@@ -41,7 +41,6 @@
             this.btnSua = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnGhi = new DevExpress.XtraBars.BarButtonItem();
-            this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
             this.btnReload = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -49,6 +48,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbCN = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -89,6 +89,7 @@
             this.phieuNhapBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fKPhieuNhapDatHangBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dSVTTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
+            this.btnUndo1 = new DevExpress.XtraBars.BarButtonItem();
             masoDDHLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
             nhaCCLabel = new System.Windows.Forms.Label();
@@ -178,22 +179,24 @@
             this.btnGhi,
             this.btnUndo,
             this.btnReload,
-            this.btnThoat});
+            this.btnThoat,
+            this.btnUndo1});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 7;
+            this.barManager1.MaxItemId = 8;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
             // 
             this.bar2.BarName = "Main menu";
             this.bar2.DockCol = 0;
+            this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSua, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnGhi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnReload, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
@@ -235,14 +238,6 @@
             this.btnGhi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGhi.ImageOptions.LargeImage")));
             this.btnGhi.Name = "btnGhi";
             this.btnGhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGhi_ItemClick);
-            // 
-            // btnUndo
-            // 
-            this.btnUndo.Caption = "Undo";
-            this.btnUndo.Id = 4;
-            this.btnUndo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.Image")));
-            this.btnUndo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.LargeImage")));
-            this.btnUndo.Name = "btnUndo";
             // 
             // btnReload
             // 
@@ -305,6 +300,14 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1291, 30);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 681);
+            // 
+            // btnUndo
+            // 
+            this.btnUndo.Caption = "Undo";
+            this.btnUndo.Id = 4;
+            this.btnUndo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.Image")));
+            this.btnUndo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.LargeImage")));
+            this.btnUndo.Name = "btnUndo";
             // 
             // panel1
             // 
@@ -382,13 +385,13 @@
             // 
             this.datHangGridControl.DataSource = this.datHangBindingSource;
             this.datHangGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.datHangGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
+            this.datHangGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(30);
             this.datHangGridControl.Location = new System.Drawing.Point(0, 97);
             this.datHangGridControl.MainView = this.gridView1;
-            this.datHangGridControl.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
+            this.datHangGridControl.Margin = new System.Windows.Forms.Padding(30);
             this.datHangGridControl.MenuManager = this.barManager1;
             this.datHangGridControl.Name = "datHangGridControl";
-            this.datHangGridControl.Size = new System.Drawing.Size(1291, 326);
+            this.datHangGridControl.Size = new System.Drawing.Size(1291, 274);
             this.datHangGridControl.TabIndex = 6;
             this.datHangGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -468,9 +471,9 @@
             this.groupBox1.Controls.Add(masoDDHLabel);
             this.groupBox1.Controls.Add(this.txtMaDDH);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox1.Location = new System.Drawing.Point(0, 423);
+            this.groupBox1.Location = new System.Drawing.Point(0, 371);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(384, 288);
+            this.groupBox1.Size = new System.Drawing.Size(384, 340);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Đơn Đặt Hàng";
@@ -544,15 +547,15 @@
             // 
             this.cTDDHGridControl.DataSource = this.cTDDHBindingSource;
             this.cTDDHGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cTDDHGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
-            this.cTDDHGridControl.Location = new System.Drawing.Point(384, 423);
+            this.cTDDHGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(30);
+            this.cTDDHGridControl.Location = new System.Drawing.Point(384, 371);
             this.cTDDHGridControl.MainView = this.gridView2;
-            this.cTDDHGridControl.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
+            this.cTDDHGridControl.Margin = new System.Windows.Forms.Padding(30);
             this.cTDDHGridControl.MenuManager = this.barManager1;
             this.cTDDHGridControl.Name = "cTDDHGridControl";
             this.cTDDHGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1});
-            this.cTDDHGridControl.Size = new System.Drawing.Size(907, 288);
+            this.cTDDHGridControl.Size = new System.Drawing.Size(907, 340);
             this.cTDDHGridControl.TabIndex = 7;
             this.cTDDHGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -669,6 +672,15 @@
             // 
             this.dSVTTableAdapter.ClearBeforeFill = true;
             // 
+            // btnUndo1
+            // 
+            this.btnUndo1.Caption = "Undo";
+            this.btnUndo1.Id = 7;
+            this.btnUndo1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.btnUndo1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.btnUndo1.Name = "btnUndo1";
+            this.btnUndo1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo1_ItemClick);
+            // 
             // frmDatHangFull
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -770,5 +782,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private System.Windows.Forms.BindingSource dSVTBindingSource;
         private DataSetTableAdapters.DSVTTableAdapter dSVTTableAdapter;
+        private DevExpress.XtraBars.BarButtonItem btnUndo1;
     }
 }

@@ -18,6 +18,10 @@ namespace QLVT_DATHANG
         private String mapx;
         private string soluong;
         private string dongia;
+        private bool isAdd = false;
+        private Stack<String> stackundo = new Stack<string>(16);
+        String query = "";
+        Boolean isDel = true;
         public frmPhieuXuat()
         {
             InitializeComponent();
@@ -59,6 +63,15 @@ namespace QLVT_DATHANG
                     btnGhi.Enabled = btnUndo.Enabled = false;
                     panel1.Enabled = false;
                     groupBox1.Enabled = true;
+                }
+                if (stackundo.Count != 0)
+                {
+                    btnUndo1.Enabled = true;
+                }
+                else
+                {
+                    btnUndo1.Enabled = false;
+                    groupBox1.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -149,30 +162,36 @@ namespace QLVT_DATHANG
             groupBox1.Enabled = true;
             txtMaNV.Text = Program.username;
             txtMaNV.Enabled = false;
+            isAdd = true;
+            isDel = true;
         }
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (KiemTraPhieuXuat(txtMaPX.Text) == 1)
+            if (isAdd)
             {
-                MessageBox.Show("Mã Phiếu Xuất không được trùng !", "", MessageBoxButtons.OK);
-                txtMaPX.Focus();
-                return;
-            }
+                if (KiemTraPhieuXuat(txtMaPX.Text) == 1)
+                {
+                    MessageBox.Show("Mã Phiếu Xuất không được trùng !", "", MessageBoxButtons.OK);
+                    txtMaPX.Focus();
+                    return;
+                }
 
-            if (txtMaPX.Text == string.Empty)
-            {
-                MessageBox.Show("Mã Phiếu Xuất không được thiếu !", "", MessageBoxButtons.OK);
-                txtMaPX.Focus();
-                return;
-            }
+                if (txtMaPX.Text == string.Empty)
+                {
+                    MessageBox.Show("Mã Phiếu Xuất không được thiếu !", "", MessageBoxButtons.OK);
+                    txtMaPX.Focus();
+                    return;
+                }
 
-            if (txtMaPX.Text.Length > 8)
-            {
-                MessageBox.Show("Mã Phiếu Xuất không được hơn 8 ký tự !", "", MessageBoxButtons.OK);
-                txtMaPX.Focus();
-                return;
+                if (txtMaPX.Text.Length > 8)
+                {
+                    MessageBox.Show("Mã Phiếu Xuất không được hơn 8 ký tự !", "", MessageBoxButtons.OK);
+                    txtMaPX.Focus();
+                    return;
+                }
             }
+            
 
             if (txtNgay.Text.Trim() == string.Empty)
             {
@@ -185,7 +204,11 @@ namespace QLVT_DATHANG
                 MessageBox.Show("Họ tên Khách hàng không được thiếu !", "", MessageBoxButtons.OK);
                 return;
             }
-
+            if (cmbKho.Text.Trim() == String.Empty)
+            {
+                MessageBox.Show("Mã kho không được trống !", "", MessageBoxButtons.OK);
+                return;
+            }
             try
             {
                 phieuXuatBindingSource.EndEdit();
@@ -193,6 +216,12 @@ namespace QLVT_DATHANG
 
                 this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.phieuXuatTableAdapter.Update(this.dataSet.PhieuXuat);
+
+                if (isDel == true)
+                {
+                    query = String.Format("Delete from PhieuXuat where MAPX=N'{0}'", txtMaPX.Text);
+                }
+                stackundo.Push(query);
 
                 MessageBox.Show("Ghi thành công!");
             }
@@ -203,6 +232,7 @@ namespace QLVT_DATHANG
             }
             EnableForm();
             LoadTable();
+            groupBox1.Enabled = false;
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -211,6 +241,9 @@ namespace QLVT_DATHANG
             DisEnableForm();
             groupBox1.Enabled = true;
             txtMaPX.Enabled = txtMaNV.Enabled = false;
+            isDel = false;
+            query = String.Format("Update PhieuXuat Set NGAY=N'{1}', HOTENKH=N'{2}', MANV={3}, MAKHO=N'{4}' Where MAPX=N'{0}' ", txtMaPX.Text, txtNgay.Text, txtTenKH.Text, Program.username, cmbKho.Text);
+            isAdd = false;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -225,10 +258,19 @@ namespace QLVT_DATHANG
             {
                 try
                 {
+                    String mapx = ((DataRowView)phieuXuatBindingSource[phieuXuatBindingSource.Position])["MAPX"].ToString();
+                    String ngay = ((DataRowView)phieuXuatBindingSource[phieuXuatBindingSource.Position])["NGAY"].ToString();
+                    String tenkh = ((DataRowView)phieuXuatBindingSource[phieuXuatBindingSource.Position])["HOTENKH"].ToString();
+                    String makho = ((DataRowView)phieuXuatBindingSource[phieuXuatBindingSource.Position])["MAKHO"].ToString();
+
                     phieuXuatBindingSource.RemoveCurrent();
 
                     this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.phieuXuatTableAdapter.Update(this.dataSet.PhieuXuat);
+
+                    query = String.Format("Insert into PhieuXuat (MAPX, NGAY, HOTENKH, MANV, MAKHO) values(N'{0}', N'{1}', N'{2}',{3},N'{4}' )", mapx, ngay, tenkh, Program.username, makho);
+                    stackundo.Push(query);
+                    LoadTable();
                 }
                 catch (Exception ex)
                 {
@@ -373,6 +415,27 @@ namespace QLVT_DATHANG
             btnXoaCTPX.Enabled = true;
             btnGhiCTPX.Enabled = false;
             LoadTable();
+        }
+
+        private void btnUndo1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            String lenh = stackundo.Pop();
+            using (SqlConnection connection = new SqlConnection(Program.connstr))
+            {
+                connection.Open();
+                SqlCommand sqlcmt = new SqlCommand(lenh, connection);
+                sqlcmt.CommandType = CommandType.Text;
+                try
+                {
+                    //MessageBox.Show(lenh);
+                    sqlcmt.ExecuteNonQuery();
+                    LoadTable();
+                }
+                catch
+                {
+                    MessageBox.Show(lenh);
+                }
+            }
         }
     }
 }

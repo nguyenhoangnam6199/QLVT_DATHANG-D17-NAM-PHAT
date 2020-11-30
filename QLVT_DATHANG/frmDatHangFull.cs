@@ -19,6 +19,9 @@ namespace QLVT_DATHANG
         private string mavt;
         private string soluong;
         private string dongia;
+        private Stack<String> stackundo = new Stack<string>(16);
+        String query = "";
+        Boolean isDel = true;
         public frmDatHangFull()
         {
             InitializeComponent();
@@ -67,6 +70,11 @@ namespace QLVT_DATHANG
                     panel1.Enabled = false;
                     groupBox1.Enabled = true;
                 }
+                if (stackundo.Count != 0)
+                {
+                    btnUndo1.Enabled = true;
+                }
+                else btnUndo1.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -149,10 +157,10 @@ namespace QLVT_DATHANG
             vitri = datHangBindingSource.Position;
             datHangBindingSource.AddNew();
             DisEnableForm();
-            //btnGhi.Enabled = btnUndo.Enabled = true;
             txtMaNV.Text = Program.username;
             groupBox1.Enabled = true;
             txtMaNV.Enabled = false;
+            isDel = true;
             //query = String.Format("Delete from DatHang where MasoDDH={0}", txtMaNV.Text);
         }
 
@@ -260,6 +268,12 @@ namespace QLVT_DATHANG
                 txtNhaCC.Focus();
                 return;
             }
+            if (cmbKho.Text.Trim() == String.Empty)
+            {
+                MessageBox.Show("Mã kho không được thiếu!", "", MessageBoxButtons.OK);
+                cmbKho.Focus();
+                return;
+            }
             try
             {
                 datHangBindingSource.EndEdit();
@@ -267,6 +281,12 @@ namespace QLVT_DATHANG
 
                 this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.datHangTableAdapter.Update(this.dataSet.DatHang);
+
+                if (isDel==true)
+                {
+                    query = String.Format("Delete from DatHang where MasoDDH=N'{0}'", txtMaDDH.Text);
+                }
+                stackundo.Push(query);
 
                 MessageBox.Show("Ghi thành công!");
             }
@@ -277,8 +297,8 @@ namespace QLVT_DATHANG
             }
 
             EnableForm();
-            groupBox1.Enabled = false;
             LoadTable();
+            groupBox1.Enabled = false;
         }
 
         private void cmbKho_SelectedIndexChanged(object sender, EventArgs e)
@@ -292,6 +312,8 @@ namespace QLVT_DATHANG
             vitri = datHangBindingSource.Position;
             txtMaDDH.Enabled=txtMaNV.Enabled = false;
             groupBox1.Enabled = true;
+            isDel = false;
+            query = String.Format("Update DatHang Set NGAY=N'{1}', NhaCC=N'{2}', MANV={3}, MAKHO=N'{4}' Where MasoDDH=N'{0}' ", txtMaDDH.Text, txtNgay.Text, txtNhaCC.Text, Program.username, cmbKho.Text);
             DisEnableForm();
         }
 
@@ -311,10 +333,18 @@ namespace QLVT_DATHANG
             {
                 try
                 {
+                    String masoddh = ((DataRowView)datHangBindingSource[datHangBindingSource.Position])["MasoDDH"].ToString();
+                    String ngay = ((DataRowView)datHangBindingSource[datHangBindingSource.Position])["NGAY"].ToString();
+                    String nhacc = ((DataRowView)datHangBindingSource[datHangBindingSource.Position])["NhaCC"].ToString();
+                    String makho = ((DataRowView)datHangBindingSource[datHangBindingSource.Position])["MAKHO"].ToString();
                     datHangBindingSource.RemoveCurrent();
 
                     this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.datHangTableAdapter.Update(this.dataSet.DatHang);
+
+                    query = String.Format("Insert into DatHang (MasoDDH, NGAY, NHACC, MANV, MAKHO) values(N'{0}', N'{1}', N'{2}',{3},N'{4}' )", masoddh, ngay, nhacc, Program.username,makho);
+                    stackundo.Push(query);
+                    LoadTable();
                 }
                 catch (Exception ex)
                 {
@@ -415,6 +445,27 @@ namespace QLVT_DATHANG
                 }
             }
             
+        }
+
+        private void btnUndo1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            String lenh = stackundo.Pop();
+            using (SqlConnection connection = new SqlConnection(Program.connstr))
+            {
+                connection.Open();
+                SqlCommand sqlcmt = new SqlCommand(lenh, connection);
+                sqlcmt.CommandType = CommandType.Text;
+                try
+                {
+                    //MessageBox.Show(lenh);
+                    sqlcmt.ExecuteNonQuery();
+                    LoadTable();
+                }
+                catch
+                {
+                    MessageBox.Show(lenh);
+                }
+            }
         }
 
         //private void btnSuaCTDDH_Click(object sender, EventArgs e)

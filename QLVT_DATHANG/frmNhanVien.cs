@@ -93,18 +93,21 @@ namespace QLVT_DATHANG
                     cmbCN.Enabled = false; txtCN.Enabled = false;
                     groupBox1.Enabled = false;
                 }
-                if (stackundo.Count != 0)
-                {
-                    btnUndo.Enabled = true;
-                }
-                else btnUndo.Enabled = false;
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
+        private void loadUndo()
+        {
+            if (stackundo.Count != 0)
+            {
+                btnUndo.Enabled = true;
+            }
+            else btnUndo.Enabled = false;
+        }
         private void cmbCN_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbCN.SelectedValue.ToString() == "System.Data.DataRowView")
@@ -152,7 +155,7 @@ namespace QLVT_DATHANG
         private void DisableForm()
         {
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = false;
-            btnGhi.Enabled = btnThoat.Enabled = btnUndo.Enabled = true;
+            btnGhi.Enabled = btnThoat.Enabled = true;
             txtCN.Enabled = cmbCN.Enabled = false;
             btnCCN.Enabled = false;
         }
@@ -221,13 +224,15 @@ namespace QLVT_DATHANG
                 this.nhanVienTableAdapter.Update(this.dataSet.NhanVien);
                 MessageBox.Show("Ghi thành công !", "", MessageBoxButtons.OK);
                 stackundo.Push(query);
+                LoadTable();
+                loadUndo();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi ghi nhân viên.\n" + ex.Message);
                 return;
             }
-            LoadTable();
+            //LoadTable();
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -312,6 +317,8 @@ namespace QLVT_DATHANG
              
                     stackundo.Push(query);
                     LoadTable();
+                    loadUndo();
+                    //LoadTable();
                 }
                 catch (Exception ex)
                 {
@@ -336,6 +343,8 @@ namespace QLVT_DATHANG
                 try
                 {
                     sqlcmt.ExecuteNonQuery();
+                    query = string.Format("EXEC sp_undochuyencn {0}, {1} ", MaHT, MaMoi);
+                    
                 }
                 catch
                 {
@@ -362,7 +371,7 @@ namespace QLVT_DATHANG
                     int maNV = int.Parse(((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["MANV"].ToString());
                     ChuyenChiNhanh(maNV, TaoMaNV());
                     MessageBox.Show("Chuyển chi nhánh thành công ! \n Mã nhân viên mới là: " + TaoMaNV(), "", MessageBoxButtons.OK);
-
+                    stackundo.Push(query);      
                 }
                 catch (Exception ex)
                 {
@@ -376,6 +385,7 @@ namespace QLVT_DATHANG
                 return;
             }
             LoadTable();
+            loadUndo();
         }
 
         private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -397,6 +407,8 @@ namespace QLVT_DATHANG
                 {
                     sqlcmt.ExecuteNonQuery();
                     LoadTable();
+                    loadUndo();
+                    //LoadTable();
                 }
                 catch
                 {

@@ -41,7 +41,7 @@
             this.btnSua = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnGhi = new DevExpress.XtraBars.BarButtonItem();
-            this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUndo1 = new DevExpress.XtraBars.BarButtonItem();
             this.btnReLoad = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -49,6 +49,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbCN = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -67,6 +68,7 @@
             this.colMAKHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbKho = new System.Windows.Forms.ComboBox();
+            this.khoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtMaNV = new DevExpress.XtraEditors.TextEdit();
             this.txtTenKH = new DevExpress.XtraEditors.TextEdit();
             this.txtNgay = new DevExpress.XtraEditors.DateEdit();
@@ -76,11 +78,10 @@
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAPX1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.dSVTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.khoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.dSVTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnThemCTPX = new System.Windows.Forms.ToolStripMenuItem();
             this.btnXoaCTPX = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,6 +99,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.phieuXuatGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.khoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenKH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgay.Properties.CalendarTimeProperties)).BeginInit();
@@ -108,7 +110,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSVTBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.khoBindingSource)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -174,9 +175,10 @@
             this.btnUndo,
             this.btnReLoad,
             this.btnGhi,
-            this.btnThoat});
+            this.btnThoat,
+            this.btnUndo1});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 7;
+            this.barManager1.MaxItemId = 8;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -190,7 +192,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSua, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnGhi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnReLoad, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
@@ -233,13 +235,14 @@
             this.btnGhi.Name = "btnGhi";
             this.btnGhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGhi_ItemClick);
             // 
-            // btnUndo
+            // btnUndo1
             // 
-            this.btnUndo.Caption = "Undo";
-            this.btnUndo.Id = 3;
-            this.btnUndo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.Image")));
-            this.btnUndo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.LargeImage")));
-            this.btnUndo.Name = "btnUndo";
+            this.btnUndo1.Caption = "Undo";
+            this.btnUndo1.Id = 7;
+            this.btnUndo1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo1.ImageOptions.Image")));
+            this.btnUndo1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnUndo1.ImageOptions.LargeImage")));
+            this.btnUndo1.Name = "btnUndo1";
+            this.btnUndo1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo1_ItemClick);
             // 
             // btnReLoad
             // 
@@ -277,15 +280,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1024, 30);
+            this.barDockControlTop.Size = new System.Drawing.Size(1174, 30);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 646);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 595);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1024, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1174, 20);
             // 
             // barDockControlLeft
             // 
@@ -293,15 +296,23 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 616);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 565);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1024, 30);
+            this.barDockControlRight.Location = new System.Drawing.Point(1174, 30);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 616);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 565);
+            // 
+            // btnUndo
+            // 
+            this.btnUndo.Caption = "Undo";
+            this.btnUndo.Id = 3;
+            this.btnUndo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.Image")));
+            this.btnUndo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.LargeImage")));
+            this.btnUndo.Name = "btnUndo";
             // 
             // panel1
             // 
@@ -310,7 +321,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1024, 79);
+            this.panel1.Size = new System.Drawing.Size(1174, 79);
             this.panel1.TabIndex = 4;
             // 
             // cmbCN
@@ -359,6 +370,7 @@
             this.tableAdapterManager.NhanVienTableAdapter = null;
             this.tableAdapterManager.PhieuNhapTableAdapter = null;
             this.tableAdapterManager.PhieuXuatTableAdapter = this.phieuXuatTableAdapter;
+            this.tableAdapterManager.sp_DSNhanVienTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
             // 
@@ -378,7 +390,7 @@
             this.phieuXuatGridControl.MainView = this.gridView1;
             this.phieuXuatGridControl.MenuManager = this.barManager1;
             this.phieuXuatGridControl.Name = "phieuXuatGridControl";
-            this.phieuXuatGridControl.Size = new System.Drawing.Size(1024, 220);
+            this.phieuXuatGridControl.Size = new System.Drawing.Size(1174, 220);
             this.phieuXuatGridControl.TabIndex = 6;
             this.phieuXuatGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -459,7 +471,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 329);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(433, 317);
+            this.groupBox1.Size = new System.Drawing.Size(433, 266);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phiếu Xuất";
@@ -475,6 +487,11 @@
             this.cmbKho.Size = new System.Drawing.Size(213, 24);
             this.cmbKho.TabIndex = 10;
             this.cmbKho.ValueMember = "MAKHO";
+            // 
+            // khoBindingSource
+            // 
+            this.khoBindingSource.DataMember = "Kho";
+            this.khoBindingSource.DataSource = this.dataSet;
             // 
             // txtMaNV
             // 
@@ -532,7 +549,7 @@
             this.cTPXGridControl.Name = "cTPXGridControl";
             this.cTPXGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1});
-            this.cTPXGridControl.Size = new System.Drawing.Size(591, 317);
+            this.cTPXGridControl.Size = new System.Drawing.Size(741, 266);
             this.cTPXGridControl.TabIndex = 7;
             this.cTPXGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -549,7 +566,6 @@
             // 
             // colMAPX1
             // 
-            this.colMAPX1.Caption = "Mã phiếu xuất";
             this.colMAPX1.FieldName = "MAPX";
             this.colMAPX1.MinWidth = 25;
             this.colMAPX1.Name = "colMAPX1";
@@ -559,7 +575,6 @@
             // 
             // colMAVT
             // 
-            this.colMAVT.Caption = "Mã vật tư";
             this.colMAVT.ColumnEdit = this.repositoryItemLookUpEdit1;
             this.colMAVT.FieldName = "MAVT";
             this.colMAVT.MinWidth = 25;
@@ -567,6 +582,24 @@
             this.colMAVT.Visible = true;
             this.colMAVT.VisibleIndex = 1;
             this.colMAVT.Width = 94;
+            // 
+            // colSOLUONG
+            // 
+            this.colSOLUONG.FieldName = "SOLUONG";
+            this.colSOLUONG.MinWidth = 25;
+            this.colSOLUONG.Name = "colSOLUONG";
+            this.colSOLUONG.Visible = true;
+            this.colSOLUONG.VisibleIndex = 2;
+            this.colSOLUONG.Width = 94;
+            // 
+            // colDONGIA
+            // 
+            this.colDONGIA.FieldName = "DONGIA";
+            this.colDONGIA.MinWidth = 25;
+            this.colDONGIA.Name = "colDONGIA";
+            this.colDONGIA.Visible = true;
+            this.colDONGIA.VisibleIndex = 3;
+            this.colDONGIA.Width = 94;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -582,31 +615,6 @@
             // 
             this.dSVTBindingSource.DataMember = "DSVT";
             this.dSVTBindingSource.DataSource = this.dataSet;
-            // 
-            // colSOLUONG
-            // 
-            this.colSOLUONG.Caption = "Số lượng";
-            this.colSOLUONG.FieldName = "SOLUONG";
-            this.colSOLUONG.MinWidth = 25;
-            this.colSOLUONG.Name = "colSOLUONG";
-            this.colSOLUONG.Visible = true;
-            this.colSOLUONG.VisibleIndex = 2;
-            this.colSOLUONG.Width = 94;
-            // 
-            // colDONGIA
-            // 
-            this.colDONGIA.Caption = "Đơn giá";
-            this.colDONGIA.FieldName = "DONGIA";
-            this.colDONGIA.MinWidth = 25;
-            this.colDONGIA.Name = "colDONGIA";
-            this.colDONGIA.Visible = true;
-            this.colDONGIA.VisibleIndex = 3;
-            this.colDONGIA.Width = 94;
-            // 
-            // khoBindingSource
-            // 
-            this.khoBindingSource.DataMember = "Kho";
-            this.khoBindingSource.DataSource = this.dataSet;
             // 
             // contextMenuStrip1
             // 
@@ -647,7 +655,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 666);
+            this.ClientSize = new System.Drawing.Size(1174, 615);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.cTPXGridControl);
             this.Controls.Add(this.groupBox1);
@@ -670,6 +678,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.khoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenKH.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgay.Properties.CalendarTimeProperties)).EndInit();
@@ -680,7 +689,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSVTBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.khoBindingSource)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -726,10 +734,6 @@
         private System.Windows.Forms.BindingSource cTPXBindingSource;
         private DevExpress.XtraGrid.GridControl cTPXGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraGrid.Columns.GridColumn colMAPX1;
-        private DevExpress.XtraGrid.Columns.GridColumn colMAVT;
-        private DevExpress.XtraGrid.Columns.GridColumn colSOLUONG;
-        private DevExpress.XtraGrid.Columns.GridColumn colDONGIA;
         private DataSetTableAdapters.KhoTableAdapter khoTableAdapter;
         private System.Windows.Forms.BindingSource khoBindingSource;
         private System.Windows.Forms.ComboBox cmbKho;
@@ -740,5 +744,10 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private System.Windows.Forms.BindingSource dSVTBindingSource;
         private DataSetTableAdapters.DSVTTableAdapter dSVTTableAdapter;
+        private DevExpress.XtraBars.BarButtonItem btnUndo1;
+        private DevExpress.XtraGrid.Columns.GridColumn colMAPX1;
+        private DevExpress.XtraGrid.Columns.GridColumn colMAVT;
+        private DevExpress.XtraGrid.Columns.GridColumn colSOLUONG;
+        private DevExpress.XtraGrid.Columns.GridColumn colDONGIA;
     }
 }

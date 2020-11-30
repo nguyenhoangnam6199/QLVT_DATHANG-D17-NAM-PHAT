@@ -14,6 +14,9 @@ namespace QLVT_DATHANG
     public partial class frmVatTu : Form
     {
         private int vitri;
+        private Stack<String> stackundo = new Stack<string>(16);
+        String query = "";
+        Boolean isDel = true;
         public frmVatTu()
         {
             InitializeComponent();
@@ -85,11 +88,18 @@ namespace QLVT_DATHANG
                 groupBox1.Enabled = false;
             }
         }
-
+        private void loadUndo()
+        {
+            if (stackundo.Count != 0)
+            {
+                btnUndo.Enabled = true;
+            }
+            else btnUndo.Enabled = false;
+        }
         private void DisableForm()
         {
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = false;
-            btnGhi.Enabled = btnThoat.Enabled = btnUndo.Enabled = true;
+            btnGhi.Enabled = btnThoat.Enabled =  true;
         }
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -97,6 +107,7 @@ namespace QLVT_DATHANG
             groupBox1.Enabled = true;
             txtMa.Enabled = true;
             vattuBindingSource.AddNew();
+            isDel = true;
             DisableForm();
         }
 
@@ -123,6 +134,7 @@ namespace QLVT_DATHANG
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            //txtMa.Text = txtMa.Text.Replace(" ", "");
             if (txtMa.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("Mã vật tư không được thiếu!", "", MessageBoxButtons.OK);
@@ -135,7 +147,7 @@ namespace QLVT_DATHANG
                 txtMa.Focus();
                 return;
             }
-            else if (txtMa.Text.Contains(" "))
+            else if (txtMa.Text.Trim().Contains(" "))
             {
                 MessageBox.Show("Mã vật tư không được chứa khoảng trắng!", "", MessageBoxButtons.OK);
                 txtMa.Focus();
@@ -172,6 +184,10 @@ namespace QLVT_DATHANG
             }
             try
             {
+                if (isDel)
+                {
+                    query = String.Format("Delete from Vattu where MAVT=N'{0}'", txtMa.Text);
+                }
                 //Lưu vô dataset
                 vattuBindingSource.EndEdit();
                 vattuBindingSource.ResetCurrentItem();
@@ -179,6 +195,10 @@ namespace QLVT_DATHANG
                 //Lưu vô CSDL
                 this.vattuTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.vattuTableAdapter.Update(this.dataSet.Vattu);
+                MessageBox.Show("Ghi thành công !", "", MessageBoxButtons.OK);
+                stackundo.Push(query);
+                LoadTable();
+                loadUndo();
             }
             catch (Exception ex)
             {
@@ -186,7 +206,7 @@ namespace QLVT_DATHANG
                 return;
             }
           
-            LoadTable();
+            //LoadTable();
         }
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -211,6 +231,8 @@ namespace QLVT_DATHANG
             groupBox1.Enabled = true;
             txtMa.Enabled = false;
             DisableForm();
+            isDel = false;
+            query = String.Format("Update Vattu Set TENVT=N'{1}', DVT=N'{2}' Where MAVT=N'{0}' ",txtMa.Text, txtTen.Text,txtDVT.Text);
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -226,10 +248,17 @@ namespace QLVT_DATHANG
             {
                 try
                 {
-                    
+                    String mavattu = ((DataRowView)vattuBindingSource[vattuBindingSource.Position])["MAVT"].ToString();
+                    String tenvattu = ((DataRowView)vattuBindingSource[vattuBindingSource.Position])["TENVT"].ToString();
+                    String donvitinh = ((DataRowView)vattuBindingSource[vattuBindingSource.Position])["DVT"].ToString();
+                    query = String.Format("Insert into Vattu (MAVT, TENVT, DVT) values(N'{0}', N'{1}', N'{2}' )", mavattu,tenvattu,donvitinh);
                     vattuBindingSource.RemoveCurrent();
                     this.vattuTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.vattuTableAdapter.Update(this.dataSet.Vattu);
+                    MessageBox.Show("Xóa thành công !", "", MessageBoxButtons.OK);
+                    stackundo.Push(query);
+                    LoadTable();
+                    loadUndo();
                 }
                 catch (Exception ex)
                 {
@@ -243,6 +272,25 @@ namespace QLVT_DATHANG
 
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            String lenh = stackundo.Pop();
+            using (SqlConnection connection = new SqlConnection(Program.connstr))
+            {
+                connection.Open();
+                SqlCommand sqlcmt = new SqlCommand(lenh, connection);
+                sqlcmt.CommandType = CommandType.Text;
+                try
+                {
+                    //MessageBox.Show(lenh);
+                    sqlcmt.ExecuteNonQuery();
+                    LoadTable();
+                    loadUndo();
+                    //LoadTable();
+                }
+                catch
+                {
+                    MessageBox.Show(lenh);
+                }
+            }
         }
 
         private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

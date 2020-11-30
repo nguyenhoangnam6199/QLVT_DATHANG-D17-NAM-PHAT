@@ -17,6 +17,10 @@ namespace QLVT_DATHANG
         private int soluong;
         private string maDDH;
         private int vitri;
+        private bool isAdd = false;
+        private Stack<String> stackundo = new Stack<string>(16);
+        String query = "";
+        Boolean isDel = true;
         public frmPhieuNhap()
         {
             InitializeComponent();
@@ -60,8 +64,13 @@ namespace QLVT_DATHANG
                     btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
                     btnGhi.Enabled = btnUndo.Enabled = false;
                     panel1.Enabled = false;
-                    groupBox1.Enabled = true;
+                    groupBox1.Enabled = false;
                 }
+                if (stackundo.Count != 0)
+                {
+                    btnUndo1.Enabled = true;
+                }
+                else btnUndo1.Enabled = false;
             }
             catch(Exception ex)
             {
@@ -86,7 +95,7 @@ namespace QLVT_DATHANG
             cmbCN.ValueMember = "TENSERVER";
             cmbCN.SelectedIndex = Program.mChinhanh;
             btnGhiPN.Enabled = false;
-            groupBox1.Enabled = false;
+            //groupBox1.Enabled = false;
             // btnGhiCTDDH.Enabled = false;
 
         }
@@ -109,6 +118,8 @@ namespace QLVT_DATHANG
             groupBox1.Enabled = true;
             txtMaNV.Text = Program.username;
             txtMaNV.Enabled = false;
+            isAdd = true;
+            isDel = true;
         }
 
         private void cmbCN_SelectedIndexChanged(object sender, EventArgs e)
@@ -171,26 +182,31 @@ namespace QLVT_DATHANG
         }
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if(KiemTraPhieuNhap(txtMaPN.Text) == 1)
+            if (isAdd)
             {
-                MessageBox.Show("Mã Phiếu Nhập không được trùng !", "", MessageBoxButtons.OK);
-                txtMaPN.Focus();
-                return;
-            }
+                if (KiemTraPhieuNhap(txtMaPN.Text) == 1)
+                {
+                    MessageBox.Show("Mã Phiếu Nhập không được trùng !", "", MessageBoxButtons.OK);
+                    txtMaPN.Focus();
+                    return;
+                }
 
-            if (txtMaPN.Text == string.Empty)
-            {
-                MessageBox.Show("Mã Phiếu Nhập không được thiếu !", "", MessageBoxButtons.OK);
-                txtMaPN.Focus();
-                return;
-            }
+                if (txtMaPN.Text == string.Empty)
+                {
+                    MessageBox.Show("Mã Phiếu Nhập không được thiếu !", "", MessageBoxButtons.OK);
+                    txtMaPN.Focus();
+                    return;
+                }
 
-            if (txtMaPN.Text.Length > 8)
-            {
-                MessageBox.Show("Mã Phiếu Nhập không được hơn 8 ký tự !", "", MessageBoxButtons.OK);
-                txtMaPN.Focus();
-                return;
+                if (txtMaPN.Text.Length > 8)
+                {
+                    MessageBox.Show("Mã Phiếu Nhập không được hơn 8 ký tự !", "", MessageBoxButtons.OK);
+                    txtMaPN.Focus();
+                    return;
+                }
+                
             }
+            
 
             if (txtNgay.Text.Trim() == string.Empty)
             {
@@ -203,10 +219,14 @@ namespace QLVT_DATHANG
                 MessageBox.Show("Mã Đơn Đặt Hàng không được thiếu !", "", MessageBoxButtons.OK);
                 return;
             }
-
             if (KtraDonDathangTrenView(cmbDDH.Text) == false)
             {
                 MessageBox.Show("Đơn Đặt Hàng đã có phiếu nhập !", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (cmbKho.Text.Trim() == String.Empty)
+            {
+                MessageBox.Show("Mã kho không được trống !", "", MessageBoxButtons.OK);
                 return;
             }
 
@@ -217,6 +237,12 @@ namespace QLVT_DATHANG
 
                 this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.phieuNhapTableAdapter.Update(this.dataSet.PhieuNhap);
+
+                if (isDel == true)
+                {
+                    query = String.Format("Delete from PhieuNhap where MAPN=N'{0}'", txtMaPN.Text);
+                }
+                stackundo.Push(query);
 
                 MessageBox.Show("Ghi thành công!");
             }
@@ -229,6 +255,7 @@ namespace QLVT_DATHANG
             btnXoaCTPN.Enabled = true;
             btnGhiPN.Enabled = false;
             LoadTable();
+            groupBox1.Enabled = false;
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -236,7 +263,10 @@ namespace QLVT_DATHANG
             groupBox1.Enabled = true;
             vitri = phieuNhapBindingSource.Position;
             txtMaPN.Enabled= txtMaNV.Enabled = false;
+            isDel = false;
+            query = String.Format("Update PhieuNhap Set NGAY=N'{1}', MasoDDH=N'{2}', MANV={3}, MAKHO=N'{4}' Where MAPN=N'{0}' ", txtMaPN.Text, txtNgay.Text, cmbDDH.Text, Program.username, cmbKho.Text);
             DisEnableForm();
+            isAdd = false;
         }
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -267,10 +297,20 @@ namespace QLVT_DATHANG
             {
                 try
                 {
+                    String mapn = ((DataRowView)phieuNhapBindingSource[phieuNhapBindingSource.Position])["MAPN"].ToString();
+                    String ngay = ((DataRowView)phieuNhapBindingSource[phieuNhapBindingSource.Position])["NGAY"].ToString();
+                    String masoddh = ((DataRowView)phieuNhapBindingSource[phieuNhapBindingSource.Position])["MasoDDH"].ToString();
+                    String makho = ((DataRowView)phieuNhapBindingSource[phieuNhapBindingSource.Position])["MAKHO"].ToString();
+
                     phieuNhapBindingSource.RemoveCurrent();
 
                     this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.phieuNhapTableAdapter.Update(this.dataSet.PhieuNhap);
+
+                    query = String.Format("Insert into PhieuNhap (MAPN, NGAY, MasoDDH, MANV, MAKHO) values(N'{0}', N'{1}', N'{2}',{3},N'{4}' )", mapn, ngay, masoddh, Program.username, makho);
+                    stackundo.Push(query);
+                    LoadTable();
+
                 }
                 catch (Exception ex)
                 {
@@ -458,6 +498,27 @@ namespace QLVT_DATHANG
             cTPNBindingSource.AddNew();
             btnGhiPN.Enabled = true;
             btnThemCTPN.Enabled = btnXoaCTPN.Enabled = false;
+        }
+
+        private void btnUndo1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            String lenh = stackundo.Pop();
+            using (SqlConnection connection = new SqlConnection(Program.connstr))
+            {
+                connection.Open();
+                SqlCommand sqlcmt = new SqlCommand(lenh, connection);
+                sqlcmt.CommandType = CommandType.Text;
+                try
+                {
+                    //MessageBox.Show(lenh);
+                    sqlcmt.ExecuteNonQuery();
+                    LoadTable();
+                }
+                catch
+                {
+                    MessageBox.Show(lenh);
+                }
+            }
         }
     }
 }

@@ -45,8 +45,7 @@ namespace QLVT_DATHANG
                 MessageBox.Show("Ngày kết thúc không được nhỏ hơn ngày bắt đầu", string.Empty, MessageBoxButtons.OK);
                 return;
             }
-
-            Report_SP_BANGKEVATTU rp = new Report_SP_BANGKEVATTU(quyen,loai,bd,kt);
+            Report_SP_BANGKEVATTU rp = new Report_SP_BANGKEVATTU(quyen, loai, bd, kt);
 
             dateTimePicker2.CustomFormat = dateTimePicker1.CustomFormat = "dd/MM/yyyy";
             String bd1 = dateTimePicker1.Text;

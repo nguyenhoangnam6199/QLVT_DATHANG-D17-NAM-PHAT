@@ -330,16 +330,16 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1126, 30);
+            this.barDockControlTop.Size = new System.Drawing.Size(1125, 30);
             this.barDockControlTop.UseWaitCursor = true;
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 707);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 554);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1126, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1125, 20);
             this.barDockControlBottom.UseWaitCursor = true;
             // 
             // barDockControlLeft
@@ -348,16 +348,16 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 677);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 524);
             this.barDockControlLeft.UseWaitCursor = true;
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1126, 30);
+            this.barDockControlRight.Location = new System.Drawing.Point(1125, 30);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 677);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 524);
             this.barDockControlRight.UseWaitCursor = true;
             // 
             // panel1
@@ -367,7 +367,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1126, 84);
+            this.panel1.Size = new System.Drawing.Size(1125, 84);
             this.panel1.TabIndex = 4;
             this.panel1.UseWaitCursor = true;
             // 
@@ -443,14 +443,14 @@
             // 
             this.nhanVienGridControl.DataSource = this.nhanVienBindingSource;
             this.nhanVienGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.nhanVienGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.nhanVienGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.nhanVienGridControl.EmbeddedNavigator.UseWaitCursor = true;
             this.nhanVienGridControl.Location = new System.Drawing.Point(0, 114);
             this.nhanVienGridControl.MainView = this.gridView1;
-            this.nhanVienGridControl.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.nhanVienGridControl.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.nhanVienGridControl.MenuManager = this.barManager1;
             this.nhanVienGridControl.Name = "nhanVienGridControl";
-            this.nhanVienGridControl.Size = new System.Drawing.Size(1126, 430);
+            this.nhanVienGridControl.Size = new System.Drawing.Size(1125, 230);
             this.nhanVienGridControl.TabIndex = 6;
             this.nhanVienGridControl.UseWaitCursor = true;
             this.nhanVienGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -467,7 +467,7 @@
             this.colLUONG,
             this.colMACN,
             this.colTrangThaiXoa});
-            this.gridView1.DetailHeight = 682;
+            this.gridView1.DetailHeight = 852;
             this.gridView1.GridControl = this.nhanVienGridControl;
             this.gridView1.Name = "gridView1";
             // 
@@ -475,81 +475,81 @@
             // 
             this.colMANV.Caption = "Mã NV";
             this.colMANV.FieldName = "MANV";
-            this.colMANV.MinWidth = 49;
+            this.colMANV.MinWidth = 61;
             this.colMANV.Name = "colMANV";
             this.colMANV.Visible = true;
             this.colMANV.VisibleIndex = 0;
-            this.colMANV.Width = 182;
+            this.colMANV.Width = 227;
             // 
             // colHO
             // 
             this.colHO.Caption = "Họ";
             this.colHO.FieldName = "HO";
-            this.colHO.MinWidth = 49;
+            this.colHO.MinWidth = 61;
             this.colHO.Name = "colHO";
             this.colHO.Visible = true;
             this.colHO.VisibleIndex = 1;
-            this.colHO.Width = 182;
+            this.colHO.Width = 227;
             // 
             // colTEN
             // 
             this.colTEN.Caption = "Tên";
             this.colTEN.FieldName = "TEN";
-            this.colTEN.MinWidth = 49;
+            this.colTEN.MinWidth = 61;
             this.colTEN.Name = "colTEN";
             this.colTEN.Visible = true;
             this.colTEN.VisibleIndex = 2;
-            this.colTEN.Width = 182;
+            this.colTEN.Width = 227;
             // 
             // colDIACHI
             // 
             this.colDIACHI.Caption = "Địa Chỉ";
             this.colDIACHI.FieldName = "DIACHI";
-            this.colDIACHI.MinWidth = 49;
+            this.colDIACHI.MinWidth = 61;
             this.colDIACHI.Name = "colDIACHI";
             this.colDIACHI.Visible = true;
             this.colDIACHI.VisibleIndex = 3;
-            this.colDIACHI.Width = 182;
+            this.colDIACHI.Width = 227;
             // 
             // colNGAYSINH
             // 
             this.colNGAYSINH.Caption = "Ngày Sinh";
             this.colNGAYSINH.FieldName = "NGAYSINH";
-            this.colNGAYSINH.MinWidth = 49;
+            this.colNGAYSINH.MinWidth = 61;
             this.colNGAYSINH.Name = "colNGAYSINH";
             this.colNGAYSINH.Visible = true;
             this.colNGAYSINH.VisibleIndex = 4;
-            this.colNGAYSINH.Width = 182;
+            this.colNGAYSINH.Width = 227;
             // 
             // colLUONG
             // 
             this.colLUONG.Caption = "Lương";
             this.colLUONG.FieldName = "LUONG";
-            this.colLUONG.MinWidth = 49;
+            this.colLUONG.MinWidth = 61;
             this.colLUONG.Name = "colLUONG";
             this.colLUONG.Visible = true;
             this.colLUONG.VisibleIndex = 5;
-            this.colLUONG.Width = 182;
+            this.colLUONG.Width = 227;
             // 
             // colMACN
             // 
             this.colMACN.Caption = "Mã CN";
             this.colMACN.FieldName = "MACN";
-            this.colMACN.MinWidth = 49;
+            this.colMACN.MinWidth = 61;
             this.colMACN.Name = "colMACN";
             this.colMACN.Visible = true;
             this.colMACN.VisibleIndex = 6;
-            this.colMACN.Width = 182;
+            this.colMACN.Width = 227;
             // 
             // colTrangThaiXoa
             // 
             this.colTrangThaiXoa.Caption = "Trạng Thái Xóa";
             this.colTrangThaiXoa.FieldName = "TrangThaiXoa";
-            this.colTrangThaiXoa.MinWidth = 49;
+            this.colTrangThaiXoa.MinWidth = 61;
             this.colTrangThaiXoa.Name = "colTrangThaiXoa";
             this.colTrangThaiXoa.Visible = true;
             this.colTrangThaiXoa.VisibleIndex = 7;
-            this.colTrangThaiXoa.Width = 182;
+            this.colTrangThaiXoa.Width = 227;
             // 
             // groupBox1
             // 
@@ -570,9 +570,9 @@
             this.groupBox1.Controls.Add(mANVLabel);
             this.groupBox1.Controls.Add(this.txtMaNV);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 544);
+            this.groupBox1.Location = new System.Drawing.Point(0, 344);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1126, 163);
+            this.groupBox1.Size = new System.Drawing.Size(1125, 210);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.UseWaitCursor = true;
@@ -707,7 +707,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1126, 727);
+            this.ClientSize = new System.Drawing.Size(1125, 574);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.nhanVienGridControl);
             this.Controls.Add(this.panel1);

@@ -443,11 +443,11 @@
             // 
             this.nhanVienGridControl.DataSource = this.nhanVienBindingSource;
             this.nhanVienGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.nhanVienGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.nhanVienGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(8);
             this.nhanVienGridControl.EmbeddedNavigator.UseWaitCursor = true;
             this.nhanVienGridControl.Location = new System.Drawing.Point(0, 114);
             this.nhanVienGridControl.MainView = this.gridView1;
-            this.nhanVienGridControl.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.nhanVienGridControl.Margin = new System.Windows.Forms.Padding(8);
             this.nhanVienGridControl.MenuManager = this.barManager1;
             this.nhanVienGridControl.Name = "nhanVienGridControl";
             this.nhanVienGridControl.Size = new System.Drawing.Size(1125, 230);

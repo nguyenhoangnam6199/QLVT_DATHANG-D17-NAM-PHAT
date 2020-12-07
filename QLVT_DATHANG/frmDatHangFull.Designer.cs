@@ -41,6 +41,7 @@
             this.btnSua = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnGhi = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUndo1 = new DevExpress.XtraBars.BarButtonItem();
             this.btnReload = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -89,7 +90,6 @@
             this.phieuNhapBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fKPhieuNhapDatHangBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dSVTTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
-            this.btnUndo1 = new DevExpress.XtraBars.BarButtonItem();
             masoDDHLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
             nhaCCLabel = new System.Windows.Forms.Label();
@@ -238,6 +238,15 @@
             this.btnGhi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGhi.ImageOptions.LargeImage")));
             this.btnGhi.Name = "btnGhi";
             this.btnGhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGhi_ItemClick);
+            // 
+            // btnUndo1
+            // 
+            this.btnUndo1.Caption = "Undo";
+            this.btnUndo1.Id = 7;
+            this.btnUndo1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo1.ImageOptions.Image")));
+            this.btnUndo1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnUndo1.ImageOptions.LargeImage")));
+            this.btnUndo1.Name = "btnUndo1";
+            this.btnUndo1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo1_ItemClick);
             // 
             // btnReload
             // 
@@ -671,15 +680,6 @@
             // dSVTTableAdapter
             // 
             this.dSVTTableAdapter.ClearBeforeFill = true;
-            // 
-            // btnUndo1
-            // 
-            this.btnUndo1.Caption = "Undo";
-            this.btnUndo1.Id = 7;
-            this.btnUndo1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.btnUndo1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.btnUndo1.Name = "btnUndo1";
-            this.btnUndo1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo1_ItemClick);
             // 
             // frmDatHangFull
             // 

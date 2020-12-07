@@ -41,6 +41,7 @@
             this.btnSua = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnGhi = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUndo1 = new DevExpress.XtraBars.BarButtonItem();
             this.btnReload = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -90,7 +91,6 @@
             this.cTDDHBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cTDDHTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.CTDDHTableAdapter();
             this.dSVTTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
-            this.btnUndo1 = new DevExpress.XtraBars.BarButtonItem();
             mAPNLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
             masoDDHLabel = new System.Windows.Forms.Label();
@@ -240,6 +240,15 @@
             this.btnGhi.Name = "btnGhi";
             this.btnGhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGhi_ItemClick);
             // 
+            // btnUndo1
+            // 
+            this.btnUndo1.Caption = "Undo";
+            this.btnUndo1.Id = 7;
+            this.btnUndo1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo1.ImageOptions.Image")));
+            this.btnUndo1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnUndo1.ImageOptions.LargeImage")));
+            this.btnUndo1.Name = "btnUndo1";
+            this.btnUndo1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo1_ItemClick);
+            // 
             // btnReload
             // 
             this.btnReload.Caption = "Reload";
@@ -384,6 +393,7 @@
             // 
             // phieuNhapGridControl
             // 
+            this.phieuNhapGridControl.ContextMenuStrip = this.contextMenuStrip1;
             this.phieuNhapGridControl.DataSource = this.phieuNhapBindingSource;
             this.phieuNhapGridControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.phieuNhapGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(5);
@@ -677,15 +687,6 @@
             // dSVTTableAdapter
             // 
             this.dSVTTableAdapter.ClearBeforeFill = true;
-            // 
-            // btnUndo1
-            // 
-            this.btnUndo1.Caption = "Undo";
-            this.btnUndo1.Id = 7;
-            this.btnUndo1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.btnUndo1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.btnUndo1.Name = "btnUndo1";
-            this.btnUndo1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo1_ItemClick);
             // 
             // frmPhieuNhap
             // 

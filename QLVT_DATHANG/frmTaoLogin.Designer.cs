@@ -33,6 +33,7 @@
             System.Windows.Forms.Label hotenLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTaoLogin));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.cmbHoTen = new System.Windows.Forms.ComboBox();
             this.dSNhanVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new QLVT_DATHANG.DataSet();
@@ -49,7 +50,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dSNhanVienTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.DSNhanVienTableAdapter();
             this.tableAdapterManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             maNVLabel = new System.Windows.Forms.Label();
             hotenLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -79,6 +79,7 @@
             // groupBox1
             // 
             this.groupBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox1.BackgroundImage")));
+            this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(hotenLabel);
             this.groupBox1.Controls.Add(this.cmbHoTen);
@@ -100,6 +101,17 @@
             this.groupBox1.Size = new System.Drawing.Size(776, 475);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(521, 157);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(140, 21);
+            this.checkBox1.TabIndex = 15;
+            this.checkBox1.Text = "Hiển thị mật khẩu";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // cmbHoTen
             // 
@@ -251,23 +263,14 @@
             this.tableAdapterManager.CTPXTableAdapter = null;
             this.tableAdapterManager.DatHangTableAdapter = null;
             this.tableAdapterManager.DSNhanVienTableAdapter = this.dSNhanVienTableAdapter;
+            this.tableAdapterManager.DSVTTableAdapter = null;
             this.tableAdapterManager.KhoTableAdapter = null;
             this.tableAdapterManager.NhanVienTableAdapter = null;
             this.tableAdapterManager.PhieuNhapTableAdapter = null;
             this.tableAdapterManager.PhieuXuatTableAdapter = null;
+            this.tableAdapterManager.sp_DSNhanVienTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(521, 157);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(140, 21);
-            this.checkBox1.TabIndex = 15;
-            this.checkBox1.Text = "Hiển thị mật khẩu";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // frmTaoLogin
             // 

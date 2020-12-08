@@ -30,5 +30,10 @@ namespace QLVT_DATHANG
             ReportPrintTool print = new ReportPrintTool(report);
             print.ShowPreviewDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

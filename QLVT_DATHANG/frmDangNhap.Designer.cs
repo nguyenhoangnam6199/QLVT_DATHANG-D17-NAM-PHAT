@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDangNhap));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbMK = new System.Windows.Forms.CheckBox();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.txtMatKhau = new System.Windows.Forms.TextBox();
@@ -37,14 +39,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbMK = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.BackgroundImage = global::QLVT_DATHANG.Properties.Resources.imageLogin1;
-            this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.groupBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox1.BackgroundImage")));
+            this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBox1.Controls.Add(this.cbMK);
             this.groupBox1.Controls.Add(this.btnThoat);
             this.groupBox1.Controls.Add(this.btnDangNhap);
@@ -61,6 +62,18 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // cbMK
+            // 
+            this.cbMK.AutoSize = true;
+            this.cbMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMK.Location = new System.Drawing.Point(558, 235);
+            this.cbMK.Name = "cbMK";
+            this.cbMK.Size = new System.Drawing.Size(184, 29);
+            this.cbMK.TabIndex = 8;
+            this.cbMK.Text = "Hiển thị mật khẩu";
+            this.cbMK.UseVisualStyleBackColor = true;
+            this.cbMK.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // btnThoat
             // 
@@ -141,18 +154,6 @@
             this.label1.Size = new System.Drawing.Size(113, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Chi nhánh: ";
-            // 
-            // cbMK
-            // 
-            this.cbMK.AutoSize = true;
-            this.cbMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMK.Location = new System.Drawing.Point(558, 235);
-            this.cbMK.Name = "cbMK";
-            this.cbMK.Size = new System.Drawing.Size(184, 29);
-            this.cbMK.TabIndex = 8;
-            this.cbMK.Text = "Hiển thị mật khẩu";
-            this.cbMK.UseVisualStyleBackColor = true;
-            this.cbMK.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // frmDangNhap
             // 

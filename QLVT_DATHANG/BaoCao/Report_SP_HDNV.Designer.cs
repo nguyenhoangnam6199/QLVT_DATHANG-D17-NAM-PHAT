@@ -302,7 +302,9 @@
             this.label1.Name = "label1";
             this.label1.SizeF = new System.Drawing.SizeF(640F, 24.19433F);
             this.label1.StyleName = "Title";
+            this.label1.StylePriority.UseTextAlignment = false;
             this.label1.Text = "HOẠT ĐỘNG CỦA NHÂN VIÊN";
+            this.label1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // GroupHeader3
             // 

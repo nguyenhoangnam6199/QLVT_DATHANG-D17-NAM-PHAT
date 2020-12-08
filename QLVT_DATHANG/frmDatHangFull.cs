@@ -83,7 +83,6 @@ namespace QLVT_DATHANG
         }
         private void frmDatHangFull_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataSet.DSVT' table. You can move, or remove it, as needed.
             this.dSVTTableAdapter.Fill(this.dataSet.DSVT);
             if (Program.mGroup != "CONGTY")
             {

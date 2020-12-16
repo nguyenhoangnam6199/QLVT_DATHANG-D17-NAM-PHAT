@@ -62,6 +62,7 @@ namespace QLVT_DATHANG
                     btnReload.Enabled = btnThoat.Enabled = true;
                     panel1.Enabled = true;
                     groupBox1.Enabled = false;
+                    contextMenuStrip1.Enabled = false;
                 }
                 else
                 {
@@ -75,7 +76,7 @@ namespace QLVT_DATHANG
                     btnUndo1.Enabled = true;
                 }
                 else btnUndo1.Enabled = false;
-                cTDDHGridControl.Enabled = false;
+                //cTDDHGridControl.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -360,8 +361,6 @@ namespace QLVT_DATHANG
             if (mavt == String.Empty)
             {
                 MessageBox.Show("Vật tư không được thiếu!", "", MessageBoxButtons.OK);
-                //cTDDHBindingSource.RemoveCurrent();
-                //btnGhiCTDDH.Enabled = false;
                 btnThemCTDDH.Enabled = false;
                 btnXoaCTDDH.Enabled = false;
                 return;
@@ -370,8 +369,6 @@ namespace QLVT_DATHANG
             if (ktctddh(maddh,mavt)==1)
             {
                 MessageBox.Show("Vật tư không được trùng!", "", MessageBoxButtons.OK);
-                //cTDDHBindingSource.RemoveCurrent();
-                //btnGhiCTDDH.Enabled = false;
                 btnThemCTDDH.Enabled = false;
                 btnXoaCTDDH.Enabled = false;
                 return;
@@ -380,7 +377,6 @@ namespace QLVT_DATHANG
             if (soluong == string.Empty)
             {
                 MessageBox.Show("Số lượng không được thiếu!", "", MessageBoxButtons.OK);
-                //btnGhiCTDDH.Enabled = false;
                 btnThemCTDDH.Enabled = false;
                 btnXoaCTDDH.Enabled = false;
                 return;
@@ -389,7 +385,6 @@ namespace QLVT_DATHANG
             if (dongia == string.Empty)
             {
                 MessageBox.Show("Đơn giá không được thiếu!", "", MessageBoxButtons.OK);
-                //btnGhiCTDDH.Enabled = false;
                 btnThemCTDDH.Enabled = false;
                 btnXoaCTDDH.Enabled = false;
                 return;
@@ -411,12 +406,12 @@ namespace QLVT_DATHANG
             }
             btnThemCTDDH.Enabled = btnXoaCTDDH.Enabled = true;
             btnGhiCTDDH.Enabled = false;
-            cTDDHGridControl.Enabled = true;
+            //cTDDHGridControl.Enabled = true;
         }
 
         private void themCTDDH_CLICK(object sender, EventArgs e)
         {
-            cTDDHGridControl.Enabled = true;
+            //cTDDHGridControl.Enabled = true;
             cTDDHBindingSource.AddNew();
             btnGhiCTDDH.Enabled = true;
             btnThemCTDDH.Enabled= btnXoaCTDDH.Enabled = false;
@@ -424,7 +419,7 @@ namespace QLVT_DATHANG
 
         private void btnXoaCTDDH_Click(object sender, EventArgs e)
         {
-            cTDDHGridControl.Enabled = true;
+           // cTDDHGridControl.Enabled = true;
             if (MessageBox.Show("Bạn thực sự muốn xóa ??", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 try

@@ -61,6 +61,7 @@ namespace QLVT_DATHANG
                     btnReload.Enabled = btnThoat.Enabled = true;
                     panel1.Enabled = true;
                     groupBox1.Enabled = false;
+                    contextMenuStrip1.Enabled = false;
                 }
                 else
                 {

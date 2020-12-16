@@ -61,6 +61,10 @@
             this.datHangTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.DatHangTableAdapter();
             this.khoTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.KhoTableAdapter();
             this.phieuNhapGridControl = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnThemCTPN = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnXoaCTPN = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnGhiPN = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAPN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNGAY = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -72,9 +76,10 @@
             this.khoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtMaNV = new DevExpress.XtraEditors.TextEdit();
             this.cmbDDH = new System.Windows.Forms.ComboBox();
-            this.datHangBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.donHangChuaCoPNBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtNgay = new DevExpress.XtraEditors.DateEdit();
             this.txtMaPN = new DevExpress.XtraEditors.TextEdit();
+            this.datHangBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cTPNBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cTPNGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -84,13 +89,10 @@
             this.dSVTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnThemCTPN = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnXoaCTPN = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnGhiPN = new System.Windows.Forms.ToolStripMenuItem();
             this.cTDDHBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cTDDHTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.CTDDHTableAdapter();
             this.dSVTTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
+            this.donHangChuaCoPNTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.DonHangChuaCoPNTableAdapter();
             mAPNLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
             masoDDHLabel = new System.Windows.Forms.Label();
@@ -101,20 +103,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phieuNhapBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phieuNhapGridControl)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.khoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNV.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.datHangBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donHangChuaCoPNBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgay.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgay.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPN.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datHangBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTPNBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTPNGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSVTBindingSource)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cTDDHBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -407,6 +410,37 @@
             this.phieuNhapGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnThemCTPN,
+            this.btnXoaCTPN,
+            this.btnGhiPN});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(116, 76);
+            // 
+            // btnThemCTPN
+            // 
+            this.btnThemCTPN.Name = "btnThemCTPN";
+            this.btnThemCTPN.Size = new System.Drawing.Size(115, 24);
+            this.btnThemCTPN.Text = "Thêm";
+            this.btnThemCTPN.Click += new System.EventHandler(this.btnThemCTPN_Click);
+            // 
+            // btnXoaCTPN
+            // 
+            this.btnXoaCTPN.Name = "btnXoaCTPN";
+            this.btnXoaCTPN.Size = new System.Drawing.Size(115, 24);
+            this.btnXoaCTPN.Text = "Xóa";
+            this.btnXoaCTPN.Click += new System.EventHandler(this.btnXoaCTPN_Click);
+            // 
+            // btnGhiPN
+            // 
+            this.btnGhiPN.Name = "btnGhiPN";
+            this.btnGhiPN.Size = new System.Drawing.Size(115, 24);
+            this.btnGhiPN.Text = "Ghi";
+            this.btnGhiPN.Click += new System.EventHandler(this.btnGhiPN_Click);
+            // 
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -432,6 +466,8 @@
             // colNGAY
             // 
             this.colNGAY.Caption = "Ngày";
+            this.colNGAY.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.colNGAY.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.colNGAY.FieldName = "NGAY";
             this.colNGAY.MinWidth = 39;
             this.colNGAY.Name = "colNGAY";
@@ -518,19 +554,19 @@
             // cmbDDH
             // 
             this.cmbDDH.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.phieuNhapBindingSource, "MasoDDH", true));
-            this.cmbDDH.DataSource = this.datHangBindingSource;
-            this.cmbDDH.DisplayMember = "MasoDDH";
+            this.cmbDDH.DataSource = this.donHangChuaCoPNBindingSource;
+            this.cmbDDH.DisplayMember = "Mã số DDH";
             this.cmbDDH.FormattingEnabled = true;
             this.cmbDDH.Location = new System.Drawing.Point(172, 114);
             this.cmbDDH.Name = "cmbDDH";
             this.cmbDDH.Size = new System.Drawing.Size(209, 24);
             this.cmbDDH.TabIndex = 5;
-            this.cmbDDH.ValueMember = "MasoDDH";
+            this.cmbDDH.ValueMember = "Mã số DDH";
             // 
-            // datHangBindingSource
+            // donHangChuaCoPNBindingSource
             // 
-            this.datHangBindingSource.DataMember = "DatHang";
-            this.datHangBindingSource.DataSource = this.dataSet;
+            this.donHangChuaCoPNBindingSource.DataMember = "DonHangChuaCoPN";
+            this.donHangChuaCoPNBindingSource.DataSource = this.dataSet;
             // 
             // txtNgay
             // 
@@ -554,6 +590,11 @@
             this.txtMaPN.Name = "txtMaPN";
             this.txtMaPN.Size = new System.Drawing.Size(209, 22);
             this.txtMaPN.TabIndex = 1;
+            // 
+            // datHangBindingSource
+            // 
+            this.datHangBindingSource.DataMember = "DatHang";
+            this.datHangBindingSource.DataSource = this.dataSet;
             // 
             // cTPNBindingSource
             // 
@@ -594,6 +635,7 @@
             this.colMAPN1.FieldName = "MAPN";
             this.colMAPN1.MinWidth = 39;
             this.colMAPN1.Name = "colMAPN1";
+            this.colMAPN1.OptionsColumn.ReadOnly = true;
             this.colMAPN1.Visible = true;
             this.colMAPN1.VisibleIndex = 0;
             this.colMAPN1.Width = 146;
@@ -644,37 +686,6 @@
             this.colDONGIA.VisibleIndex = 3;
             this.colDONGIA.Width = 146;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnThemCTPN,
-            this.btnXoaCTPN,
-            this.btnGhiPN});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(116, 76);
-            // 
-            // btnThemCTPN
-            // 
-            this.btnThemCTPN.Name = "btnThemCTPN";
-            this.btnThemCTPN.Size = new System.Drawing.Size(115, 24);
-            this.btnThemCTPN.Text = "Thêm";
-            this.btnThemCTPN.Click += new System.EventHandler(this.btnThemCTPN_Click);
-            // 
-            // btnXoaCTPN
-            // 
-            this.btnXoaCTPN.Name = "btnXoaCTPN";
-            this.btnXoaCTPN.Size = new System.Drawing.Size(115, 24);
-            this.btnXoaCTPN.Text = "Xóa";
-            this.btnXoaCTPN.Click += new System.EventHandler(this.btnXoaCTPN_Click);
-            // 
-            // btnGhiPN
-            // 
-            this.btnGhiPN.Name = "btnGhiPN";
-            this.btnGhiPN.Size = new System.Drawing.Size(115, 24);
-            this.btnGhiPN.Text = "Ghi";
-            this.btnGhiPN.Click += new System.EventHandler(this.btnGhiPN_Click);
-            // 
             // cTDDHBindingSource
             // 
             this.cTDDHBindingSource.DataMember = "FK_CTDDH_DatHang";
@@ -687,6 +698,10 @@
             // dSVTTableAdapter
             // 
             this.dSVTTableAdapter.ClearBeforeFill = true;
+            // 
+            // donHangChuaCoPNTableAdapter
+            // 
+            this.donHangChuaCoPNTableAdapter.ClearBeforeFill = true;
             // 
             // frmPhieuNhap
             // 
@@ -712,21 +727,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phieuNhapBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phieuNhapGridControl)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.khoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNV.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.datHangBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donHangChuaCoPNBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgay.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgay.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPN.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datHangBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTPNBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTPNGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSVTBindingSource)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cTDDHBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -791,5 +807,7 @@
         private System.Windows.Forms.BindingSource dSVTBindingSource;
         private DataSetTableAdapters.DSVTTableAdapter dSVTTableAdapter;
         private DevExpress.XtraBars.BarButtonItem btnUndo1;
+        private System.Windows.Forms.BindingSource donHangChuaCoPNBindingSource;
+        private DataSetTableAdapters.DonHangChuaCoPNTableAdapter donHangChuaCoPNTableAdapter;
     }
 }

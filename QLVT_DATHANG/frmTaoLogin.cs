@@ -66,7 +66,7 @@ namespace QLVT_DATHANG
                 catch (Exception ex)
                 {
                     result = false;
-                   // MessageBox.Show(ex.Message + " ");
+                    MessageBox.Show(ex.Message + " ");
                 }
             }
             return result;
@@ -99,7 +99,7 @@ namespace QLVT_DATHANG
                 }
                 catch (Exception ex)
                 {
-                   // MessageBox.Show(ex.Message + " ");
+                    //MessageBox.Show(ex.Message + " ");
                 }
                 return result;
             }

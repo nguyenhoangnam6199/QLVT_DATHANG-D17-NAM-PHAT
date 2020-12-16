@@ -169,20 +169,17 @@ namespace QLVT_DATHANG
             txtCN.Text = macn;
             txtTTX.Text = "0";
             txtTTX.Enabled = false;
-
+            txtNgaySinh.Text = "1/1/2000";
             query = String.Format("Delete from NhanVien where MANV={0}", txtMaNV.Text);
-            
+            btnUndo.Enabled = false;
             DisableForm();
         }
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (txtMaNV.Text.Trim() == String.Empty)
-            {
-                MessageBox.Show("Mã nhân viên không được thiếu !", string.Empty, MessageBoxButtons.OK);
-                txtMaNV.Focus();
-                return;
-            }
+            txtHo.Text = chuanhoa(txtHo.Text);
+            txtTen.Text = chuanhoa(txtTen.Text);
+            txtDiaChi.Text = chuanhoa(txtDiaChi.Text);
             if (txtHo.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("Họ nhân viên không được thiếu !", string.Empty, MessageBoxButtons.OK);
@@ -207,6 +204,12 @@ namespace QLVT_DATHANG
                 txtNgaySinh.Focus();
                 return;
             }
+            if (DateTime.Now.Year-txtNgaySinh.DateTime.Year<20)
+            {
+                MessageBox.Show("Ngày sinh không hợp lệ !", string.Empty, MessageBoxButtons.OK);
+                txtNgaySinh.Focus();
+                return;
+            }    
             if (txtLuong.Value < 4000000)
             {
                 MessageBox.Show("Vui lòng nhập lương lớn hơn 4.000.000", "", MessageBoxButtons.OK);
@@ -242,6 +245,7 @@ namespace QLVT_DATHANG
             vitri = nhanVienBindingSource.Position;
             txtMaNV.Enabled = false;
             txtTTX.Enabled = false;
+            btnUndo.Enabled = false;
             DisableForm();
             query = String.Format("Update NhanVien Set HO=N'{1}',TEN=N'{2}',DIACHI=N'{3}',NGAYSINH=N'{4}',LUONG={5},MACN=N'{6}',TrangThaiXoa={7} where MANV={0}", txtMaNV.Text, txtHo.Text, txtTen.Text, txtDiaChi.Text, txtNgaySinh.Text, txtLuong.Text, txtCN.Text, txtTTX.Text);
           
@@ -294,24 +298,99 @@ namespace QLVT_DATHANG
                     float luong = float.Parse(((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["LUONG"].ToString());
                     String macn = ((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["MACN"].ToString();
                     String ttx = ((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["TrangThaiXoa"].ToString();
-                    query = String.Format("Update NhanVien Set TrangThaiXoa=0 where MANV={0}", manv);
-                    String lenh = String.Format("Update NhanVien Set TrangThaiXoa=1 where MANV={0}", manv);
+                    //nhanVienBindingSource.RemoveCurrent();
+                    //this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
+                    //this.nhanVienTableAdapter.Update(this.dataSet.NhanVien);
+                   
+                    Boolean kiemtra = false;
+                    String lenh2 = String.Format("EXEC sp_kiemtranhanviencologin {0} ", manv);
                     using (SqlConnection connection = new SqlConnection(Program.connstr))
                     {
                         connection.Open();
-                        SqlCommand sqlcmt = new SqlCommand(lenh, connection);
+                        SqlCommand sqlcmt = new SqlCommand(lenh2, connection);
                         sqlcmt.CommandType = CommandType.Text;
                         try
                         {
-                            sqlcmt.ExecuteNonQuery();
+                            SqlDataReader a = sqlcmt.ExecuteReader();
+                            
+                            while (a.Read())
+                            {
+                                kiemtra = true;
+                            }
 
                         }
                         catch
                         {
-                            MessageBox.Show(lenh);
+                            MessageBox.Show(lenh2);
                         }
                     }
-                    //nhanVienBindingSource.RemoveCurrent();
+                    
+                    if (kiemtra)
+                    {
+                        String lenh3 = String.Format("EXEC sp_checkquyenxoanhanvien {0},{1} ", manv, Program.mGroup);
+                        using (SqlConnection connection = new SqlConnection(Program.connstr))
+                        {
+                            connection.Open();
+                            SqlCommand sqlcmt = new SqlCommand(lenh3, connection);
+                            sqlcmt.CommandType = CommandType.Text;
+                            try
+                            {
+                                //MessageBox.Show(lenh3);
+                                sqlcmt.ExecuteNonQuery();
+                                //SqlDataReader a = sqlcmt.ExecuteReader();
+
+                                //while (a.Read())
+                                //{
+                                //    kiemtra = true;
+                                //}
+
+                            }
+                            catch (SqlException ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                                return;
+                            }
+                        }
+                        String lenh1 = String.Format("EXEC sp_layloginname {0} ", manv);
+                        String Loginname = "";
+                        using (SqlConnection connection = new SqlConnection(Program.connstr))
+                        {
+                            connection.Open();
+                            SqlCommand sqlcmt = new SqlCommand(lenh1, connection);
+                            sqlcmt.CommandType = CommandType.Text;
+                            try
+                            {
+                                Loginname = (string)sqlcmt.ExecuteScalar();
+
+                            }
+                            catch
+                            {
+                                MessageBox.Show(lenh1);
+                            }
+                        }
+                        query = String.Format("EXEC sp_undoxoanhanvien '{0}',{1},N'{2}',N'{3}',N'{4}','{5}', {6},'{7}'", Loginname, manv, ho, ten, diachi, ngaysinh, luong, macn);
+                        String lenh = String.Format("EXEC sp_xoatkdangnhap {0} ", manv);
+                        using (SqlConnection connection = new SqlConnection(Program.connstr))
+                        {
+                            connection.Open();
+                            SqlCommand sqlcmt = new SqlCommand(lenh, connection);
+                            sqlcmt.CommandType = CommandType.Text;
+                            try
+                            {
+                                sqlcmt.ExecuteNonQuery();
+
+                            }
+                            catch
+                            {
+                                MessageBox.Show(lenh);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        query = String.Format("insert into NhanVien (MANV, HO, TEN, DIACHI, NGAYSINH, LUONG, MACN, TrangThaiXoa) Values ({0},N'{1}',N'{2}',N'{3}','{4}',{5},'{6}',0)", manv, ho, ten, diachi, ngaysinh, luong, macn);
+                    }
+                    nhanVienBindingSource.RemoveCurrent();
                     this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.nhanVienTableAdapter.Update(this.dataSet.NhanVien);
              
@@ -405,6 +484,7 @@ namespace QLVT_DATHANG
                 sqlcmt.CommandType = CommandType.Text;
                 try
                 {
+                    //MessageBox.Show(lenh);
                     sqlcmt.ExecuteNonQuery();
                     LoadTable();
                     loadUndo();
@@ -415,6 +495,16 @@ namespace QLVT_DATHANG
                     MessageBox.Show(lenh);
                 }
             }
+        }
+        private String chuanhoa(String a)
+        {
+            a = a.Trim();
+            while(a.Contains("  "))
+            {
+               a = a.Replace("  ", " ");
+            }
+            a = new System.Globalization.CultureInfo("en-US", false).TextInfo.ToTitleCase(a.ToLower());
+            return a;
         }
     }
 }

@@ -324,22 +324,7 @@
     <None Include="Resources\imageLogin1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\site_1.sql" />
-    <Content Include="Database\site_2.sql" />
-    <Content Include="Database\site_3.sql" />
-    <Content Include="Database\site_goc.sql" />
     <Content Include="StoreProcedure\spTimNVChuaCoTK.sql" />
-    <Content Include="StoreProcedure\sp_bangkevattu.sql" />
-    <Content Include="StoreProcedure\sp_hoatdongnv.sql" />
-    <Content Include="StoreProcedure\sp_ktrasoluongvt.sql" />
-    <Content Include="StoreProcedure\sp_kttrungloginname.sql" />
-    <Content Include="StoreProcedure\sp_timCTDDH.sql" />
-    <Content Include="StoreProcedure\sp_timctpn.sql" />
-    <Content Include="StoreProcedure\sp_timdsddhchuacophieunhap.sql" />
-    <Content Include="StoreProcedure\sp_timkho.sql" />
-    <Content Include="StoreProcedure\sp_timphieunhap.sql" />
-    <Content Include="StoreProcedure\sp_timphieuxuat.sql" />
-    <Content Include="StoreProcedure\sp_tohopnhapxuat.sql" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

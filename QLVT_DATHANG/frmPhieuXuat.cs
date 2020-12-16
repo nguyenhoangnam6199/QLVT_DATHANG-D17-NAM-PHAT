@@ -161,9 +161,11 @@ namespace QLVT_DATHANG
             DisEnableForm();
             groupBox1.Enabled = true;
             txtMaNV.Text = Program.username;
-            txtMaNV.Enabled = false;
+            txtNgay.Text = DateTime.Now.ToString().Substring(0, 10);
+            txtMaNV.Enabled= txtNgay.Enabled = false;
             isAdd = true;
             isDel = true;
+            txtMaPX.Enabled = true;
         }
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -191,14 +193,6 @@ namespace QLVT_DATHANG
                     return;
                 }
             }
-            
-
-            if (txtNgay.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Ngày không được thiếu !", "", MessageBoxButtons.OK);
-                return;
-            }
-
             if (txtTenKH.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("Họ tên Khách hàng không được thiếu !", "", MessageBoxButtons.OK);
@@ -277,6 +271,7 @@ namespace QLVT_DATHANG
                     MessageBox.Show("Lỗi xóa phiếu xuất. Bạn hãy xóa lại \n", ex.Message, MessageBoxButtons.OK);
                     return;
                 }
+                groupBox1.Enabled = false;
             }
         }
 
@@ -415,6 +410,7 @@ namespace QLVT_DATHANG
             btnXoaCTPX.Enabled = true;
             btnGhiCTPX.Enabled = false;
             LoadTable();
+            groupBox1.Enabled = false;
         }
 
         private void btnUndo1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

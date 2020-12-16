@@ -36,8 +36,6 @@
             this.sp_DSNhanVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sp_DSNhanVienTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.sp_DSNhanVienTableAdapter();
             this.tableAdapterManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
-            this.txtMaNV = new DevExpress.XtraEditors.SpinEdit();
-            this.họ_tênComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbPhieu = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,10 +44,15 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.dSNhanVienCoHDBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dSNhanVienCoHDTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.DSNhanVienCoHDTableAdapter();
+            this.txtMaNV = new DevExpress.XtraEditors.SpinEdit();
+            this.hOTENComboBox = new System.Windows.Forms.ComboBox();
             mã_NVLabel = new System.Windows.Forms.Label();
             họ_tênLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_DSNhanVienBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSNhanVienCoHDBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNV.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,34 +116,6 @@
             this.tableAdapterManager.sp_DSNhanVienTableAdapter = this.sp_DSNhanVienTableAdapter;
             this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
-            // 
-            // txtMaNV
-            // 
-            this.txtMaNV.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sp_DSNhanVienBindingSource, "Mã NV", true));
-            this.txtMaNV.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtMaNV.Location = new System.Drawing.Point(214, 166);
-            this.txtMaNV.Margin = new System.Windows.Forms.Padding(4);
-            this.txtMaNV.Name = "txtMaNV";
-            this.txtMaNV.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtMaNV.Size = new System.Drawing.Size(156, 24);
-            this.txtMaNV.TabIndex = 4;
-            // 
-            // họ_tênComboBox
-            // 
-            this.họ_tênComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_DSNhanVienBindingSource, "Họ tên", true));
-            this.họ_tênComboBox.DataSource = this.sp_DSNhanVienBindingSource;
-            this.họ_tênComboBox.DisplayMember = "Họ tên";
-            this.họ_tênComboBox.FormattingEnabled = true;
-            this.họ_tênComboBox.Location = new System.Drawing.Point(466, 167);
-            this.họ_tênComboBox.Name = "họ_tênComboBox";
-            this.họ_tênComboBox.Size = new System.Drawing.Size(228, 24);
-            this.họ_tênComboBox.TabIndex = 6;
-            this.họ_tênComboBox.ValueMember = "Mã NV";
             // 
             // label3
             // 
@@ -223,11 +198,49 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // dSNhanVienCoHDBindingSource
+            // 
+            this.dSNhanVienCoHDBindingSource.DataMember = "DSNhanVienCoHD";
+            this.dSNhanVienCoHDBindingSource.DataSource = this.dataSet;
+            // 
+            // dSNhanVienCoHDTableAdapter
+            // 
+            this.dSNhanVienCoHDTableAdapter.ClearBeforeFill = true;
+            // 
+            // txtMaNV
+            // 
+            this.txtMaNV.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dSNhanVienCoHDBindingSource, "MANV", true));
+            this.txtMaNV.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtMaNV.Location = new System.Drawing.Point(214, 166);
+            this.txtMaNV.Name = "txtMaNV";
+            this.txtMaNV.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtMaNV.Size = new System.Drawing.Size(155, 24);
+            this.txtMaNV.TabIndex = 15;
+            // 
+            // hOTENComboBox
+            // 
+            this.hOTENComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dSNhanVienCoHDBindingSource, "HOTEN", true));
+            this.hOTENComboBox.DataSource = this.dSNhanVienCoHDBindingSource;
+            this.hOTENComboBox.DisplayMember = "HOTEN";
+            this.hOTENComboBox.FormattingEnabled = true;
+            this.hOTENComboBox.Location = new System.Drawing.Point(466, 166);
+            this.hOTENComboBox.Name = "hOTENComboBox";
+            this.hOTENComboBox.Size = new System.Drawing.Size(210, 24);
+            this.hOTENComboBox.TabIndex = 16;
+            this.hOTENComboBox.ValueMember = "MANV";
+            // 
             // frmInHoatDongNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(808, 450);
+            this.Controls.Add(this.hOTENComboBox);
+            this.Controls.Add(this.txtMaNV);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dateTimePicker2);
@@ -237,9 +250,7 @@
             this.Controls.Add(this.cmbPhieu);
             this.Controls.Add(this.label3);
             this.Controls.Add(họ_tênLabel);
-            this.Controls.Add(this.họ_tênComboBox);
             this.Controls.Add(mã_NVLabel);
-            this.Controls.Add(this.txtMaNV);
             this.Controls.Add(this.label1);
             this.Name = "frmInHoatDongNhanVien";
             this.Text = "frmInHoatDongNhanVien";
@@ -247,6 +258,7 @@
             this.Load += new System.EventHandler(this.frmInHoatDongNhanVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_DSNhanVienBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSNhanVienCoHDBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNV.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -260,8 +272,6 @@
         private System.Windows.Forms.BindingSource sp_DSNhanVienBindingSource;
         private DataSetTableAdapters.sp_DSNhanVienTableAdapter sp_DSNhanVienTableAdapter;
         private DataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private DevExpress.XtraEditors.SpinEdit txtMaNV;
-        private System.Windows.Forms.ComboBox họ_tênComboBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbPhieu;
         private System.Windows.Forms.Label label4;
@@ -270,5 +280,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.BindingSource dSNhanVienCoHDBindingSource;
+        private DataSetTableAdapters.DSNhanVienCoHDTableAdapter dSNhanVienCoHDTableAdapter;
+        private DevExpress.XtraEditors.SpinEdit txtMaNV;
+        private System.Windows.Forms.ComboBox hOTENComboBox;
     }
 }

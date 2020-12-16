@@ -430,6 +430,8 @@
             // colNGAY
             // 
             this.colNGAY.Caption = "Ngày";
+            this.colNGAY.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.colNGAY.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.colNGAY.FieldName = "NGAY";
             this.colNGAY.MinWidth = 186;
             this.colNGAY.Name = "colNGAY";
@@ -586,6 +588,7 @@
             this.colMasoDDH1.FieldName = "MasoDDH";
             this.colMasoDDH1.MinWidth = 186;
             this.colMasoDDH1.Name = "colMasoDDH1";
+            this.colMasoDDH1.OptionsColumn.ReadOnly = true;
             this.colMasoDDH1.Visible = true;
             this.colMasoDDH1.VisibleIndex = 0;
             this.colMasoDDH1.Width = 694;

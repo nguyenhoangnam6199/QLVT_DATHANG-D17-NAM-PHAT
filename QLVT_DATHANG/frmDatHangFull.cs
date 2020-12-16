@@ -157,8 +157,10 @@ namespace QLVT_DATHANG
             datHangBindingSource.AddNew();
             DisEnableForm();
             txtMaNV.Text = Program.username;
+            txtNgay.Text = DateTime.Now.ToString().Substring(0, 10);
             groupBox1.Enabled = true;
-            txtMaNV.Enabled = false;
+            txtMaNV.Enabled= txtNgay.Enabled = false;
+            txtMaDDH.Enabled = true;
             isDel = true;
             //query = String.Format("Delete from DatHang where MasoDDH={0}", txtMaNV.Text);
         }
@@ -253,14 +255,6 @@ namespace QLVT_DATHANG
                     return;
                 }
             }
-
-            if (txtNgay.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Ngày không được thiếu !", "", MessageBoxButtons.OK);
-                txtNgay.Focus();
-                return;
-            }
-
             if (txtNhaCC.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("Nhà cung cấp không được thiếu!", "", MessageBoxButtons.OK);
@@ -309,7 +303,7 @@ namespace QLVT_DATHANG
         {
             groupBox1.Enabled = true;
             vitri = datHangBindingSource.Position;
-            txtMaDDH.Enabled=txtMaNV.Enabled = false;
+            txtMaDDH.Enabled=txtMaNV.Enabled= txtNgay.Enabled = false;
             groupBox1.Enabled = true;
             isDel = false;
             query = String.Format("Update DatHang Set NGAY=N'{1}', NhaCC=N'{2}', MANV={3}, MAKHO=N'{4}' Where MasoDDH=N'{0}' ", txtMaDDH.Text, txtNgay.Text, txtNhaCC.Text, Program.username, cmbKho.Text);
@@ -351,6 +345,7 @@ namespace QLVT_DATHANG
                     this.datHangTableAdapter.Fill(this.dataSet.DatHang);
                     return;
                 }
+                groupBox1.Enabled = false;
             }
         }
 

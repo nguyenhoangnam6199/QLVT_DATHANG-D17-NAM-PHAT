@@ -49,6 +49,9 @@ namespace QLVT_DATHANG
                 this.cTPNTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.cTPNTableAdapter.Fill(this.dataSet.CTPN);
 
+                this.donHangChuaCoPNTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.donHangChuaCoPNTableAdapter.Fill(this.dataSet.DonHangChuaCoPN);
+
                 this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.phieuNhapTableAdapter.Fill(this.dataSet.PhieuNhap);
 
@@ -80,24 +83,23 @@ namespace QLVT_DATHANG
         }
         private void frmPhieuNhap_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataSet.DSVT' table. You can move, or remove it, as needed.
+           
+            LoadTable();
+         
             this.dSVTTableAdapter.Fill(this.dataSet.DSVT);
-            // TODO: This line of code loads data into the 'dataSet.CTDDH' table. You can move, or remove it, as needed.
             //this.cTDDHTableAdapter.Fill(this.dataSet.CTDDH);
             if (Program.mGroup != "CONGTY")
             {
                 this.phieuNhapBindingSource.Filter = "MANV='" + Program.username + "'";
-                this.datHangBindingSource.Filter= "MANV='" + Program.username + "'";
+                //this.datHangBindingSource.Filter= "MANV='" + Program.username + "'";
+                this.donHangChuaCoPNBindingSource.Filter = "MANV='" + Program.username + "'";
             }
-            LoadTable();
+            
             cmbCN.DataSource = Program.bds_dspm.DataSource;
             cmbCN.DisplayMember = "TENCN";
             cmbCN.ValueMember = "TENSERVER";
             cmbCN.SelectedIndex = Program.mChinhanh;
             btnGhiPN.Enabled = false;
-            //groupBox1.Enabled = false;
-            // btnGhiCTDDH.Enabled = false;
-
         }
         private void EnableForm()
         {
@@ -117,9 +119,11 @@ namespace QLVT_DATHANG
             DisEnableForm();
             groupBox1.Enabled = true;
             txtMaNV.Text = Program.username;
-            txtMaNV.Enabled = false;
+            txtNgay.Text = DateTime.Now.ToString().Substring(0, 10);
+            txtMaNV.Enabled= txtNgay.Enabled = false;
             isAdd = true;
             isDel = true;
+            txtMaPN.Enabled = true;
         }
 
         private void cmbCN_SelectedIndexChanged(object sender, EventArgs e)
@@ -206,24 +210,16 @@ namespace QLVT_DATHANG
                 }
                 
             }
-            
-
-            if (txtNgay.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Ngày không được thiếu !", "", MessageBoxButtons.OK);
-                return;
-            }
-
             if (cmbDDH.Text == string.Empty)
             {
                 MessageBox.Show("Mã Đơn Đặt Hàng không được thiếu !", "", MessageBoxButtons.OK);
                 return;
             }
-            if (KtraDonDathangTrenView(cmbDDH.Text) == false)
-            {
-                MessageBox.Show("Đơn Đặt Hàng đã có phiếu nhập !", "", MessageBoxButtons.OK);
-                return;
-            }
+            //if (KtraDonDathangTrenView(cmbDDH.Text) == false)
+            //{
+            //    MessageBox.Show("Đơn Đặt Hàng đã có phiếu nhập !", "", MessageBoxButtons.OK);
+            //    return;
+            //}
             if (cmbKho.Text.Trim() == String.Empty)
             {
                 MessageBox.Show("Mã kho không được trống !", "", MessageBoxButtons.OK);
@@ -262,7 +258,7 @@ namespace QLVT_DATHANG
         {
             groupBox1.Enabled = true;
             vitri = phieuNhapBindingSource.Position;
-            txtMaPN.Enabled= txtMaNV.Enabled = false;
+            txtMaPN.Enabled= txtMaNV.Enabled= txtNgay.Enabled = false;
             isDel = false;
             query = String.Format("Update PhieuNhap Set NGAY=N'{1}', MasoDDH=N'{2}', MANV={3}, MAKHO=N'{4}' Where MAPN=N'{0}' ", txtMaPN.Text, txtNgay.Text, cmbDDH.Text, Program.username, cmbKho.Text);
             DisEnableForm();

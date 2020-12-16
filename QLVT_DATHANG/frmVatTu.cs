@@ -132,6 +132,27 @@ namespace QLVT_DATHANG
             }
         }
 
+        private int ktxoavattu(string mavt)
+        {
+            int result = 1;
+            string lenh = string.Format("EXEC sp_kiemtravattu {0}", mavt);
+            using (SqlConnection connection = new SqlConnection(Program.connstr))
+            {
+                connection.Open();
+                SqlCommand sqlcmt = new SqlCommand(lenh, connection);
+                sqlcmt.CommandType = CommandType.Text;
+                try
+                {
+                    sqlcmt.ExecuteNonQuery();
+                }
+                catch
+                {
+                    result = 0;
+                }
+                return result;
+            }
+        }
+
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //txtMa.Text = txtMa.Text.Replace(" ", "");
@@ -240,6 +261,11 @@ namespace QLVT_DATHANG
             string mavt = "";
             mavt = ((DataRowView)vattuBindingSource[vattuBindingSource.Position])["MAVT"].ToString();
             if (cTDDHBindingSource.Count + cTPNBindingSource.Count + cTPXBindingSource.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa vật tư này vì đã lập phiếu", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (ktxoavattu(txtMa.EditValue.ToString()) == 1)
             {
                 MessageBox.Show("Không thể xóa vật tư này vì đã lập phiếu", "", MessageBoxButtons.OK);
                 return;

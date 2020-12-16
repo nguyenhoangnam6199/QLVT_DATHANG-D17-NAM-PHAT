@@ -29,10 +29,12 @@ namespace QLVT_DATHANG
 
         private void frmInHoatDongNhanVien_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataSet.DSNhanVienCoHD' table. You can move, or remove it, as needed.
+            this.dSNhanVienCoHDTableAdapter.Fill(this.dataSet.DSNhanVienCoHD);
             txtMaNV.Enabled = false;
             this.dataSet.EnforceConstraints = false;
-            this.sp_DSNhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.sp_DSNhanVienTableAdapter.Fill(this.dataSet.sp_DSNhanVien);
+            this.dSNhanVienCoHDTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.dSNhanVienCoHDTableAdapter.Fill(this.dataSet.DSNhanVienCoHD);
            
 
         }

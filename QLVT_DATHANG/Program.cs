@@ -47,7 +47,7 @@ namespace QLVT_DATHANG
 
             catch (Exception e)
             {
-                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại user name và password.\n " + e.Message, "", MessageBoxButtons.OK);
+                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nSai tài khoản hoặc Sai mật khẩu.\n ", "", MessageBoxButtons.OK);
                 return 0;
             }
         }

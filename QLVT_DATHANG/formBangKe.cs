@@ -50,7 +50,14 @@ namespace QLVT_DATHANG
             dateTimePicker2.CustomFormat = dateTimePicker1.CustomFormat = "dd/MM/yyyy";
             String bd1 = dateTimePicker1.Text;
             String kt1 = dateTimePicker2.Text;
-            rp.lblTieuDe.Text = "BẢNG KÊ CHI TIẾT SỐ LƯỢNG - TRỊ GIÁ PHIẾU " + loai1.ToUpper()+" "+"TỪ NGÀY "+bd1+" ĐẾN NGÀY: "+kt1;
+            if (Program.mGroup == "CONGTY")
+            {
+                rp.lblTieuDe.Text = "BẢNG KÊ CHI TIẾT SỐ LƯỢNG - TRỊ GIÁ PHIẾU " + loai1.ToUpper() + " CỦA 2 CHI NHÁNH " + "TỪ NGÀY " + bd1 + " ĐẾN NGÀY: " + kt1;
+            }
+            else
+            {
+                rp.lblTieuDe.Text = "BẢNG KÊ CHI TIẾT SỐ LƯỢNG - TRỊ GIÁ PHIẾU " + loai1.ToUpper() + " " + "TỪ NGÀY " + bd1 + " ĐẾN NGÀY: " + kt1;
+            }
             ReportPrintTool print = new ReportPrintTool(rp);
             print.ShowPreviewDialog();
 

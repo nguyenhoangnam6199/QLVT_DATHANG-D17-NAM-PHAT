@@ -65,6 +65,7 @@ namespace QLVT_DATHANG
 
             ReportPrintTool print = new ReportPrintTool(rp);
             print.ShowPreviewDialog();
+            print.ClosePreview();
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -93,7 +93,8 @@ namespace QLVT_DATHANG
                     cmbCN.Enabled = false; txtCN.Enabled = false;
                     groupBox1.Enabled = false;
                 }
-                
+                //nhanVienGridControl.Enabled = false;
+
             }
             catch (Exception ex)
             {

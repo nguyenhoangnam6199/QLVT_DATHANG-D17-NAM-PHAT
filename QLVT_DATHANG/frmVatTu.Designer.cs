@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVatTu));
             System.Windows.Forms.Label mAVTLabel;
             System.Windows.Forms.Label tENVTLabel;
             System.Windows.Forms.Label dVTLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVatTu));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
@@ -51,21 +51,21 @@
             this.vattuBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vattuTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.VattuTableAdapter();
             this.tableAdapterManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
+            this.cTDDHTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.CTDDHTableAdapter();
+            this.cTPNTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.CTPNTableAdapter();
+            this.cTPXTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.CTPXTableAdapter();
             this.vattuGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTENVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtMa = new DevExpress.XtraEditors.TextEdit();
-            this.txtTen = new DevExpress.XtraEditors.TextEdit();
             this.txtDVT = new DevExpress.XtraEditors.TextEdit();
+            this.txtTen = new DevExpress.XtraEditors.TextEdit();
+            this.txtMa = new DevExpress.XtraEditors.TextEdit();
             this.cTPXBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cTPXTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.CTPXTableAdapter();
             this.cTPNBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cTPNTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.CTPNTableAdapter();
             this.cTDDHBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cTDDHTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.CTDDHTableAdapter();
             mAVTLabel = new System.Windows.Forms.Label();
             tENVTLabel = new System.Windows.Forms.Label();
             dVTLabel = new System.Windows.Forms.Label();
@@ -75,13 +75,41 @@
             ((System.ComponentModel.ISupportInitialize)(this.vattuGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMa.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTen.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDVT.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTen.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTPXBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTPNBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTDDHBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // mAVTLabel
+            // 
+            mAVTLabel.AutoSize = true;
+            mAVTLabel.Location = new System.Drawing.Point(297, 57);
+            mAVTLabel.Name = "mAVTLabel";
+            mAVTLabel.Size = new System.Drawing.Size(81, 17);
+            mAVTLabel.TabIndex = 0;
+            mAVTLabel.Text = "Mã Vật Tư: ";
+            mAVTLabel.Click += new System.EventHandler(this.mAVTLabel_Click);
+            // 
+            // tENVTLabel
+            // 
+            tENVTLabel.AutoSize = true;
+            tENVTLabel.Location = new System.Drawing.Point(289, 110);
+            tENVTLabel.Name = "tENVTLabel";
+            tENVTLabel.Size = new System.Drawing.Size(87, 17);
+            tENVTLabel.TabIndex = 2;
+            tENVTLabel.Text = "Tên Vật Tư: ";
+            // 
+            // dVTLabel
+            // 
+            dVTLabel.AutoSize = true;
+            dVTLabel.Location = new System.Drawing.Point(286, 171);
+            dVTLabel.Name = "dVTLabel";
+            dVTLabel.Size = new System.Drawing.Size(90, 17);
+            dVTLabel.TabIndex = 4;
+            dVTLabel.Text = "Đơn Vị Tính: ";
             // 
             // barManager1
             // 
@@ -127,8 +155,8 @@
             // 
             this.btnThem.Caption = "Thêm";
             this.btnThem.Id = 0;
-            this.btnThem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.btnThem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.btnThem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.ImageOptions.Image")));
+            this.btnThem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnThem.ImageOptions.LargeImage")));
             this.btnThem.Name = "btnThem";
             this.btnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThem_ItemClick);
             // 
@@ -136,8 +164,8 @@
             // 
             this.btnSua.Caption = "Hiệu Chỉnh";
             this.btnSua.Id = 1;
-            this.btnSua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.btnSua.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.btnSua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.ImageOptions.Image")));
+            this.btnSua.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSua.ImageOptions.LargeImage")));
             this.btnSua.Name = "btnSua";
             this.btnSua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSua_ItemClick);
             // 
@@ -145,8 +173,8 @@
             // 
             this.btnXoa.Caption = "Xóa";
             this.btnXoa.Id = 2;
-            this.btnXoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
-            this.btnXoa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
+            this.btnXoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.Image")));
+            this.btnXoa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.LargeImage")));
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoa_ItemClick);
             // 
@@ -154,8 +182,8 @@
             // 
             this.btnGhi.Caption = "Ghi";
             this.btnGhi.Id = 3;
-            this.btnGhi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.Image")));
-            this.btnGhi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage")));
+            this.btnGhi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGhi.ImageOptions.Image")));
+            this.btnGhi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGhi.ImageOptions.LargeImage")));
             this.btnGhi.Name = "btnGhi";
             this.btnGhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGhi_ItemClick);
             // 
@@ -163,8 +191,8 @@
             // 
             this.btnUndo.Caption = "Undo";
             this.btnUndo.Id = 4;
-            this.btnUndo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
-            this.btnUndo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
+            this.btnUndo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.Image")));
+            this.btnUndo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.LargeImage")));
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo_ItemClick);
             // 
@@ -172,8 +200,8 @@
             // 
             this.btnReload.Caption = "Reload";
             this.btnReload.Id = 5;
-            this.btnReload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.Image")));
-            this.btnReload.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.LargeImage")));
+            this.btnReload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.ImageOptions.Image")));
+            this.btnReload.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnReload.ImageOptions.LargeImage")));
             this.btnReload.Name = "btnReload";
             this.btnReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnReload_ItemClick);
             // 
@@ -181,8 +209,8 @@
             // 
             this.btnThoat.Caption = "Thoát";
             this.btnThoat.Id = 6;
-            this.btnThoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
-            this.btnThoat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
+            this.btnThoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.ImageOptions.Image")));
+            this.btnThoat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnThoat.ImageOptions.LargeImage")));
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThoat_ItemClick);
             // 
@@ -253,12 +281,26 @@
             this.tableAdapterManager.CTPXTableAdapter = this.cTPXTableAdapter;
             this.tableAdapterManager.DatHangTableAdapter = null;
             this.tableAdapterManager.DSNhanVienTableAdapter = null;
+            this.tableAdapterManager.DSVTTableAdapter = null;
             this.tableAdapterManager.KhoTableAdapter = null;
             this.tableAdapterManager.NhanVienTableAdapter = null;
             this.tableAdapterManager.PhieuNhapTableAdapter = null;
             this.tableAdapterManager.PhieuXuatTableAdapter = null;
+            this.tableAdapterManager.sp_DSNhanVienTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = this.vattuTableAdapter;
+            // 
+            // cTDDHTableAdapter
+            // 
+            this.cTDDHTableAdapter.ClearBeforeFill = true;
+            // 
+            // cTPNTableAdapter
+            // 
+            this.cTPNTableAdapter.ClearBeforeFill = true;
+            // 
+            // cTPXTableAdapter
+            // 
+            this.cTPXTableAdapter.ClearBeforeFill = true;
             // 
             // vattuGridControl
             // 
@@ -288,6 +330,7 @@
             this.colMAVT.FieldName = "MAVT";
             this.colMAVT.MinWidth = 25;
             this.colMAVT.Name = "colMAVT";
+            this.colMAVT.OptionsColumn.ReadOnly = true;
             this.colMAVT.Visible = true;
             this.colMAVT.VisibleIndex = 0;
             this.colMAVT.Width = 94;
@@ -298,6 +341,7 @@
             this.colTENVT.FieldName = "TENVT";
             this.colTENVT.MinWidth = 25;
             this.colTENVT.Name = "colTENVT";
+            this.colTENVT.OptionsColumn.ReadOnly = true;
             this.colTENVT.Visible = true;
             this.colTENVT.VisibleIndex = 1;
             this.colTENVT.Width = 94;
@@ -308,6 +352,7 @@
             this.colDVT.FieldName = "DVT";
             this.colDVT.MinWidth = 25;
             this.colDVT.Name = "colDVT";
+            this.colDVT.OptionsColumn.ReadOnly = true;
             this.colDVT.Visible = true;
             this.colDVT.VisibleIndex = 2;
             this.colDVT.Width = 94;
@@ -327,33 +372,14 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
-            // mAVTLabel
+            // txtDVT
             // 
-            mAVTLabel.AutoSize = true;
-            mAVTLabel.Location = new System.Drawing.Point(297, 57);
-            mAVTLabel.Name = "mAVTLabel";
-            mAVTLabel.Size = new System.Drawing.Size(81, 17);
-            mAVTLabel.TabIndex = 0;
-            mAVTLabel.Text = "Mã Vật Tư: ";
-            mAVTLabel.Click += new System.EventHandler(this.mAVTLabel_Click);
-            // 
-            // txtMa
-            // 
-            this.txtMa.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.vattuBindingSource, "MAVT", true));
-            this.txtMa.Location = new System.Drawing.Point(392, 54);
-            this.txtMa.MenuManager = this.barManager1;
-            this.txtMa.Name = "txtMa";
-            this.txtMa.Size = new System.Drawing.Size(212, 22);
-            this.txtMa.TabIndex = 1;
-            // 
-            // tENVTLabel
-            // 
-            tENVTLabel.AutoSize = true;
-            tENVTLabel.Location = new System.Drawing.Point(289, 110);
-            tENVTLabel.Name = "tENVTLabel";
-            tENVTLabel.Size = new System.Drawing.Size(87, 17);
-            tENVTLabel.TabIndex = 2;
-            tENVTLabel.Text = "Tên Vật Tư: ";
+            this.txtDVT.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.vattuBindingSource, "DVT", true));
+            this.txtDVT.Location = new System.Drawing.Point(392, 168);
+            this.txtDVT.MenuManager = this.barManager1;
+            this.txtDVT.Name = "txtDVT";
+            this.txtDVT.Size = new System.Drawing.Size(212, 22);
+            this.txtDVT.TabIndex = 5;
             // 
             // txtTen
             // 
@@ -364,50 +390,29 @@
             this.txtTen.Size = new System.Drawing.Size(212, 22);
             this.txtTen.TabIndex = 3;
             // 
-            // dVTLabel
+            // txtMa
             // 
-            dVTLabel.AutoSize = true;
-            dVTLabel.Location = new System.Drawing.Point(286, 171);
-            dVTLabel.Name = "dVTLabel";
-            dVTLabel.Size = new System.Drawing.Size(90, 17);
-            dVTLabel.TabIndex = 4;
-            dVTLabel.Text = "Đơn Vị Tính: ";
-            // 
-            // txtDVT
-            // 
-            this.txtDVT.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.vattuBindingSource, "DVT", true));
-            this.txtDVT.Location = new System.Drawing.Point(392, 168);
-            this.txtDVT.MenuManager = this.barManager1;
-            this.txtDVT.Name = "txtDVT";
-            this.txtDVT.Size = new System.Drawing.Size(212, 22);
-            this.txtDVT.TabIndex = 5;
+            this.txtMa.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.vattuBindingSource, "MAVT", true));
+            this.txtMa.Location = new System.Drawing.Point(392, 54);
+            this.txtMa.MenuManager = this.barManager1;
+            this.txtMa.Name = "txtMa";
+            this.txtMa.Size = new System.Drawing.Size(212, 22);
+            this.txtMa.TabIndex = 1;
             // 
             // cTPXBindingSource
             // 
             this.cTPXBindingSource.DataMember = "FK_CTPX_VatTu";
             this.cTPXBindingSource.DataSource = this.vattuBindingSource;
             // 
-            // cTPXTableAdapter
-            // 
-            this.cTPXTableAdapter.ClearBeforeFill = true;
-            // 
             // cTPNBindingSource
             // 
             this.cTPNBindingSource.DataMember = "FK_CTPN_VatTu";
             this.cTPNBindingSource.DataSource = this.vattuBindingSource;
             // 
-            // cTPNTableAdapter
-            // 
-            this.cTPNTableAdapter.ClearBeforeFill = true;
-            // 
             // cTDDHBindingSource
             // 
             this.cTDDHBindingSource.DataMember = "FK_CTDDH_VatTu";
             this.cTDDHBindingSource.DataSource = this.vattuBindingSource;
-            // 
-            // cTDDHTableAdapter
-            // 
-            this.cTDDHTableAdapter.ClearBeforeFill = true;
             // 
             // frmVatTu
             // 
@@ -431,9 +436,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMa.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTen.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDVT.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTen.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTPXBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTPNBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTDDHBindingSource)).EndInit();

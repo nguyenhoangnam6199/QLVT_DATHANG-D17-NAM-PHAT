@@ -8,7 +8,7 @@ namespace QLVT_DATHANG.BaoCao
 {
     public partial class Report_SP_HDNV : DevExpress.XtraReports.UI.XtraReport
     {
-        public Report_SP_HDNV(int manv, string loai, string bd, string kt)
+        public Report_SP_HDNV(int manv, String loai, String bd, String kt)
         {
             InitializeComponent();
             this.sqlDataSource1.Connection.ConnectionString = Program.connstr;

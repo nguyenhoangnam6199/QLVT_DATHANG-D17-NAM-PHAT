@@ -75,6 +75,7 @@ namespace QLVT_DATHANG
                     btnUndo1.Enabled = true;
                 }
                 else btnUndo1.Enabled = false;
+                cTDDHGridControl.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -410,10 +411,12 @@ namespace QLVT_DATHANG
             }
             btnThemCTDDH.Enabled = btnXoaCTDDH.Enabled = true;
             btnGhiCTDDH.Enabled = false;
+            cTDDHGridControl.Enabled = true;
         }
 
         private void themCTDDH_CLICK(object sender, EventArgs e)
         {
+            cTDDHGridControl.Enabled = true;
             cTDDHBindingSource.AddNew();
             btnGhiCTDDH.Enabled = true;
             btnThemCTDDH.Enabled= btnXoaCTDDH.Enabled = false;
@@ -421,6 +424,7 @@ namespace QLVT_DATHANG
 
         private void btnXoaCTDDH_Click(object sender, EventArgs e)
         {
+            cTDDHGridControl.Enabled = true;
             if (MessageBox.Show("Bạn thực sự muốn xóa ??", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 try

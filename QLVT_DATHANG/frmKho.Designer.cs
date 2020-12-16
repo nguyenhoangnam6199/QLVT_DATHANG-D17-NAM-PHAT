@@ -329,10 +329,12 @@
             this.tableAdapterManager.CTPXTableAdapter = null;
             this.tableAdapterManager.DatHangTableAdapter = this.datHangTableAdapter;
             this.tableAdapterManager.DSNhanVienTableAdapter = null;
+            this.tableAdapterManager.DSVTTableAdapter = null;
             this.tableAdapterManager.KhoTableAdapter = this.khoTableAdapter;
             this.tableAdapterManager.NhanVienTableAdapter = null;
             this.tableAdapterManager.PhieuNhapTableAdapter = this.phieuNhapTableAdapter;
             this.tableAdapterManager.PhieuXuatTableAdapter = this.phieuXuatTableAdapter;
+            this.tableAdapterManager.sp_DSNhanVienTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
             // 
@@ -377,6 +379,7 @@
             this.colMAKHO.FieldName = "MAKHO";
             this.colMAKHO.MinWidth = 25;
             this.colMAKHO.Name = "colMAKHO";
+            this.colMAKHO.OptionsColumn.ReadOnly = true;
             this.colMAKHO.Visible = true;
             this.colMAKHO.VisibleIndex = 0;
             this.colMAKHO.Width = 94;
@@ -387,6 +390,7 @@
             this.colTENKHO.FieldName = "TENKHO";
             this.colTENKHO.MinWidth = 25;
             this.colTENKHO.Name = "colTENKHO";
+            this.colTENKHO.OptionsColumn.ReadOnly = true;
             this.colTENKHO.Visible = true;
             this.colTENKHO.VisibleIndex = 1;
             this.colTENKHO.Width = 94;
@@ -397,6 +401,7 @@
             this.colDIACHI.FieldName = "DIACHI";
             this.colDIACHI.MinWidth = 25;
             this.colDIACHI.Name = "colDIACHI";
+            this.colDIACHI.OptionsColumn.ReadOnly = true;
             this.colDIACHI.Visible = true;
             this.colDIACHI.VisibleIndex = 2;
             this.colDIACHI.Width = 94;
@@ -407,6 +412,7 @@
             this.colMACN.FieldName = "MACN";
             this.colMACN.MinWidth = 25;
             this.colMACN.Name = "colMACN";
+            this.colMACN.OptionsColumn.ReadOnly = true;
             this.colMACN.Visible = true;
             this.colMACN.VisibleIndex = 3;
             this.colMACN.Width = 94;

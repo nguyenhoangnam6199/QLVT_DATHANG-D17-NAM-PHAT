@@ -412,6 +412,7 @@
             this.colMAPX.FieldName = "MAPX";
             this.colMAPX.MinWidth = 25;
             this.colMAPX.Name = "colMAPX";
+            this.colMAPX.OptionsColumn.ReadOnly = true;
             this.colMAPX.Visible = true;
             this.colMAPX.VisibleIndex = 0;
             this.colMAPX.Width = 94;
@@ -424,6 +425,7 @@
             this.colNGAY.FieldName = "NGAY";
             this.colNGAY.MinWidth = 25;
             this.colNGAY.Name = "colNGAY";
+            this.colNGAY.OptionsColumn.ReadOnly = true;
             this.colNGAY.Visible = true;
             this.colNGAY.VisibleIndex = 1;
             this.colNGAY.Width = 94;
@@ -434,6 +436,7 @@
             this.colHOTENKH.FieldName = "HOTENKH";
             this.colHOTENKH.MinWidth = 25;
             this.colHOTENKH.Name = "colHOTENKH";
+            this.colHOTENKH.OptionsColumn.ReadOnly = true;
             this.colHOTENKH.Visible = true;
             this.colHOTENKH.VisibleIndex = 2;
             this.colHOTENKH.Width = 94;
@@ -444,6 +447,7 @@
             this.colMANV.FieldName = "MANV";
             this.colMANV.MinWidth = 25;
             this.colMANV.Name = "colMANV";
+            this.colMANV.OptionsColumn.ReadOnly = true;
             this.colMANV.Visible = true;
             this.colMANV.VisibleIndex = 3;
             this.colMANV.Width = 94;
@@ -454,6 +458,7 @@
             this.colMAKHO.FieldName = "MAKHO";
             this.colMAKHO.MinWidth = 25;
             this.colMAKHO.Name = "colMAKHO";
+            this.colMAKHO.OptionsColumn.ReadOnly = true;
             this.colMAKHO.Visible = true;
             this.colMAKHO.VisibleIndex = 4;
             this.colMAKHO.Width = 94;

@@ -477,6 +477,7 @@
             this.colMANV.FieldName = "MANV";
             this.colMANV.MinWidth = 61;
             this.colMANV.Name = "colMANV";
+            this.colMANV.OptionsColumn.ReadOnly = true;
             this.colMANV.Visible = true;
             this.colMANV.VisibleIndex = 0;
             this.colMANV.Width = 227;
@@ -487,6 +488,7 @@
             this.colHO.FieldName = "HO";
             this.colHO.MinWidth = 61;
             this.colHO.Name = "colHO";
+            this.colHO.OptionsColumn.ReadOnly = true;
             this.colHO.Visible = true;
             this.colHO.VisibleIndex = 1;
             this.colHO.Width = 227;
@@ -497,6 +499,7 @@
             this.colTEN.FieldName = "TEN";
             this.colTEN.MinWidth = 61;
             this.colTEN.Name = "colTEN";
+            this.colTEN.OptionsColumn.ReadOnly = true;
             this.colTEN.Visible = true;
             this.colTEN.VisibleIndex = 2;
             this.colTEN.Width = 227;
@@ -507,6 +510,7 @@
             this.colDIACHI.FieldName = "DIACHI";
             this.colDIACHI.MinWidth = 61;
             this.colDIACHI.Name = "colDIACHI";
+            this.colDIACHI.OptionsColumn.ReadOnly = true;
             this.colDIACHI.Visible = true;
             this.colDIACHI.VisibleIndex = 3;
             this.colDIACHI.Width = 227;
@@ -519,6 +523,7 @@
             this.colNGAYSINH.FieldName = "NGAYSINH";
             this.colNGAYSINH.MinWidth = 61;
             this.colNGAYSINH.Name = "colNGAYSINH";
+            this.colNGAYSINH.OptionsColumn.ReadOnly = true;
             this.colNGAYSINH.Visible = true;
             this.colNGAYSINH.VisibleIndex = 4;
             this.colNGAYSINH.Width = 227;
@@ -529,6 +534,7 @@
             this.colLUONG.FieldName = "LUONG";
             this.colLUONG.MinWidth = 61;
             this.colLUONG.Name = "colLUONG";
+            this.colLUONG.OptionsColumn.ReadOnly = true;
             this.colLUONG.Visible = true;
             this.colLUONG.VisibleIndex = 5;
             this.colLUONG.Width = 227;
@@ -539,6 +545,7 @@
             this.colMACN.FieldName = "MACN";
             this.colMACN.MinWidth = 61;
             this.colMACN.Name = "colMACN";
+            this.colMACN.OptionsColumn.ReadOnly = true;
             this.colMACN.Visible = true;
             this.colMACN.VisibleIndex = 6;
             this.colMACN.Width = 227;
@@ -549,6 +556,7 @@
             this.colTrangThaiXoa.FieldName = "TrangThaiXoa";
             this.colTrangThaiXoa.MinWidth = 61;
             this.colTrangThaiXoa.Name = "colTrangThaiXoa";
+            this.colTrangThaiXoa.OptionsColumn.ReadOnly = true;
             this.colTrangThaiXoa.Visible = true;
             this.colTrangThaiXoa.VisibleIndex = 7;
             this.colTrangThaiXoa.Width = 227;

@@ -205,7 +205,7 @@ namespace QLVT_DATHANG
                 txtNgaySinh.Focus();
                 return;
             }
-            if (DateTime.Now.Year-txtNgaySinh.DateTime.Year<20)
+            if (DateTime.Now.Year-txtNgaySinh.DateTime.Year<18)
             {
                 MessageBox.Show("Ngày sinh không hợp lệ !", string.Empty, MessageBoxButtons.OK);
                 txtNgaySinh.Focus();
@@ -506,6 +506,11 @@ namespace QLVT_DATHANG
             }
             a = new System.Globalization.CultureInfo("en-US", false).TextInfo.ToTitleCase(a.ToLower());
             return a;
+        }
+
+        private void txtHo_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

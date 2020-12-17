@@ -450,7 +450,7 @@
             this.nhanVienGridControl.Margin = new System.Windows.Forms.Padding(8);
             this.nhanVienGridControl.MenuManager = this.barManager1;
             this.nhanVienGridControl.Name = "nhanVienGridControl";
-            this.nhanVienGridControl.Size = new System.Drawing.Size(1125, 230);
+            this.nhanVienGridControl.Size = new System.Drawing.Size(1125, 250);
             this.nhanVienGridControl.TabIndex = 6;
             this.nhanVienGridControl.UseWaitCursor = true;
             this.nhanVienGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -580,9 +580,9 @@
             this.groupBox1.Controls.Add(mANVLabel);
             this.groupBox1.Controls.Add(this.txtMaNV);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 344);
+            this.groupBox1.Location = new System.Drawing.Point(0, 364);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1125, 210);
+            this.groupBox1.Size = new System.Drawing.Size(1125, 190);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.UseWaitCursor = true;
@@ -675,6 +675,7 @@
             this.txtHo.Size = new System.Drawing.Size(177, 22);
             this.txtHo.TabIndex = 3;
             this.txtHo.UseWaitCursor = true;
+            this.txtHo.EditValueChanged += new System.EventHandler(this.txtHo_EditValueChanged);
             // 
             // txtMaNV
             // 

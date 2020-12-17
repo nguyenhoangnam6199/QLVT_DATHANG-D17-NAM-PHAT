@@ -54,18 +54,18 @@ namespace QLVT_DATHANG
                 return;
             }
 
-
-            Report_SP_HDNV rp = new Report_SP_HDNV(manv,loai,bd,kt);
-
             dateTimePicker2.CustomFormat = dateTimePicker1.CustomFormat = "dd/MM/yyyy";
             String bd1 = dateTimePicker1.Text;
             String kt1 = dateTimePicker2.Text;
 
+            Report_SP_HDNV rp = new Report_SP_HDNV(manv,loai,bd,kt);
+
+          
             rp.label1.Text = "HOẠT ĐỘNG NHÂN VIÊN " + "PHIẾU " + cmbPhieu.Text.ToUpper() + " TỪ NGÀY " + bd1 + " ĐẾN NGÀY " + kt1;
 
             ReportPrintTool print = new ReportPrintTool(rp);
             print.ShowPreviewDialog();
-            print.ClosePreview();
+          // print.ClosePreview();
         }
 
         private void button2_Click(object sender, EventArgs e)

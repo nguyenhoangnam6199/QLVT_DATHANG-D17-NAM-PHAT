@@ -221,7 +221,7 @@
             this.tableCell1.StylePriority.UseBorderColor = false;
             this.tableCell1.StylePriority.UseBorders = false;
             this.tableCell1.StylePriority.UseTextAlignment = false;
-            this.tableCell1.Text = "Ngày";
+            this.tableCell1.Text = "Thời gian";
             this.tableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell1.Weight = 0.1605846020549945D;
             // 

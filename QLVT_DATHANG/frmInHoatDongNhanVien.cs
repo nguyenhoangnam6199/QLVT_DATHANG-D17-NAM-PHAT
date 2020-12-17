@@ -22,7 +22,7 @@ namespace QLVT_DATHANG
         private void sp_DSNhanVienBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
-            this.sp_DSNhanVienBindingSource.EndEdit();
+            this.dSNhanVienCoHDBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.dataSet);
 
         }
@@ -30,7 +30,7 @@ namespace QLVT_DATHANG
         private void frmInHoatDongNhanVien_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dataSet.DSNhanVienCoHD' table. You can move, or remove it, as needed.
-            this.dSNhanVienCoHDTableAdapter.Fill(this.dataSet.DSNhanVienCoHD);
+            //this.dSNhanVienCoHDTableAdapter.Fill(this.dataSet.DSNhanVienCoHD);
             txtMaNV.Enabled = false;
             this.dataSet.EnforceConstraints = false;
             this.dSNhanVienCoHDTableAdapter.Connection.ConnectionString = Program.connstr;
@@ -65,6 +65,7 @@ namespace QLVT_DATHANG
 
             ReportPrintTool print = new ReportPrintTool(rp);
             print.ShowPreviewDialog();
+            Close();
           // print.ClosePreview();
         }
 

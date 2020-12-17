@@ -60,7 +60,7 @@ namespace QLVT_DATHANG
             }
             ReportPrintTool print = new ReportPrintTool(rp);
             print.ShowPreviewDialog();
-
+            Close();
         }
     }
 }

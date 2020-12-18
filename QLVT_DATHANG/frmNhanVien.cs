@@ -138,15 +138,22 @@ namespace QLVT_DATHANG
         {
             int maxMaNV = 0;
             //LINK2  kết nối từ site 1 đến site 3 hoặc từ 2 đến 3
-            string lenh2= string.Format("SELECT MAX(MANV) AS MAXNV FROM LINK2.QLVT_DATHANG.dbo.NhanVien");
+            //string lenh2= string.Format("SELECT MAX(MANV) AS MAXNV FROM LINK2.QLVT_DATHANG.dbo.NhanVien");
+            string lenh2 = string.Format("SELECT MAX(MANV) FROM NhanVien");
+            string lenh3 = string.Format("SELECT MAX(MANV) FROM LINK1.QLVT_DATHANG.dbo.NhanVien");
             using (SqlConnection connection = new SqlConnection(Program.connstr))
             {
                 connection.Open();
                 SqlCommand sqlcmt = new SqlCommand(lenh2, connection);
+                SqlCommand sqlcmt1 = new SqlCommand(lenh3, connection);
                 sqlcmt.CommandType = CommandType.Text;
                 try
                 {
-                    maxMaNV = (Int32)sqlcmt.ExecuteScalar();
+                    int a = (Int32)sqlcmt.ExecuteScalar();
+                    int b = (Int32)sqlcmt1.ExecuteScalar();
+                    maxMaNV = (a > b ? a : b);
+
+                    //maxMaNV = (Int32)sqlcmt.ExecuteScalar();
                 }
                 catch { }
             }
@@ -413,8 +420,8 @@ namespace QLVT_DATHANG
         private int ChuyenChiNhanh(int MaHT, int MaMoi)
         {
             int result = 1;
-           
-            string lenh = string.Format("EXEC sp_chuyenchinhanh {0}, {1} ", MaHT, MaMoi);
+            string lenh = string.Format("EXEC SP_ChuyenCN {0}, {1} ", MaHT, MaMoi);
+            //string lenh = string.Format("EXEC sp_chuyenchinhanh {0}, {1} ", MaHT, MaMoi);
             using (SqlConnection connection = new SqlConnection(Program.connstr))
             {
                 connection.Open();
@@ -422,15 +429,27 @@ namespace QLVT_DATHANG
                 sqlcmt.CommandType = CommandType.Text;
                 try
                 {
-                    sqlcmt.ExecuteNonQuery();
-                    query = string.Format("EXEC sp_undochuyencn {0}, {1} ", MaHT, MaMoi);
+                    SqlDataReader a = sqlcmt.ExecuteReader();
+
+                    while (a.Read())
+                    {
+                        int loaichuyen = a.GetInt32(0);
+                        if(loaichuyen == 2)
+                        {
+                            MaMoi = a.GetInt32(1);
+                        }
+                        //MessageBox.Show("" + loaichuyen);
+                        query = string.Format("EXEC sp_undochuyencn {0}, {1},{2} ", MaHT, MaMoi, loaichuyen);
+                    }
+                    
+                    
                     
                 }
                 catch
                 {
                     result = 0;
                 }
-                return result;
+                return MaMoi;
             }
         }
 
@@ -449,8 +468,8 @@ namespace QLVT_DATHANG
                 try
                 {
                     int maNV = int.Parse(((DataRowView)nhanVienBindingSource[nhanVienBindingSource.Position])["MANV"].ToString());
-                    ChuyenChiNhanh(maNV, TaoMaNV());
-                    MessageBox.Show("Chuyển chi nhánh thành công ! \n Mã nhân viên mới là: " + TaoMaNV(), "", MessageBoxButtons.OK);
+                    int mamoi = ChuyenChiNhanh(maNV, TaoMaNV());
+                    MessageBox.Show("Chuyển chi nhánh thành công ! \n Mã nhân viên mới là: " + mamoi, "", MessageBoxButtons.OK);
                     stackundo.Push(query);      
                 }
                 catch (Exception ex)

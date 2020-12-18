@@ -136,7 +136,8 @@ namespace QLVT_DATHANG
         private int ktkho(string makho)
         {
             int result = 1;
-            string lenh = string.Format("EXEC sp_timkho {0}", makho);
+            string lenh = string.Format("select MAKHO from LINK2.QLVT_DATHANG.dbo.Kho where MAKHO='{0}'", makho);
+            //string lenh = string.Format("EXEC sp_timkho {0}", makho);
             using (SqlConnection connection = new SqlConnection(Program.connstr))
             {
                 connection.Open();
@@ -144,7 +145,9 @@ namespace QLVT_DATHANG
                 sqlcmt.CommandType = CommandType.Text;
                 try
                 {
-                    sqlcmt.ExecuteNonQuery();
+                    String ma = (String)sqlcmt.ExecuteScalar();
+                    if (ma == null) result = 0;
+                    else result = 1;
                 }
                 catch
                 {

@@ -4,7 +4,7 @@
 
     partial class DataSet
     {
-        partial class DataTable1DataTable
+        partial class productDataTable
         {
         }
     }

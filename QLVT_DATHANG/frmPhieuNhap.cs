@@ -14,6 +14,7 @@ namespace QLVT_DATHANG
     public partial class frmPhieuNhap : Form
     {
         private string mavt;
+        private string madhang;
         private int soluong;
         private string maDDH;
         private int vitri;
@@ -85,15 +86,19 @@ namespace QLVT_DATHANG
         }
         private void frmPhieuNhap_Load(object sender, EventArgs e)
         {
-           
+            // TODO: This line of code loads data into the 'dataSet.product' table. You can move, or remove it, as needed.
+            //this.productTableAdapter.Fill(this.dataSet.product);
+            // TODO: This line of code loads data into the 'dataSet.vtddh' table. You can move, or remove it, as needed.
+            //this.vtddhTableAdapter.Fill(this.dataSet.vtddh);
+            // this.hangHoaTrongDDHTableAdapter.Fill(this.dataSet.HangHoaTrongDDH);
             LoadTable();
-         
             this.dSVTTableAdapter.Fill(this.dataSet.DSVT);
+            //MessageBox.Show(masoddh);
+            //this.dSVTTableAdapter.Fill(this.dataSet.DSVT);
             //this.cTDDHTableAdapter.Fill(this.dataSet.CTDDH);
             if (Program.mGroup != "CONGTY")
             {
                 this.phieuNhapBindingSource.Filter = "MANV='" + Program.username + "'";
-                //this.datHangBindingSource.Filter= "MANV='" + Program.username + "'";
                 this.donHangChuaCoPNBindingSource.Filter = "MANV='" + Program.username + "'";
             }
             
@@ -115,7 +120,6 @@ namespace QLVT_DATHANG
         }
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
             vitri = phieuNhapBindingSource.Position;
             phieuNhapBindingSource.AddNew();
             DisEnableForm();
@@ -243,6 +247,7 @@ namespace QLVT_DATHANG
                 stackundo.Push(query);
 
                 MessageBox.Show("Ghi thành công!");
+
             }
             catch (Exception ex)
             {
@@ -518,5 +523,15 @@ namespace QLVT_DATHANG
                 }
             }
         }
-    }
+
+        private void phieuNhapGridControl_Click(object sender, EventArgs e)
+        {
+            
+            //madhang = ((DataRowView)phieuNhapBindingSource[phieuNhapBindingSource.Position])["MasoDDH"].ToString();
+            //this.cTPNBindingSource.Filter = "MasoDDH='" + madhang + "'";
+            //this.productBindingSource.Filter = "MANV='" + Program.username + "'";
+            //this.cTPNTableAdapter.Connection.ConnectionString = Program.connstr;
+            //this.cTPNTableAdapter.Fill(this.dataSet.CTPN);
+        }
+}
 }

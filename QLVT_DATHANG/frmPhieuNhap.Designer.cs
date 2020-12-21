@@ -86,13 +86,19 @@
             this.colMAPN1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.dSVTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.vtddhBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.hangHoaTrongDDHBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dSVTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cTDDHBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cTDDHTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.CTDDHTableAdapter();
             this.dSVTTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
             this.donHangChuaCoPNTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.DonHangChuaCoPNTableAdapter();
+            this.hangHoaTrongDDHTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.HangHoaTrongDDHTableAdapter();
+            this.vtddhTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.vtddhTableAdapter();
+            this.productTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.productTableAdapter();
             mAPNLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
             masoDDHLabel = new System.Windows.Forms.Label();
@@ -117,6 +123,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.cTPNGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vtddhBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hangHoaTrongDDHBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSVTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTDDHBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -409,6 +418,7 @@
             this.phieuNhapGridControl.TabIndex = 6;
             this.phieuNhapGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.phieuNhapGridControl.Click += new System.EventHandler(this.phieuNhapGridControl_Click);
             // 
             // contextMenuStrip1
             // 
@@ -666,10 +676,10 @@
             this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
             this.repositoryItemLookUpEdit1.ValueMember = "MAVT";
             // 
-            // dSVTBindingSource
+            // productBindingSource
             // 
-            this.dSVTBindingSource.DataMember = "DSVT";
-            this.dSVTBindingSource.DataSource = this.dataSet;
+            this.productBindingSource.DataMember = "product";
+            this.productBindingSource.DataSource = this.dataSet;
             // 
             // colSOLUONG
             // 
@@ -691,6 +701,16 @@
             this.colDONGIA.VisibleIndex = 3;
             this.colDONGIA.Width = 146;
             // 
+            // vtddhBindingSource
+            // 
+            this.vtddhBindingSource.DataMember = "vtddh";
+            this.vtddhBindingSource.DataSource = this.dataSet;
+            // 
+            // dSVTBindingSource
+            // 
+            this.dSVTBindingSource.DataMember = "DSVT";
+            this.dSVTBindingSource.DataSource = this.dataSet;
+            // 
             // cTDDHBindingSource
             // 
             this.cTDDHBindingSource.DataMember = "FK_CTDDH_DatHang";
@@ -707,6 +727,18 @@
             // donHangChuaCoPNTableAdapter
             // 
             this.donHangChuaCoPNTableAdapter.ClearBeforeFill = true;
+            // 
+            // hangHoaTrongDDHTableAdapter
+            // 
+            this.hangHoaTrongDDHTableAdapter.ClearBeforeFill = true;
+            // 
+            // vtddhTableAdapter
+            // 
+            this.vtddhTableAdapter.ClearBeforeFill = true;
+            // 
+            // productTableAdapter
+            // 
+            this.productTableAdapter.ClearBeforeFill = true;
             // 
             // frmPhieuNhap
             // 
@@ -747,6 +779,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.cTPNGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vtddhBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hangHoaTrongDDHBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSVTBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTDDHBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -814,5 +849,11 @@
         private DevExpress.XtraBars.BarButtonItem btnUndo1;
         private System.Windows.Forms.BindingSource donHangChuaCoPNBindingSource;
         private DataSetTableAdapters.DonHangChuaCoPNTableAdapter donHangChuaCoPNTableAdapter;
+        private System.Windows.Forms.BindingSource hangHoaTrongDDHBindingSource;
+        private DataSetTableAdapters.HangHoaTrongDDHTableAdapter hangHoaTrongDDHTableAdapter;
+        private System.Windows.Forms.BindingSource vtddhBindingSource;
+        private DataSetTableAdapters.vtddhTableAdapter vtddhTableAdapter;
+        private System.Windows.Forms.BindingSource productBindingSource;
+        private DataSetTableAdapters.productTableAdapter productTableAdapter;
     }
 }

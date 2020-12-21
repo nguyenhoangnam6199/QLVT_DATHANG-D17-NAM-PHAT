@@ -62,6 +62,7 @@ namespace QLVT_DATHANG
                     panel1.Enabled = true;
                     groupBox1.Enabled = false;
                     contextMenuStrip1.Enabled = false;
+                    cTPNGridControl.Enabled = false;
                 }
                 else
                 {

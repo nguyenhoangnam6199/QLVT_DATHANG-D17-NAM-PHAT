@@ -35,8 +35,6 @@ namespace QLVT_DATHANG
             this.dataSet.EnforceConstraints = false;
             this.dSNhanVienCoHDTableAdapter.Connection.ConnectionString = Program.connstr;
             this.dSNhanVienCoHDTableAdapter.Fill(this.dataSet.DSNhanVienCoHD);
-           
-
         }
 
     

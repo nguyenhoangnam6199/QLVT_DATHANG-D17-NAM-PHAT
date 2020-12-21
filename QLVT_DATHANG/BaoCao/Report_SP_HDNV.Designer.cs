@@ -310,7 +310,7 @@
             // 
             // label1
             // 
-            this.label1.LocationFloat = new DevExpress.Utils.PointFloat(5F, 5F);
+            this.label1.LocationFloat = new DevExpress.Utils.PointFloat(2.543131E-05F, 9.999988F);
             this.label1.Name = "label1";
             this.label1.SizeF = new System.Drawing.SizeF(640F, 24.19433F);
             this.label1.StyleName = "Title";

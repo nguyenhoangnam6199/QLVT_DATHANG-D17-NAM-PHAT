@@ -617,6 +617,8 @@
             // 
             // colDONGIA
             // 
+            this.colDONGIA.DisplayFormat.FormatString = "#,##0.0";
+            this.colDONGIA.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colDONGIA.FieldName = "DONGIA";
             this.colDONGIA.MinWidth = 25;
             this.colDONGIA.Name = "colDONGIA";

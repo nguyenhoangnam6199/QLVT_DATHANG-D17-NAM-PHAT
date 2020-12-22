@@ -637,6 +637,8 @@
             // colDONGIA
             // 
             this.colDONGIA.Caption = "Đơn giá";
+            this.colDONGIA.DisplayFormat.FormatString = "#,##0.0";
+            this.colDONGIA.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colDONGIA.FieldName = "DONGIA";
             this.colDONGIA.MinWidth = 186;
             this.colDONGIA.Name = "colDONGIA";
@@ -652,26 +654,26 @@
             this.btnXoaCTDDH,
             this.btnGhiCTDDH});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 104);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(116, 76);
             // 
             // btnThemCTDDH
             // 
             this.btnThemCTDDH.Name = "btnThemCTDDH";
-            this.btnThemCTDDH.Size = new System.Drawing.Size(210, 24);
+            this.btnThemCTDDH.Size = new System.Drawing.Size(115, 24);
             this.btnThemCTDDH.Text = "Thêm";
             this.btnThemCTDDH.Click += new System.EventHandler(this.themCTDDH_CLICK);
             // 
             // btnXoaCTDDH
             // 
             this.btnXoaCTDDH.Name = "btnXoaCTDDH";
-            this.btnXoaCTDDH.Size = new System.Drawing.Size(210, 24);
+            this.btnXoaCTDDH.Size = new System.Drawing.Size(115, 24);
             this.btnXoaCTDDH.Text = "Xóa";
             this.btnXoaCTDDH.Click += new System.EventHandler(this.btnXoaCTDDH_Click);
             // 
             // btnGhiCTDDH
             // 
             this.btnGhiCTDDH.Name = "btnGhiCTDDH";
-            this.btnGhiCTDDH.Size = new System.Drawing.Size(210, 24);
+            this.btnGhiCTDDH.Size = new System.Drawing.Size(115, 24);
             this.btnGhiCTDDH.Text = "Ghi";
             this.btnGhiCTDDH.Click += new System.EventHandler(this.btnGhiCTDDH_Click);
             // 

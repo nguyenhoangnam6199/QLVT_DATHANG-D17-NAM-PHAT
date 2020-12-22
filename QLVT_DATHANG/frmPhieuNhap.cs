@@ -53,8 +53,13 @@ namespace QLVT_DATHANG
                 this.donHangChuaCoPNTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.donHangChuaCoPNTableAdapter.Fill(this.dataSet.DonHangChuaCoPN);
 
+                this.productTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.productTableAdapter.Fill(this.dataSet.product);
+
                 this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.phieuNhapTableAdapter.Fill(this.dataSet.PhieuNhap);
+
+                madhang = ((DataRowView)phieuNhapBindingSource[phieuNhapBindingSource.Position])["MasoDDH"].ToString();
 
                 if (Program.mGroup == "CONGTY")
                 {
@@ -92,14 +97,16 @@ namespace QLVT_DATHANG
             //this.vtddhTableAdapter.Fill(this.dataSet.vtddh);
             // this.hangHoaTrongDDHTableAdapter.Fill(this.dataSet.HangHoaTrongDDH);
             LoadTable();
-            this.dSVTTableAdapter.Fill(this.dataSet.DSVT);
+            //this.dSVTTableAdapter.Fill(this.dataSet.DSVT);
             //MessageBox.Show(masoddh);
             //this.dSVTTableAdapter.Fill(this.dataSet.DSVT);
             //this.cTDDHTableAdapter.Fill(this.dataSet.CTDDH);
             if (Program.mGroup != "CONGTY")
             {
+                //madhang = ((DataRowView)phieuNhapBindingSource[phieuNhapBindingSource.Position])["MasoDDH"].ToString();
                 this.phieuNhapBindingSource.Filter = "MANV='" + Program.username + "'";
                 this.donHangChuaCoPNBindingSource.Filter = "MANV='" + Program.username + "'";
+                this.productBindingSource.Filter = "MasoDDH='" + madhang + "'";
             }
             
             cmbCN.DataSource = Program.bds_dspm.DataSource;
@@ -527,11 +534,28 @@ namespace QLVT_DATHANG
         private void phieuNhapGridControl_Click(object sender, EventArgs e)
         {
             
-            //madhang = ((DataRowView)phieuNhapBindingSource[phieuNhapBindingSource.Position])["MasoDDH"].ToString();
+            madhang = ((DataRowView)phieuNhapBindingSource[phieuNhapBindingSource.Position])["MasoDDH"].ToString();
             //this.cTPNBindingSource.Filter = "MasoDDH='" + madhang + "'";
             //this.productBindingSource.Filter = "MANV='" + Program.username + "'";
-            //this.cTPNTableAdapter.Connection.ConnectionString = Program.connstr;
-            //this.cTPNTableAdapter.Fill(this.dataSet.CTPN);
+
+            this.productBindingSource.Filter = "MasoDDH='" + madhang + "'";
+
+            this.cTPNTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.cTPNTableAdapter.Fill(this.dataSet.CTPN);
+
         }
-}
+
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.vattuTableAdapter.FillBy(this.dataSet.Vattu);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+    }
 }

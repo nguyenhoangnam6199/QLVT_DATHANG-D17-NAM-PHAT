@@ -86,12 +86,12 @@
             this.colMAPN1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dSVTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vtddhBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.hangHoaTrongDDHBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dSVTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cTDDHBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cTDDHTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.CTDDHTableAdapter();
             this.dSVTTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
@@ -99,6 +99,9 @@
             this.hangHoaTrongDDHTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.HangHoaTrongDDHTableAdapter();
             this.vtddhTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.vtddhTableAdapter();
             this.productTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.productTableAdapter();
+            this.vattuTableAdapter = new QLVT_DATHANG.DataSetTableAdapters.VattuTableAdapter();
+            this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
+            this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
             mAPNLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
             masoDDHLabel = new System.Windows.Forms.Label();
@@ -123,11 +126,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.cTPNGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSVTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vtddhBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangHoaTrongDDHBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSVTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTDDHBindingSource)).BeginInit();
+            this.fillByToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // mAPNLabel
@@ -535,7 +539,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 334);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(400, 240);
+            this.groupBox1.Size = new System.Drawing.Size(401, 240);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phiếu Nhập";
@@ -543,14 +547,14 @@
             // cmbKho
             // 
             this.cmbKho.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.phieuNhapBindingSource, "MAKHO", true));
-            this.cmbKho.DataSource = this.khoBindingSource;
-            this.cmbKho.DisplayMember = "MAKHO";
+            this.cmbKho.DataSource = this.dSVTBindingSource;
+            this.cmbKho.DisplayMember = "MAVT";
             this.cmbKho.FormattingEnabled = true;
             this.cmbKho.Location = new System.Drawing.Point(172, 196);
             this.cmbKho.Name = "cmbKho";
             this.cmbKho.Size = new System.Drawing.Size(209, 24);
             this.cmbKho.TabIndex = 9;
-            this.cmbKho.ValueMember = "MAKHO";
+            this.cmbKho.ValueMember = "MAVT";
             // 
             // khoBindingSource
             // 
@@ -621,14 +625,14 @@
             this.cTPNGridControl.DataSource = this.cTPNBindingSource;
             this.cTPNGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cTPNGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(5);
-            this.cTPNGridControl.Location = new System.Drawing.Point(400, 334);
+            this.cTPNGridControl.Location = new System.Drawing.Point(401, 334);
             this.cTPNGridControl.MainView = this.gridView2;
             this.cTPNGridControl.Margin = new System.Windows.Forms.Padding(5);
             this.cTPNGridControl.MenuManager = this.barManager1;
             this.cTPNGridControl.Name = "cTPNGridControl";
             this.cTPNGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1});
-            this.cTPNGridControl.Size = new System.Drawing.Size(889, 240);
+            this.cTPNGridControl.Size = new System.Drawing.Size(888, 240);
             this.cTPNGridControl.TabIndex = 7;
             this.cTPNGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -671,15 +675,15 @@
             this.repositoryItemLookUpEdit1.AutoHeight = false;
             this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit1.DataSource = this.dSVTBindingSource;
+            this.repositoryItemLookUpEdit1.DataSource = this.productBindingSource;
             this.repositoryItemLookUpEdit1.DisplayMember = "MAVT";
             this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
             this.repositoryItemLookUpEdit1.ValueMember = "MAVT";
             // 
-            // productBindingSource
+            // dSVTBindingSource
             // 
-            this.productBindingSource.DataMember = "product";
-            this.productBindingSource.DataSource = this.dataSet;
+            this.dSVTBindingSource.DataMember = "DSVT";
+            this.dSVTBindingSource.DataSource = this.dataSet;
             // 
             // colSOLUONG
             // 
@@ -694,6 +698,8 @@
             // colDONGIA
             // 
             this.colDONGIA.Caption = "Đơn Giá";
+            this.colDONGIA.DisplayFormat.FormatString = "#,##0.0";
+            this.colDONGIA.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colDONGIA.FieldName = "DONGIA";
             this.colDONGIA.MinWidth = 39;
             this.colDONGIA.Name = "colDONGIA";
@@ -701,15 +707,15 @@
             this.colDONGIA.VisibleIndex = 3;
             this.colDONGIA.Width = 146;
             // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataMember = "product";
+            this.productBindingSource.DataSource = this.dataSet;
+            // 
             // vtddhBindingSource
             // 
             this.vtddhBindingSource.DataMember = "vtddh";
             this.vtddhBindingSource.DataSource = this.dataSet;
-            // 
-            // dSVTBindingSource
-            // 
-            this.dSVTBindingSource.DataMember = "DSVT";
-            this.dSVTBindingSource.DataSource = this.dataSet;
             // 
             // cTDDHBindingSource
             // 
@@ -740,12 +746,36 @@
             // 
             this.productTableAdapter.ClearBeforeFill = true;
             // 
+            // vattuTableAdapter
+            // 
+            this.vattuTableAdapter.ClearBeforeFill = true;
+            // 
+            // fillByToolStrip
+            // 
+            this.fillByToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.fillByToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fillByToolStripButton});
+            this.fillByToolStrip.Location = new System.Drawing.Point(401, 334);
+            this.fillByToolStrip.Name = "fillByToolStrip";
+            this.fillByToolStrip.Size = new System.Drawing.Size(888, 27);
+            this.fillByToolStrip.TabIndex = 12;
+            this.fillByToolStrip.Text = "fillByToolStrip";
+            // 
+            // fillByToolStripButton
+            // 
+            this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fillByToolStripButton.Name = "fillByToolStripButton";
+            this.fillByToolStripButton.Size = new System.Drawing.Size(48, 24);
+            this.fillByToolStripButton.Text = "FillBy";
+            this.fillByToolStripButton.Click += new System.EventHandler(this.fillByToolStripButton_Click);
+            // 
             // frmPhieuNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1289, 594);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.cTPNGridControl);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.phieuNhapGridControl);
@@ -779,11 +809,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.cTPNGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSVTBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vtddhBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hangHoaTrongDDHBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSVTBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTDDHBindingSource)).EndInit();
+            this.fillByToolStrip.ResumeLayout(false);
+            this.fillByToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -855,5 +887,8 @@
         private DataSetTableAdapters.vtddhTableAdapter vtddhTableAdapter;
         private System.Windows.Forms.BindingSource productBindingSource;
         private DataSetTableAdapters.productTableAdapter productTableAdapter;
+        private System.Windows.Forms.ToolStrip fillByToolStrip;
+        private System.Windows.Forms.ToolStripButton fillByToolStripButton;
+        private DataSetTableAdapters.VattuTableAdapter vattuTableAdapter;
     }
 }
